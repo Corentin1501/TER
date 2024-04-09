@@ -1,0 +1,18 @@
+html table tbody
+
+html table [ class="client" ]
+
+html form fieldset input [type=number min=2 name=quantite]
+
+html header h2 "Ma Page Web"
+
+# css p : [
+#     font-size: 14px,
+#     font-family: Verdana
+# ]
+
+html main section form 
+
+html header img
+
+html table td "Marc Decafer"
