@@ -1,4 +1,6 @@
 from bs4 import BeautifulSoup
+import re
+
 # import cssutils
 
 
@@ -22,19 +24,30 @@ class Value_rule(Rule):
         print(" where " + self.balises[-1] + " = '" + self.value, end="'\n")
 
     def verif_rule(self, html_content):
-        def verif_recursive(tag, rule_index):
-            if rule_index >= len(self.balises):
-                return tag.string == self.value
+        def verif_recursive(tag, balise_index):
+            if tag.name == self.balises[balise_index]:
+                if balise_index == 0:
+                    return True
+                else:
+                    return verif_recursive(tag.parent, balise_index - 1)
             else:
-                current_balise = self.balises[rule_index]
-                next_tags = tag.find_all(current_balise)
-                for next_tag in next_tags:
-                    if verif_recursive(next_tag, rule_index + 1):
-                        return True
                 return False
 
-        tag = BeautifulSoup(html_content, 'html.parser')
-        return verif_recursive(tag, 0)
+        parser = BeautifulSoup(html_content, 'html.parser')
+        tags = parser.find_all(self.balises[-1], string=self.value)  # on cherche le tag avec cette valeur
+
+        print(tags, end="")
+
+        # Si aucun tag n'existe, alors on peut déjà retourner False
+        if tags is None :
+            return False
+        # Sinon, on va regarder si le tag a la bonne hiérarchie
+        else:
+            balise_index = len(self.balises) -1
+            for tag in tags:
+                if verif_recursive(tag,balise_index):
+                    return True
+            return False
 
 
 #============ Verification des valeurs des attributs d'une balise ============
@@ -62,15 +75,19 @@ class Attribute_rule(Rule):
                 return False
 
         parser = BeautifulSoup(html_content, 'html.parser')
-        tag = parser.find(attrs=self.attributs)  # on cherche tous les tag avec ces attributs
-        
-        # Si aucun tag n'a ces attributs, alors on peut déjà retourner False
-        if tag is None :
+        tags = parser.find_all(self.balises[-1],attrs=self.attributs)  # on cherche le tag avec ces attributs
+        print(tags, end="")
+
+        # Si aucun tag n'existe, alors on peut déjà retourner False
+        if tags is None :
             return False
         # Sinon, on va regarder si le tag a la bonne hiérarchie
         else:
             balise_index = len(self.balises) -1
-            return verif_recursive(tag,balise_index)
+            for tag in tags:
+                if verif_recursive(tag,balise_index):
+                    return True
+            return False
 
 
 #============ Regle générale ============
