@@ -7,37 +7,6 @@ from bs4 import BeautifulSoup
 class Rule:
     pass
 
-#============ Existence d'une balise ============
-
-
-class Balise_rule(Rule):
-    balises = []
-
-    def __init__(self, balises):
-        self.balises = balises
-
-    def print_rule(self):
-        out = "\t"
-        for balise in self.balises:
-            out += balise + "  >  "
-        print(out[:-3], end='\n')
-
-    def verif_rule(self, html_content):
-        def verif_recursive(tag, rule_index):
-            if rule_index >= len(self.balises):
-                return True
-            else:
-                current_balise = self.balises[rule_index]
-                next_tags = tag.find_all(current_balise)
-                for next_tag in next_tags:
-                    if verif_recursive(next_tag, rule_index + 1):
-                        return True
-                return False
-
-        tag = BeautifulSoup(html_content, 'html.parser')
-        return verif_recursive(tag, 0)
-    
-
 #============ Verification de la valeur d'une balise ============
 
 
@@ -102,6 +71,9 @@ class Attribute_rule(Rule):
         else:
             balise_index = len(self.balises) -1
             return verif_recursive(tag,balise_index)
+
+
+#============ Regle générale ============
 
 
 class Big_rule(Rule):
