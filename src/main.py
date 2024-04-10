@@ -37,47 +37,58 @@ def print_all_rules(regles):
 def identify_rules(regles):
     instances_rules = []
     for regle in regles:
-        isBaliseRule = False
-        isValeurRule = False
-        isAttributeRule = False
+
         mots = regle.split(" ")
+        current_balises = []    # on va noter chaque balise une à une
+        i = 0
+
+        # print()
 
         # On parcours chaque mot pour identifier les regles 
-        startsOfValue = 0
-        for i in range(len(mots)):
-            if mots[i].startswith('"'):     # Regle de valeur
-                startsOfValue = i
-                isValeurRule = True
-                break
-            elif mots[i].startswith('['):   # Regle d'attribut
-                startsOfValue = i
-                isAttributeRule = True
-                break
+        while i < len(mots):
+            # print("Balises :", balises)
 
+            if mots[i].startswith('['):     # ce sera des attributs
+                attributs = {}
+                isLastAttribut = False
+                # On récupère les attributs et leurs valeurs
+                while not isLastAttribut and i < len(mots):
+                    # print("\tcurrent attribut", mots[i])
+                    isLastAttribut = mots[i].endswith(']')
 
-        isBaliseRule = not isAttributeRule  # Regle de Balise si pas d'attribut
-
-        if isValeurRule:
-            value = ""
-            for j in range(startsOfValue, len(mots)):
-                value += " " + mots[j].strip('"')
-            instances_rules.append(Value_rule(mots[0:startsOfValue],value[1:]))
-
-        elif isBaliseRule:
-            instances_rules.append(Balise_rule(mots))
-
-        elif isAttributeRule:
-            attributs = {}
-            # On récupère les attributs et leurs valeurs
-            for i in range(startsOfValue,len(mots)):
-                mot_clean = mots[i].strip('[').strip(']')
-                if mot_clean != "": # si le mot n'était pas juste '[' ou ']'
+                    mot_clean = mots[i].strip('[').strip(']')
                     attribut = mot_clean.split('=')
                     attributs[attribut[0]] = attribut[1].strip('"')
-            instances_rules.append(Attribute_rule(mots[0:startsOfValue], attributs))
+                    i += 1
+                # print("New Attribute rule with", attributs, ":", balises)
+                nouvelle_regle = Attribute_rule(current_balises, attributs)
+                instances_rules.append(nouvelle_regle)
+                print("new rule added : ", end="")
+                nouvelle_regle.print_rule()
 
-        else:
-            print("Erreur : regle non reconnue : " + regle)
+            elif mots[i].startswith('"'):   # ce sera une valeur
+
+                value = ""
+                isEndOfValue = False
+                while not isEndOfValue and i < len(mots):
+                    # print("\tcurrent value", mots[i])
+                    isEndOfValue = mots[i].endswith('"')
+                    value += " " + mots[i].strip('"')
+                    i += 1
+                nouvelle_regle = Value_rule(current_balises,value[1:])
+                instances_rules.append(nouvelle_regle) # on enleve le premier " " de 'value'
+                print("new rule added : ", end="")
+                nouvelle_regle.print_rule()
+            else :                          # sinon c'est une balise
+                # print("current balise", mots[i])
+                current_balises.append(mots[i])
+                i += 1
+
+        if not mots[-1].endswith(']') and not mots[-1].endswith('"') and current_balises:
+            nouvelle_regle = Balise_rule(current_balises)
+            instances_rules.append(nouvelle_regle)
+            print("new rule added : ", end="")
+            nouvelle_regle.print_rule()
 
     return instances_rules
 
@@ -114,6 +125,7 @@ def main():
     css_content = read_file(css_file)
 
     regles = read_rules(rules_file)
+    
     html_rules = identify_rules(get_html_rules(regles))
 
     print_all_rules(html_rules)

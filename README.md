@@ -31,10 +31,10 @@ Pour chacune des règles, on vérifiera également la bonne hiérarchie des bali
 
     #### Exemples 
     -   `html form fieldset input [type=number min=2 name=quantite]`
-    -   `html table [ class="client" ]`
+    -   `html table [class="client"]`
     
     #### Notes supplémentaires
-    Les `[` et `]` peuvent ou non être collés aux attributs.
+    Les `[` et `]` doivent être collés aux attributs.
     Les attributs et valeurs doivent être collés au `=`
 
 3. ### Hiérarchie ET valeur d'une balise dans le fichier HTML :

@@ -1,12 +1,12 @@
 html table tbody
 
-html table [ class="client" ]
+# html table [class="client"]
 
 html form fieldset input [type=number min=2 name=quantite]
 
 html header h2 "Ma Page Web"
 
-html table td "Marc Decafer"
+# html table td "Marc Decafer"
 
 # css p : [
 #     font-size: 14px,

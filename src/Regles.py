@@ -15,6 +15,7 @@ class Balise_rule(Rule):
 
     def __init__(self, balises):
         self.balises = balises
+        # print("new balise rule created : balises=",self.balises)
 
     def print_rule(self):
         out = "\t"
@@ -48,6 +49,7 @@ class Value_rule(Rule):
     def __init__(self, balise, value):
         self.balises = balise
         self.value = value
+        # print("new value rule created : balises=",self.balises,",",self.value)
 
     def print_rule(self):
         out = "\t"
@@ -81,12 +83,13 @@ class Attribute_rule(Rule):
     def __init__(self, balise, attributs):
         self.balises = balise
         self.attributs = attributs
+        # print("new attribute rule created : balises=",self.balises,",",self.attributs)
 
     def print_rule(self):
         out = "\t"
         for balise in self.balises:
             out += balise + "  >  "
-        print(out[:-4] + " is ", self.attributs, end="'\n")
+        print(out[:-4] + " is ", self.attributs, end="\n")
 
     def verif_rule(self, html_content):
         def verif_recursive(tag, balise_index):
