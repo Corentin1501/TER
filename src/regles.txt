@@ -6,13 +6,11 @@ html form fieldset input [type=number min=2 name=quantite]
 
 html header h2 "Ma Page Web"
 
+html table td "Marc Decafer"
+
 # css p : [
 #     font-size: 14px,
 #     font-family: Verdana
 # ]
 
-html main section form 
-
-html header img
-
-html table td "Marc Decafer"
+html main section p [class=titi] span [class=bold]
