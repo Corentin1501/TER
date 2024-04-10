@@ -27,7 +27,6 @@ def get_html_rules(regles):
 def print_all_rules(regles):
     print("\n--------------- Règles ---------------\n")
     for i in range(len(regles)):
-        print(i, end=" ")
         regles[i].print_rule()
         print("")
     print("--------------------------------------\n")
@@ -42,31 +41,31 @@ def identify_rules(regles):
         current_balises = []    # on va noter chaque balise une à une
         i = 0
 
-        # print()
+        new_big_rule = Big_rule(current_balises, [], len(instances_rules))
 
         # On parcours chaque mot pour identifier les regles 
         while i < len(mots):
-            # print("Balises :", balises)
 
-            if mots[i].startswith('['):     # ce sera des attributs
+            #=========== Attribut ===========
+
+            if mots[i].startswith('['):
                 attributs = {}
                 isLastAttribut = False
                 # On récupère les attributs et leurs valeurs
                 while not isLastAttribut and i < len(mots):
-                    # print("\tcurrent attribut", mots[i])
                     isLastAttribut = mots[i].endswith(']')
 
                     mot_clean = mots[i].strip('[').strip(']')
                     attribut = mot_clean.split('=')
                     attributs[attribut[0]] = attribut[1].strip('"')
                     i += 1
-                # print("New Attribute rule with", attributs, ":", balises)
-                nouvelle_regle = Attribute_rule(current_balises, attributs)
-                instances_rules.append(nouvelle_regle)
-                print("new rule added : ", end="")
-                nouvelle_regle.print_rule()
 
-            elif mots[i].startswith('"'):   # ce sera une valeur
+                nouvelle_regle = Attribute_rule(current_balises.copy(), attributs)
+                new_big_rule.add_secondary_rules(nouvelle_regle)
+
+            #=========== Valeur ===========
+
+            elif mots[i].startswith('"'):   
 
                 value = ""
                 isEndOfValue = False
@@ -75,20 +74,22 @@ def identify_rules(regles):
                     isEndOfValue = mots[i].endswith('"')
                     value += " " + mots[i].strip('"')
                     i += 1
-                nouvelle_regle = Value_rule(current_balises,value[1:])
-                instances_rules.append(nouvelle_regle) # on enleve le premier " " de 'value'
-                print("new rule added : ", end="")
-                nouvelle_regle.print_rule()
-            else :                          # sinon c'est une balise
-                # print("current balise", mots[i])
+
+                nouvelle_regle = Value_rule(current_balises.copy(),value[1:]) # on enleve le premier " " de 'value'
+                new_big_rule.add_secondary_rules(nouvelle_regle)
+
+            #=========== Balise ===========
+
+            else :  
                 current_balises.append(mots[i])
                 i += 1
 
         if not mots[-1].endswith(']') and not mots[-1].endswith('"') and current_balises:
-            nouvelle_regle = Balise_rule(current_balises)
-            instances_rules.append(nouvelle_regle)
-            print("new rule added : ", end="")
-            nouvelle_regle.print_rule()
+            new_big_rule.balises = current_balises.copy()
+            instances_rules.append(new_big_rule)
+        else:
+            instances_rules.append(new_big_rule)
+
 
     return instances_rules
 
@@ -106,7 +107,7 @@ def verif_all_html_rules(html_content, regles):
     if len(rules_not_respected) != 0:
         print("⚠️  Règles non respectées ⚠️ ")
         for rule in rules_not_respected:
-            print(" -", end="")
+            print(" - ", end="")
             rule.print_rule()
 
 #============ Main ============
