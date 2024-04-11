@@ -148,7 +148,7 @@ class Rule:
                 else:
                     return verif_recursive(tag.parent, tag_index - 1)
             else:
-                print("Balises dans le mauvais ordre")
+                # print("Balises dans le mauvais ordre")
                 return False # mauvaise balise
 
         parser = BeautifulSoup(html_content, 'html.parser')

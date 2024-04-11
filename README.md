@@ -46,7 +46,7 @@ Pour chacune des règles, on vérifiera également la bonne hiérarchie des bali
 
 ### CSS
 
-Même syntaxte qu'un vrai fichier CSS mais il faut rajouter `css` au début de la première ligne 
+Même syntaxte que dans un fichier CSS mais il faut rajouter `css` au début de la première ligne 
 
     css p {
         font-size: 14px;
@@ -58,7 +58,9 @@ Toutes les chaînes de caractères, que ce soit pour les attributs, les valeurs 
 
 Il est possible d'ajouter des ***commentaires*** dans le fichier de règles, en rajoutant `#` au début de la ligne.
 
-Il est aussi possible de ***combiner*** plusieurs types de règles, exemple : `html section [id=section_form] form h2 "Mon Formulaire" [class=bold]` 
+Il est aussi possible de ***combiner*** plusieurs types de règles, exemple : `html section [id=section_form] form h2 "Mon Formulaire"`
+
+Cependant, il n'est pas possible de mettre plusieurs règles sur une seule balise. Exemple : `html h2 "Mon Formulaire" [class=bold]` ***= IMPOSSIBLE***
 
 
 ## Librairies utilisées
@@ -78,6 +80,6 @@ Dans un terminal :
 
     pip install cssutils
 
-## Exemples de règles complexes à tester
+## Exemples de règles "complexes" à tester
 
-    html section [id=section_form] form h2 "Mon Formulaire" [class=bold]
+    html section [id=section_form] form h2 "Mon Formulaire"

@@ -75,16 +75,22 @@ def get_rules(rules):
 
     return html_rules, css_rules.strip()
 
-
 def print_all_rules(html_rules, css_rules):
     print("\n=============== Règles ===============\n")
-    print("---------- HTML ----------\n")
-    for rule in html_rules:
-        print(rule.to_string())
+    if len(html_rules) != 0:
+        print("---------- HTML ----------\n")
+        for rule in html_rules:
+            print(rule.to_string())
+    else:
+        print("Aucune règle HTML\n")
 
-    print("---------- CSS ----------\n")
-    for rule in css_rules:
-        print(rule.to_string())
+    if len(css_rules) != 0:
+        print("---------- CSS ----------\n")
+        for rule in css_rules:
+            print(rule.to_string())
+    else:
+        print("Aucune règle CSS")
+
     print("\n======================================\n")
 
 #============ Identification du type des regles HTML ============
@@ -156,13 +162,13 @@ def verif_all_html_rules(html_content, regles):
     rules_not_respected = []
     for i in range(len(regles)):
         if regles[i].verif_rule(html_content):
-            print("Règle ",i,":  OK")
+            print("Règle HTML",i,":  OK")
         else:
-            print("Règle ",i,":  ❌")
+            print("Règle HTML",i,":  ❌")
             rules_not_respected.append(regles[i])
     print()
     if len(rules_not_respected) != 0:
-        print("⚠️  Règles non respectées ⚠️ ")
+        print("⚠️  Règles HTML non respectées ⚠️ ")
         for rule in rules_not_respected:
             print(" - " + rule.to_string())
             # rule.print_rule()
@@ -193,7 +199,7 @@ def main():
 
     print_all_rules(html_rules_identified, css_rules_identified)
 
-    # verif_all_html_rules(html_content, html_rules_identified)
+    verif_all_html_rules(html_content, html_rules_identified)
 
 if __name__ == "__main__":
     main()
