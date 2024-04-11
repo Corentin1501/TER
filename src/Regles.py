@@ -1,6 +1,28 @@
 from bs4 import BeautifulSoup
 
-# import cssutils
+import cssutils
+
+
+class CSS_rule:
+    selectors = []
+    properties = {}
+    numero = 0
+
+    def __init__(self, selectors, properties, numero):
+        self.selectors = selectors
+        self.properties = properties
+        self.numero = numero
+
+    def to_string(self):
+        out = "[" + str(self.numero) + "]   "
+        aux_out = ""
+        for selector in self.selectors:
+            aux_out += " , " + selector
+        out += aux_out[3:] + "\n\t{'"
+        for property, value in self.properties.items():
+            out += property + "':'" + value + "', "
+        out = out[:-2] + "}\n"
+        return out
 
 #============ Précision sur la valeur d'une balise ============
 
@@ -11,6 +33,8 @@ class Value:
         self.valeur = valeur
 
     def verif_rule(self, tag):
+        """Vérifie si une balise a la bonne valeur"""
+
         return tag.string == self.valeur
     
     def to_string(self):
@@ -25,7 +49,11 @@ class Attribut:
         self.attributs = attributs
 
     def verif_rule(self, tag):
+        """Vérifie si une balise a tous les attributs nécessaire"""
+
+        # pour chaque attribut nécessaire
         for att, valeur in self.attributs.items():
+            # si le tag a cet attribut
             if tag.get(att) is not None:
                 if att == 'class':  # si c'est une classe qu'on vérifie, c'est considéré comme une liste
                     if valeur not in tag.get(att):

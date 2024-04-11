@@ -16,16 +16,16 @@ Pour chacune des règles, on vérifiera également la bonne hiérarchie des bali
 
 ## Syntaxe
 
-1. ### Hiérarchie ET existence d'une balise dans le fichier HTML :
+### HTML
+
+1. ### Existence d'une suite de balises :
 
     `html balise1 balise2 ...`
 
     #### Exemples 
     -   `html main section form`
-    -   `html table tbody`
-    -   `html header img`
 
-2. ### Hiérarchie ET Valeurs des attributs d'une balise dans le fichier HTML :
+2. ### Valeurs des attributs d'une balise :
 
     `html balise1 balise2 ... [attr1=val1 attr2=val2 ...]`
 
@@ -37,20 +37,28 @@ Pour chacune des règles, on vérifiera également la bonne hiérarchie des bali
     Les `[` et `]` doivent être collés aux attributs.
     Les attributs et valeurs doivent être collés au `=`
 
-3. ### Hiérarchie ET valeur d'une balise dans le fichier HTML :
+3. ### Valeur d'une balise :
 
     `html balise1 balise2 ... "valeur"`
 
     #### Exemples 
     -   `html table td "Marc Decafer"`
-    -   `html header h2 "Ma Page Web"`
 
+### CSS
+
+Même syntaxte qu'un vrai fichier CSS mais il faut rajouter `css` au début de la première ligne 
+
+    css p {
+        font-size: 14px;
+        font-family: Verdana;
+    }
 
 ## Notes générales
 Toutes les chaînes de caractères, que ce soit pour les attributs, les valeurs ou les balises, sont ***sensibles à la casse et aux espaces***. 
 
 Il est possible d'ajouter des ***commentaires*** dans le fichier de règles, en rajoutant `#` au début de la ligne.
 
+Il est aussi possible de ***combiner*** plusieurs types de règles, exemple : `html section [id=section_form] form h2 "Mon Formulaire" [class=bold]` 
 
 
 ## Librairies utilisées
@@ -62,3 +70,14 @@ Il est possible d'ajouter des ***commentaires*** dans le fichier de règles, en 
 -   **[CSSutils](https://cthedot.de/cssutils/) :**
         A Python package to parse and build CSS Cascading Style Sheets. Currently a DOM only, no rendering options.
         
+## Manipulation nécessaire
+
+### Installer CSSUtils 
+
+Dans un terminal :
+
+    pip install cssutils
+
+## Exemples de règles complexes à tester
+
+    html section [id=section_form] form h2 "Mon Formulaire" [class=bold]

@@ -2,17 +2,37 @@ html table tbody
 
 # html table [class="client"]
 
-html form fieldset input [type=number min=2 name=quantite]
+html form fieldset input [type=number min=0 name=quantite]
 
-html header [class="prout"] h2 "Ma Page Web"
+html header h1 "Ah! Ma Zone!"
 
 # html table td "Marc Decafer"
 
-# css p : [
+css p {
+    font-size: 14px;
+    font-family: Verdana;
+}
+
+css table.client {
+	border: none;
+}
+
+html section h2 "Ajouter un Produit"
+
+html section [id=section_form] form h2 "Mon Formulaire" [class=bold]
+
+# ===========================
+# ok parfait, maintenant je veux pouvoir identifier le même genre de règles mais en partant d'un fichier.txt comme ceci :
+# 
+# css p {
 #     font-size: 14px,
 #     font-family: Verdana
-# ]
+# }
+# css table.client {
+# 	border: none;
+# }
+# html section h2 "Ajouter un Produit"
+# 
+# Je veux que tu me donnes la fonction def identify_css_rules(rules) qui me retourne un tableau de CSS_rule, et dont rules est un tableau de string contenant par exemple :
+# 
 
-html main section p [class=titi] span [class=bold]
-
-html section [id=une_id] h2 "Ajouter un Produit"

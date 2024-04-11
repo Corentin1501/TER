@@ -1,5 +1,5 @@
 from Regles import *
-
+import re
 #============ Lecture des fichiers ============
 
 def read_file(filename):
@@ -15,25 +15,81 @@ def read_rules(filename):
                 rules.append(rule_line.strip())
     return rules
 
+def get_css_rules_from_file(css_content):
+    # Parser le fichier CSS
+    sheet = cssutils.parseString(css_content)
+
+    rules = []
+
+    # Parcourir les règles CSS
+    for index, rule in enumerate(sheet):
+        if rule.type == rule.STYLE_RULE:
+            selectors_string = rule.selectorText
+
+            # Utiliser une expression régulière plus précise pour diviser les sélecteurs
+            selectors = re.findall(r'[^,{]+', selectors_string)
+
+            selectors = [s.strip() for s in selectors if s.strip()]  # Enlever les espaces vides et vides
+
+            properties = {}
+            for prop in rule.style:
+                properties[prop.name] = prop.value
+
+            new_rule = CSS_rule(selectors, properties, index)
+            rules.append(new_rule)
+
+    return rules
+
 #============ Decoupage des regles HTML / CSS ============
 
-def get_html_rules(rules):
+def get_rules(rules):
     html_rules = []
-    for rule in rules:
-        if rule.startswith("html"):
-            html_rules.append(rule.replace("html ", ""))
-    return html_rules
+    css_rules = ""
 
-def print_all_rules(rules):
-    print("\n--------------- Règles ---------------\n")
-    for rule in rules:
+    # Variable pour garder une trace si nous sommes dans une règle CSS
+    in_css_rule = False
+
+    for line_number in range(len(rules)):
+        line = rules[line_number].strip()  # Supprimer les espaces inutiles au début et à la fin de la ligne
+        if line.startswith("html"):
+            html_rules.append(line.replace("html ", ""))
+
+        elif line.startswith("css"):
+            # Si nous sommes déjà dans une règle CSS, cela signifie que nous devons ajouter la ligne à la règle actuelle
+            if in_css_rule:
+                css_rules += line + "\n"
+            else:
+                # Sinon, nous entrons dans une nouvelle règle CSS
+                in_css_rule = True
+                css_rules += line[line.find(" ") + 1:] + "\n"
+        elif line.startswith('}'):
+            css_rules += line + "\n"
+            in_css_rule = False
+        else:
+            # Si nous sommes dans une règle CSS, nous ajoutons simplement la ligne à la règle en cours
+            if in_css_rule:
+                css_rules += line + "\n"
+            else:
+                css_rules += "\n"
+
+
+    return html_rules, css_rules.strip()
+
+
+def print_all_rules(html_rules, css_rules):
+    print("\n=============== Règles ===============\n")
+    print("---------- HTML ----------\n")
+    for rule in html_rules:
         print(rule.to_string())
-    print("--------------------------------------\n")
+
+    print("---------- CSS ----------\n")
+    for rule in css_rules:
+        print(rule.to_string())
+    print("\n======================================\n")
 
 #============ Identification du type des regles HTML ============
 
-
-def identify_rules(rules):
+def identify_html_rules(rules):
 
     rules_identified = []
     
@@ -126,13 +182,18 @@ def main():
     html_content = read_file(html_file)
     css_content = read_file(css_file)
 
-    regles = read_rules(rules_file)
+    rules = read_rules(rules_file)
     
-    html_main_rules = identify_rules(get_html_rules(regles))
+    # css_rules_of_css_file = get_css_rules_from_file(css_content)
 
-    print_all_rules(html_main_rules)
+    html_rules, css_rules = get_rules(rules)
 
-    verif_all_html_rules(html_content, html_main_rules)
+    html_rules_identified = identify_html_rules(html_rules)
+    css_rules_identified = get_css_rules_from_file(css_rules)
+
+    print_all_rules(html_rules_identified, css_rules_identified)
+
+    # verif_all_html_rules(html_content, html_rules_identified)
 
 if __name__ == "__main__":
     main()
