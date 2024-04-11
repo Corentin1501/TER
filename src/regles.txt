@@ -4,7 +4,7 @@ html table tbody
 
 html form fieldset input [type=number min=2 name=quantite]
 
-html header h2 "Ma Page Web"
+html header [class="prout"] h2 "Ma Page Web"
 
 # html table td "Marc Decafer"
 
@@ -14,3 +14,5 @@ html header h2 "Ma Page Web"
 # ]
 
 html main section p [class=titi] span [class=bold]
+
+html section [id=une_id] h2 "Ajouter un Produit"

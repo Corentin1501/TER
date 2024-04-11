@@ -47,7 +47,7 @@ Pour chacune des règles, on vérifiera également la bonne hiérarchie des bali
 
 
 ## Notes générales
-Toutes les valeurs, que ce soit pour les attributs ou les balises, sont ***sensibles à la casse et aux espaces***. 
+Toutes les chaînes de caractères, que ce soit pour les attributs, les valeurs ou les balises, sont ***sensibles à la casse et aux espaces***. 
 
 Il est possible d'ajouter des ***commentaires*** dans le fichier de règles, en rajoutant `#` au début de la ligne.
 
