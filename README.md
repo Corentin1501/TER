@@ -18,14 +18,16 @@ Pour chacune des règles, on vérifiera également la bonne hiérarchie des bali
 
 ### HTML
 
-1. ### Existence d'une suite de balises :
+- ### Existence d'une suite de balises :
 
         html balise1 balise2 ...
 
     #### Exemples 
         html main section form
+    
+    ---
 
-2. ### Valeurs des attributs d'une balise :
+- ### Valeurs des attributs d'une balise :
 
         html balise1 balise2 ... [attr1=val1 attr2=val2 ...]
 
@@ -37,12 +39,16 @@ Pour chacune des règles, on vérifiera également la bonne hiérarchie des bali
     Les `[` et `]` doivent être collés aux attributs.
     Les attributs et valeurs doivent être collés au `=`.
 
-3. ### Valeur d'une balise :
+    ---
+
+- ### Valeur d'une balise :
 
         html balise1 balise2 ... "valeur"
 
     #### Exemples 
         html table td "Marc Decafer"
+
+    ---
 
 ### CSS
 
@@ -62,9 +68,14 @@ Il est aussi possible de ***combiner*** plusieurs types de règles :
 
     html section [id=section_form] form h2 "Mon Formulaire"
 
+
 Cependant, il n'est pas possible de mettre plusieurs règles sur une seule balise : 
 
     html h2 "Mon Formulaire" [class=bold]               = IMPOSSIBLE
+
+
+Dans le CSS, deux règles peuvent être ***séparés*** ou ***combinés*** : Si dans le *fichier CSS* deux règles sont séparés (`h1 {...} h2 {...}`) et que dans le *fichier de règles* les deux sont combinés (`h1, h2 {...}`), l'utilitaire saura valider la règle. Et ce même si c'est l'inverse, que les règles soients séparés et dans le CSS combinées.
+
 
 
 ## Librairies utilisées
@@ -95,5 +106,3 @@ Dans un terminal :
 -   Si un attribut de style dans une balise n'est pas respecté, on doit vérifier cette prorpiété dans le fichier CSS.
 
 -   Implémentation de connecteurs logiques ***AND***, ***OR***, ***NOT***.
-
--   Dans le CSS, deux règles peuvent être séparé ou combiner (`h1 {...} h2 {...}` ou `h1, h2 {...}`), le logiciel doit pouvoir reconnaitre les deux cas.

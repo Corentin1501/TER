@@ -9,6 +9,9 @@ h2 {
 }
 
 /* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+h1 {
+	font-size: 50px;
+}
 
 body, header {
 	margin: 0;
@@ -28,13 +31,6 @@ header img {
 	left: 40px;
 	width: 200px;
 	height: 120px;
-}
-
-h1 {
-	font-size: 50px;
-}
-h2 {
-	font-size: 50px;
 }
 
 footer {
