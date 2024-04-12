@@ -4,13 +4,26 @@ html form fieldset input [type=number min=0 name=quantite]
 html header h1 "Ah! Ma Zone!"
 html table td "Marc Decafer"
 
-css p {
-    font-size: 14px;
-    font-family: Verdana;
+css body, header {
+	margin: 0;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 14px;
 }
-css table.client {
-	border: none;
+css h1 {
+	font-size: 50px;
+}
+css table.commande th,
+table.commande td {
+	padding: 10px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+css h1, h2 {
+	font-size: 50px;
 }
 
 html section h2 "Ajouter un Produit"
 html section [id=section_form] form h2 "Mon Formulaire"
+
+html form [method=post] fieldset select [name=produit] option "Clavier"

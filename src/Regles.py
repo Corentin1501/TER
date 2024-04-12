@@ -24,6 +24,16 @@ class CSS_rule:
         out = out[:-2] + "}\n"
         return out
 
+    def verif_rule(self, css_file_rules):
+        # Vérifier si la règle actuelle est respectée parmi toutes les règles dans css_file_rules
+        for rule in css_file_rules:
+            # Vérifier si tous les sélecteurs de la règle actuelle sont présents dans les sélecteurs de la règle en cours
+            if all(selector in rule.selectors for selector in self.selectors):
+                # Vérifier si toutes les propriétés de la règle actuelle sont présentes dans les propriétés de la règle en cours
+                if all(prop in rule.properties and rule.properties[prop] == self.properties[prop] for prop in self.properties):
+                    return True
+        return False
+
 #============ Précision sur la valeur d'une balise ============
 
 class Value:
@@ -38,7 +48,7 @@ class Value:
         return tag.string == self.valeur
     
     def to_string(self):
-        return "'" + str(self.valeur) + "'"
+        return "\"" + str(self.valeur) + "\""
     
 #============ Précision sur les attributs d'une balise ============
 

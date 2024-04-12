@@ -1,5 +1,5 @@
 # Correction automatique de pages HTML+CSS
-Encadrant: *Jean-Michel Richer*
+Professeur encadrant : *Jean-Michel Richer*
 
 On désire corriger automatiquement des pages HTML et CSS suite à un contrôle continu donné en 
 L1. Fournir un utilitaire qui prend en paramètre un fichier de règles, un fichier HTML et un fichier CSS puis vérifie que les règles sont respectées.
@@ -20,33 +20,33 @@ Pour chacune des règles, on vérifiera également la bonne hiérarchie des bali
 
 1. ### Existence d'une suite de balises :
 
-    `html balise1 balise2 ...`
+        html balise1 balise2 ...
 
     #### Exemples 
-    -   `html main section form`
+        html main section form
 
 2. ### Valeurs des attributs d'une balise :
 
-    `html balise1 balise2 ... [attr1=val1 attr2=val2 ...]`
+        html balise1 balise2 ... [attr1=val1 attr2=val2 ...]
 
     #### Exemples 
-    -   `html form fieldset input [type=number min=2 name=quantite]`
-    -   `html table [class="client"]`
+        html form fieldset input [type=number min=2 name=quantite]
+        html table [class="client"]
     
     #### Notes supplémentaires
     Les `[` et `]` doivent être collés aux attributs.
-    Les attributs et valeurs doivent être collés au `=`
+    Les attributs et valeurs doivent être collés au `=`.
 
 3. ### Valeur d'une balise :
 
-    `html balise1 balise2 ... "valeur"`
+        html balise1 balise2 ... "valeur"
 
     #### Exemples 
-    -   `html table td "Marc Decafer"`
+        html table td "Marc Decafer"
 
 ### CSS
 
-Même syntaxte que dans un fichier CSS mais il faut rajouter `css` au début de la première ligne 
+Même syntaxte que dans un fichier CSS mais il faut rajouter `css` au début de la première ligne.
 
     css p {
         font-size: 14px;
@@ -58,9 +58,13 @@ Toutes les chaînes de caractères, que ce soit pour les attributs, les valeurs 
 
 Il est possible d'ajouter des ***commentaires*** dans le fichier de règles, en rajoutant `#` au début de la ligne.
 
-Il est aussi possible de ***combiner*** plusieurs types de règles, exemple : `html section [id=section_form] form h2 "Mon Formulaire"`
+Il est aussi possible de ***combiner*** plusieurs types de règles : 
 
-Cependant, il n'est pas possible de mettre plusieurs règles sur une seule balise. Exemple : `html h2 "Mon Formulaire" [class=bold]` ***= IMPOSSIBLE***
+    html section [id=section_form] form h2 "Mon Formulaire"
+
+Cependant, il n'est pas possible de mettre plusieurs règles sur une seule balise : 
+
+    html h2 "Mon Formulaire" [class=bold]               = IMPOSSIBLE
 
 
 ## Librairies utilisées
@@ -83,3 +87,13 @@ Dans un terminal :
 ## Exemples de règles "complexes" à tester
 
     html section [id=section_form] form h2 "Mon Formulaire"
+
+    html form [method=post] fieldset select [name=produit] option "Clavier"
+
+## Notions importantes à implémenter 
+
+-   Si un attribut de style dans une balise n'est pas respecté, on doit vérifier cette prorpiété dans le fichier CSS.
+
+-   Implémentation de connecteurs logiques ***AND***, ***OR***, ***NOT***.
+
+-   Dans le CSS, deux règles peuvent être séparé ou combiner (`h1 {...} h2 {...}` ou `h1, h2 {...}`), le logiciel doit pouvoir reconnaitre les deux cas.

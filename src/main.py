@@ -156,7 +156,7 @@ def identify_html_rules(rules):
 
     return rules_identified
 
-#============ Vérification des regles HTML ============
+#============ Vérification des regles HTML / CSS ============
 
 def verif_all_html_rules(html_content, regles):
     rules_not_respected = []
@@ -171,7 +171,21 @@ def verif_all_html_rules(html_content, regles):
         print("⚠️  Règles HTML non respectées ⚠️ ")
         for rule in rules_not_respected:
             print(" - " + rule.to_string())
-            # rule.print_rule()
+    return rules_not_respected
+
+def verif_all_css_rules(css_file_rules, css_rules):
+    rules_not_respected = []
+    for i in range(len(css_rules)):
+        if css_rules[i].verif_rule(css_file_rules):
+            print("Règle CSS",i,":  OK")
+        else:
+            print("Règle CSS",i,":  ❌")
+            rules_not_respected.append(css_rules[i])
+    print()
+    if len(rules_not_respected) != 0:
+        print("⚠️  Règles CSS non respectées ⚠️ ")
+        for rule in rules_not_respected:
+            print(" - " + rule.to_string())
 
 #============ Main ============
 
@@ -187,19 +201,18 @@ def main():
     # Lire les contenus des fichiers
     html_content = read_file(html_file)
     css_content = read_file(css_file)
+    css_file_rules = get_css_rules_from_file(css_content)
 
-    rules = read_rules(rules_file)
-    
-    # css_rules_of_css_file = get_css_rules_from_file(css_content)
 
-    html_rules, css_rules = get_rules(rules)
+    html_rules, css_rules = get_rules(read_rules(rules_file))
 
     html_rules_identified = identify_html_rules(html_rules)
     css_rules_identified = get_css_rules_from_file(css_rules)
 
-    print_all_rules(html_rules_identified, css_rules_identified)
+    # print_all_rules(html_rules_identified, css_rules_identified)
 
     verif_all_html_rules(html_content, html_rules_identified)
+    verif_all_css_rules(css_file_rules, css_rules_identified)
 
 if __name__ == "__main__":
     main()
