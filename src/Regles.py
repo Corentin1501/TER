@@ -25,13 +25,30 @@ class CSS_rule:
         return out
 
     def verif_rule(self, css_file_rules):
-        # Vérifier si la règle actuelle est respectée parmi toutes les règles dans css_file_rules
+
+        rules_to_test_again = []
+
+        # on vérifie une première fois avec les règles en l'état actuel
         for rule in css_file_rules:
-            # Vérifier si tous les sélecteurs de la règle actuelle sont présents dans les sélecteurs de la règle en cours
             if all(selector in rule.selectors for selector in self.selectors):
-                # Vérifier si toutes les propriétés de la règle actuelle sont présentes dans les propriétés de la règle en cours
                 if all(prop in rule.properties and rule.properties[prop] == self.properties[prop] for prop in self.properties):
                     return True
+                
+        # si on a pas trouvé de correspondance avec le fichier CSS, on divise la regle en 
+        # autant de fois qu'il y a de selecteurs mais seulement s'il y a plusieurs selecteurs
+        if len(self.selectors) > 1:
+            for selector in self.selectors:
+                rules_to_test_again.append(CSS_rule([selector], self.properties, 0))
+
+            # et on re test avec ces nouvelles règles
+            all_rules_verified = True
+            for rule in rules_to_test_again:
+                # print("regle à re tester : " + rule.to_string())
+                if not rule.verif_rule(css_file_rules):
+                    all_rules_verified = False
+            
+            return all_rules_verified
+
         return False
 
 #============ Précision sur la valeur d'une balise ============

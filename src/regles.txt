@@ -19,7 +19,7 @@ table.commande td {
 	border-collapse: collapse;
 }
 
-css h1, h2 {
+css h1, h2, h3 {
 	font-size: 50px;
 }
 
