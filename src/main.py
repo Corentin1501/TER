@@ -161,9 +161,7 @@ def identify_html_rules(rules):
 def verif_all_html_rules(html_content, regles):
     rules_not_respected = []
     for i in range(len(regles)):
-        if regles[i].verif_rule(html_content):
-            print("Règle HTML",i,":  OK")
-        else:
+        if not regles[i].verif_rule(html_content):
             print("Règle HTML",i,":  ❌")
             rules_not_respected.append(regles[i])
     print()
@@ -171,14 +169,14 @@ def verif_all_html_rules(html_content, regles):
         print("⚠️  Règles HTML non respectées ⚠️ ")
         for rule in rules_not_respected:
             print(" - " + rule.to_string())
+    else:
+        print("Toutes les règles HTML sont OK")
     return rules_not_respected
 
 def verif_all_css_rules(css_file_rules, css_rules):
     rules_not_respected = []
     for i in range(len(css_rules)):
-        if css_rules[i].verif_rule(css_file_rules):
-            print("Règle CSS",i,":  OK")
-        else:
+        if not css_rules[i].verif_rule(css_file_rules):
             print("Règle CSS",i,":  ❌")
             rules_not_respected.append(css_rules[i])
     print()
@@ -186,6 +184,12 @@ def verif_all_css_rules(css_file_rules, css_rules):
         print("⚠️  Règles CSS non respectées ⚠️ ")
         for rule in rules_not_respected:
             print(" - " + rule.to_string())
+    else:
+        print("Toutes les règles CSS sont OK")
+
+def verif_all_rules(html_content, html_rules, css_file_rule, css_rules):
+    verif_all_html_rules(html_content, html_rules)
+    verif_all_css_rules(css_file_rule, css_rules)
 
 #============ Main ============
 
@@ -209,10 +213,9 @@ def main():
     html_rules_identified = identify_html_rules(html_rules)
     css_rules_identified = get_css_rules_from_file(css_rules)
 
-    # print_all_rules(html_rules_identified, css_rules_identified)
+    print_all_rules(html_rules_identified, css_rules_identified)
 
-    verif_all_html_rules(html_content, html_rules_identified)
-    verif_all_css_rules(css_file_rules, css_rules_identified)
+    verif_all_rules(html_content, html_rules_identified, css_file_rules, css_rules_identified)
 
 if __name__ == "__main__":
     main()

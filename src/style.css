@@ -91,10 +91,10 @@ table.commande tr:last-child {
 	background-color: white;
 }
 
-table.commande tr:hover {
+/* table.commande tr:hover {
 	background-color: gray;
 	color: white;
-}
+} */
 
 form {
 	background-color: orange;
