@@ -1,16 +1,25 @@
 html table tbody
-
-html table [ class="client" ]
-
-html form fieldset input [type=number min=2 name=quantite]
-
-html header h2 "Ma Page Web"
-
+html table [class="client"]
+html form fieldset input [type=number min=0 name=quantite]
+html header h1 "Ah! Ma Zone!"
 html table td "Marc Decafer"
 
-# css p : [
-#     font-size: 14px,
-#     font-family: Verdana
-# ]
+css body, header {
+	font-family: Verdana, Arial, sans-serif;
+	margin: 0;
+	font-size: 14px;
+}
+css h1 {
+	font-size: 50px;
+}
+css table.commande th,
+table.commande td {
+	padding: 10px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
 
-html main section p [class=titi] span [class=bold]
+html section h2 "Ajouter un Produit"
+html section [id=section_form] form h2 "Mon Formulaire"
+
+html form [method=post] fieldset select [name=produit] option "Clavier"

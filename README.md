@@ -1,5 +1,5 @@
 # Correction automatique de pages HTML+CSS
-Encadrant: *Jean-Michel Richer*
+Professeur encadrant : *Jean-Michel Richer*
 
 On désire corriger automatiquement des pages HTML et CSS suite à un contrôle continu donné en 
 L1. Fournir un utilitaire qui prend en paramètre un fichier de règles, un fichier HTML et un fichier CSS puis vérifie que les règles sont respectées.
@@ -16,40 +16,65 @@ Pour chacune des règles, on vérifiera également la bonne hiérarchie des bali
 
 ## Syntaxe
 
-1. ### Hiérarchie ET existence d'une balise dans le fichier HTML :
+### HTML
 
-    `html balise1 balise2 ...`
+- ### Existence d'une suite de balises :
 
-    #### Exemples 
-    -   `html main section form`
-    -   `html table tbody`
-    -   `html header img`
-
-2. ### Hiérarchie ET Valeurs des attributs d'une balise dans le fichier HTML :
-
-    `html balise1 balise2 ... [attr1=val1 attr2=val2 ...]`
+        html balise1 balise2 ...
 
     #### Exemples 
-    -   `html form fieldset input [type=number min=2 name=quantite]`
-    -   `html table [ class="client" ]`
+        html main section form
+    
+    ---
+
+- ### Valeurs des attributs d'une balise :
+
+        html balise1 balise2 ... [attr1=val1 attr2=val2 ...]
+
+    #### Exemples 
+        html form fieldset input [type=number min=2 name=quantite]
+        html table [class="client"]
     
     #### Notes supplémentaires
-    Les `[` et `]` peuvent ou non être collés aux attributs.
-    Les attributs et valeurs doivent être collés au `=`
+    Les `[` et `]` doivent être collés aux attributs.
+    Les attributs et valeurs doivent être collés au `=`.
 
-3. ### Hiérarchie ET valeur d'une balise dans le fichier HTML :
+    ---
 
-    `html balise1 balise2 ... "valeur"`
+- ### Valeur d'une balise :
+
+        html balise1 balise2 ... "valeur"
 
     #### Exemples 
-    -   `html table td "Marc Decafer"`
-    -   `html header h2 "Ma Page Web"`
+        html table td "Marc Decafer"
 
+    ---
+
+### CSS
+
+Même syntaxte que dans un fichier CSS mais il faut rajouter `css` au début de la première ligne.
+
+    css p {
+        font-size: 14px;
+        font-family: Verdana;
+    }
 
 ## Notes générales
-Toutes les valeurs, que ce soit pour les attributs ou les balises, sont ***sensibles à la casse et aux espaces***. 
+Toutes les chaînes de caractères, que ce soit pour les attributs, les valeurs ou les balises, sont ***sensibles à la casse et aux espaces***. 
 
 Il est possible d'ajouter des ***commentaires*** dans le fichier de règles, en rajoutant `#` au début de la ligne.
+
+Il est aussi possible de ***combiner*** plusieurs types de règles : 
+
+    html section [id=section_form] form h2 "Mon Formulaire"
+
+
+Cependant, il n'est pas possible de mettre plusieurs règles sur une seule balise : 
+
+    html h2 "Mon Formulaire" [class=bold]               = IMPOSSIBLE
+
+
+Dans le CSS, deux règles peuvent être ***séparés*** ou ***combinés*** : Si dans le *fichier CSS* deux règles sont séparés (`h1 {...} h2 {...}`) et que dans le *fichier de règles* les deux sont combinés (`h1, h2 {...}`), l'utilitaire saura valider la règle. Et ce même si c'est l'inverse, que les règles soients séparés et dans le CSS combinées.
 
 
 
@@ -62,3 +87,22 @@ Il est possible d'ajouter des ***commentaires*** dans le fichier de règles, en 
 -   **[CSSutils](https://cthedot.de/cssutils/) :**
         A Python package to parse and build CSS Cascading Style Sheets. Currently a DOM only, no rendering options.
         
+## Manipulation nécessaire
+
+### Installer CSSUtils 
+
+Dans un terminal :
+
+    pip install cssutils
+
+## Exemples de règles "complexes" à tester
+
+    html section [id=section_form] form h2 "Mon Formulaire"
+
+    html form [method=post] fieldset select [name=produit] option "Clavier"
+
+## Notions importantes à implémenter 
+
+-   Si un attribut de style dans une balise n'est pas respecté, on doit vérifier cette prorpiété dans le fichier CSS.
+
+-   Implémentation de connecteurs logiques ***AND***, ***OR***, ***NOT***.

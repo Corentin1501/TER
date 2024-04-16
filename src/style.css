@@ -1,41 +1,121 @@
-/* ne pas modifier cette règle */
+/* Ne pas modifier cette règle */
 * {
 	margin: 0;
 }
 
-/* ne pas modifier cette règle */
+/* Ne pas modifier cette règle */
 h2 {
 	margin: 10px;
 }
 
 /* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+h1 {
+	font-size: 50px;
+}
 
-body {
-  margin: 0;
-
+body, header {
+	margin: 0;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 14px;
 }
 
 header {
- 
+	height: 200px;
+	background-color: green;
+	display: block; /* Remplacement de "flex" par "block" pour la propriété display */
+}
+
+header img {
+	position: fixed;
+	top: 30px;
+	left: 40px;
+	width: 200px;
+	height: 120px;
 }
 
 footer {
- 
+	background-color: grey;
+	height: 100px;
+	display: block; /* Remplacement de "flex" par "block" pour la propriété display */
 }
 
 main {
-
+	height: auto; /* Remplacement de la valeur "calc(100vh - 300px)" par "auto" */
 }
 
 section {
+	min-width: 350px;
+	padding: 20px;
+	border: 1px solid black;
+}
 
-}
- 
 table {
+	width: 300px;
+	border: 1px solid black;
+	margin: 30px auto;
+	text-align: center;
 }
+
+table.client {
+	border: none;
+}
+
+table.commande th,
+table.commande td {
+	padding: 10px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+table.commande td:nth-child(1) {
+	text-align: left;
+}
+
+table.commande td:nth-child(2) {
+	text-align: center;
+}
+
+table.commande td:nth-child(3) {
+	text-align: right;
+}
+
+table.commande tr:nth-child(odd) {
+	background-color: green;
+}
+
+table.commande tr:nth-child(even) {
+	background-color: orange;
+}
+
+table.commande tr:last-child {
+	background-color: white;
+}
+
+/* table.commande tr:hover {
+	background-color: gray;
+	color: white;
+} */
 
 form {
-
+	background-color: orange;
+	display: block; /* Remplacement de "flex" par "block" pour la propriété display */
 }
 
+fieldset {
+	border: none;
+}
 
+label {
+	margin-bottom: 10px;
+}
+
+form input[type="text"] {
+	background-color: wheat;
+}
+
+form input[type="submit"],
+form input[type="reset"] {
+	font-size: 24px;
+	text-transform: uppercase;
+	width: 100%;
+}
