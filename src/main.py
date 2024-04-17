@@ -46,94 +46,119 @@ def get_css_rules_from_file(css_content):
 #============ Decoupage des regles HTML / CSS ============
 
 def get_rules(rules):
-    html_rules = []
-    css_rules = ""
-    logical_rules = []
+    # Les différents type de règles
 
-    # Variable pour garder une trace si nous sommes dans une règle CSS
+    html_rules_in_string = []
+
+    css_rules_in_string = ""
     in_css_rule = False
+
+    logical_rules = []
+    rules_in_logical_rule = []
+    in_logic_rule = False
     in_css_rule_in_logic = False
+    css_rule_in_logic_string = ""
+    logic_type = None
+
 
     # Initialise line_number
     line_number = 0
     while line_number < len(rules):
         line = rules[line_number].strip()  # Supprimer les espaces inutiles au début et à la fin de la ligne
+
+# --------------- HTML ---------------
+
         if line.startswith("html"):
-            html_rules.append(line.replace("html ", ""))
+
+            # --------------- Dans la logique ---------------
+
+            if in_logic_rule:
+                html_rule_string = []
+                html_rule_string.append(rules[line_number].replace("html ", ""))
+                html_rule = identify_html_rules(html_rule_string)
+                for rule in html_rule:
+                    
+                    rules_in_logical_rule.append(rule)
+
+            # --------------- Sinon ---------------
+
+            else:
+                html_rules_in_string.append(line.replace("html ", ""))
+
+# --------------- Logique ---------------
 
         elif line.startswith("OR") or line.startswith("AND") or line.startswith("NOT"):
 
-            new_css_rule_string = ""
-            rules_in_logical_rule = []
-
-            logic_type = None
             if line.startswith("OR"):
                 logic_type = Logical_type.OR
             elif line.startswith("AND"):
                 logic_type = Logical_type.AND
             else:
                 logic_type = Logical_type.NOT
+            
+            in_logic_rule = True
+            rules_in_logical_rule.clear()
+            css_rule_in_logic_string = ""
 
-            line_number += 1  # on va à la ligne suivante pour lire les règles
-
-            while line_number < len(rules) and not rules[line_number].startswith("}"):
-
-                if rules[line_number].startswith("html"):
-                    html_rule_string = []
-                    html_rule_string.append(rules[line_number].replace("html ", ""))
-                    html_rule = identify_html_rules(html_rule_string)
-                    for rule in html_rule:
-                        rules_in_logical_rule.append(rule)
-
-
-                    line_number += 1
-
-                elif rules[line_number].startswith("css"):
-
-                    new_css_rule_string += rules[line_number][rules[line_number].find(" ") + 1:] + "\n"
-
-                    in_css_rule_in_logic = True
-                    while in_css_rule_in_logic and line_number < len(rules):
-                        line_number += 1
-
-                        if rules[line_number].startswith("}"):
-                            new_css_rule_string += rules[line_number] + "\n"
-                            in_css_rule_in_logic = False
-                            line_number += 1
-
-                        else:
-                            new_css_rule_string += rules[line_number] + "\n"
-
-            # Créer une instance de la règle logique et l'ajouter à la liste des règles logiques
-            css_rules_of_logic = get_css_rules_from_file(new_css_rule_string)
-            for rule in css_rules_of_logic:
-                rules_in_logical_rule.append(rule)
-
-            logical_rule = Logical_rule(logic_type, rules_in_logical_rule)
-            logical_rules.append(logical_rule)
+# --------------- CSS ---------------
 
         elif line.startswith("css"):
-            # Si nous sommes déjà dans une règle CSS, cela signifie que nous devons ajouter la ligne à la règle actuelle
-            if in_css_rule:
-                css_rules += line + "\n"
+
+            if in_logic_rule:
+                in_css_rule_in_logic = True
+                css_rule_in_logic_string += line[line.find(" ") + 1:] + "\n"
             else:
-                # Sinon, nous entrons dans une nouvelle règle CSS
-                in_css_rule = True
-                css_rules += line[line.find(" ") + 1:] + "\n"
+                if in_css_rule:
+                    css_rules_in_string += line + "\n"
+                else:
+                    # Sinon, nous entrons dans une nouvelle règle CSS
+                    in_css_rule = True
+                    css_rules_in_string += line[line.find(" ") + 1:] + "\n"
+
+
         elif line.startswith('}'):
-            css_rules += line + "\n"
-            in_css_rule = False
-        else:
-            # Si nous sommes dans une règle CSS, nous ajoutons simplement la ligne à la règle en cours
-            if in_css_rule:
-                css_rules += line + "\n"
+
+            if in_logic_rule:
+                if in_css_rule_in_logic:
+                    css_rule_in_logic_string += line + "\n"
+                    in_css_rule_in_logic = False
+                else:
+                    in_logic_rule = False
+                    css_rules_of_logic = get_css_rules_from_file(css_rule_in_logic_string)
+                    for rule in css_rules_of_logic:
+                        rules_in_logical_rule.append(rule)
+
+                    logical_rule = Logical_rule(logic_type, rules_in_logical_rule.copy())
+                    logical_rules.append(logical_rule)
             else:
-                css_rules += "\n"
+                css_rules_in_string += line + "\n"
+                in_css_rule = False
+
+        else:
+            if in_logic_rule and in_css_rule_in_logic:
+                css_rule_in_logic_string += line + "\n"
+            else:
+                # Si nous sommes dans une règle CSS, nous ajoutons simplement la ligne à la règle en cours
+                if in_css_rule:
+                    css_rules_in_string += line + "\n"
+                else:
+                    css_rules_in_string += "\n"
 
         # Incrémenter line_number à la fin de la boucle while
         line_number += 1
 
-    return html_rules, css_rules.strip(), logical_rules
+
+    # On identifie chacunes des règles
+    html_rules = identify_html_rules(html_rules_in_string)
+    css_rules = get_css_rules_from_file (css_rules_in_string.strip())   
+
+    return html_rules, css_rules, logical_rules
+
+
+
+
+
+#============ Affichage des regles ============
 
 def print_all_rules(html_rules, css_rules, logical_rules):
     print("\n=============== Règles ===============\n")
@@ -142,21 +167,21 @@ def print_all_rules(html_rules, css_rules, logical_rules):
         for rule in html_rules:
             print(rule.to_string())
     else:
-        print("Aucune règle HTML\n")
+        print("---------- Aucune règle HTML ----------\n")
 
     if len(css_rules) != 0:
         print("---------- CSS ----------\n")
         for rule in css_rules:
             print(rule.to_string())
     else:
-        print("Aucune règle CSS\n")
+        print("---------- Aucune règle CSS ----------\n")
 
     if len(logical_rules) != 0:
         print("---------- Logique ----------\n")
         for rule in logical_rules:
             print(rule.to_string())
     else:
-        print("Aucune règle Logique\n")
+        print("---------- Aucune règle Logique ----------\n")
 
     print("\n======================================\n")
 
@@ -237,8 +262,6 @@ def set_content_rules_for_all_rules(html_content, html_rules_identified, css_fil
             elif isinstance(rule, HTML_Rule):
                 rule.set_content(html_content)
 
-
-
 #============ Vérification des regles HTML / CSS ============
 
 def verif_all_html_rules(regles):
@@ -252,7 +275,7 @@ def verif_all_html_rules(regles):
         for rule in rules_not_respected:
             print(" - " + rule.to_string())
     else:
-        print("✅ --------- HTML OK --------- ✅\n")
+        print("✅ ---------   HTML OK   --------- ✅\n")
     return rules_not_respected
 
 def verif_all_css_rules(css_rules):
@@ -266,7 +289,7 @@ def verif_all_css_rules(css_rules):
         for rule in rules_not_respected:
             print(" - " + rule.to_string())
     else:
-        print("✅ --------- CSS OK --------- ✅\n")
+        print("✅ ---------   CSS OK    --------- ✅\n")
 
 def verif_all_logical_rules(logical_rules):
     rules_not_respected = []
@@ -279,39 +302,67 @@ def verif_all_logical_rules(logical_rules):
         for rule in rules_not_respected:
             print(" - " + rule.to_string())
     else:
-        print("✅ --------- Logiques OK --------- ✅\n")
+        print("✅ --------- LOGIQUES OK --------- ✅\n")
 
 def verif_all_rules(html_rules, css_rules, logical_rules):
-    verif_all_html_rules(html_rules)
-    verif_all_css_rules(css_rules)
-    verif_all_logical_rules(logical_rules)
+    if len(html_rules) != 0:
+        verif_all_html_rules(html_rules)
+    if len(css_rules) != 0:
+        verif_all_css_rules(css_rules)
+    if len(logical_rules) != 0:
+        verif_all_logical_rules(logical_rules)
 
 #============ Main ============
 
 def main():
-    # Récupérer les noms des fichiers
+
+    #*********** Noms des fichiers en ligne de commandes ***********
+
     # rules_file = input("Fichier de règles : ")
     # html_file = input("Fichier HTML : ")
     # css_file = input("Fichier CSS : ")
+
+    #*********** Ou directement ici ***********
+
     rules_file = "src/regles.txt"
     html_file = "src/index.html"
     css_file = "src/style.css"
+
+    #*********** Affichage des règles ***********
+
+    display_rules = False
+
+    #*********** Faire la vérification ***********
+
+    verif_rules = True
     
-    # Lire les contenus des fichiers
+    #*********** Lire les fichiers ***********
+    # HTML
     html_content = read_file(html_file)
+
+    # CSS
     css_content = read_file(css_file)
     css_file_rules = get_css_rules_from_file(css_content)
-
+    
+    # Règles
     html_rules, css_rules, logical_rules = get_rules(read_rules(rules_file))
 
-    html_rules_identified = identify_html_rules(html_rules)
-    css_rules_identified = get_css_rules_from_file(css_rules)
+    #*********** Attribution des fichiers correspondant aux règles ***********
 
-    print_all_rules(html_rules_identified, css_rules_identified, logical_rules)
+    set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
 
-    set_content_rules_for_all_rules(html_content, html_rules_identified, css_file_rules, css_rules_identified, logical_rules)
-    
-    verif_all_rules(html_rules_identified, css_rules_identified, logical_rules)
+    #*********** Affichage ***********
+
+    if display_rules:
+        print_all_rules(html_rules, css_rules, logical_rules)
+
+
+    #*********** Verification ***********
+
+    if verif_rules:
+        verif_all_rules(html_rules, css_rules, logical_rules)
+
+
 
 if __name__ == "__main__":
     main()

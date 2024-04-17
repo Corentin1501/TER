@@ -28,6 +28,8 @@ class Logical_rule(Rule):
             out += "\t" + rule.to_string()
         return out
     
+    def add_rule(self, rule):
+        self.rules_concerned.append(rule) 
 
     def verif_rule(self):
         if self.logic_type == Logical_type.OR:
