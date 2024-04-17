@@ -18,9 +18,7 @@ OR {
 	css h1 {
 		font-size: 50px;
 	}
-	css h2 {
-		font-size: 100px;
-	}
+	html section [id=section_form] form h2 "Ajouter un Produit"
 }
 
 html section [id=section_form] form h2 "Ajouter un Produit"

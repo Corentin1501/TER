@@ -82,7 +82,11 @@ def get_rules(rules):
                     html_rule_string = []
                     html_rule_string.append(rules[line_number].replace("html ", ""))
                     html_rule = identify_html_rules(html_rule_string)
-                    rules_in_logical_rule.append(html_rule)
+                    for rule in html_rule:
+                        rules_in_logical_rule.append(rule)
+
+
+                    line_number += 1
 
                 elif rules[line_number].startswith("css"):
 
@@ -306,7 +310,7 @@ def main():
     html_rules_identified = identify_html_rules(html_rules)
     css_rules_identified = get_css_rules_from_file(css_rules)
 
-    # print_all_rules(html_rules_identified, css_rules_identified, logical_rules)
+    print_all_rules(html_rules_identified, css_rules_identified, logical_rules)
 
     set_content_rules_for_all_rules(html_content, html_rules_identified, css_file_rules, css_rules_identified, logical_rules)
     
