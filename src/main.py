@@ -149,14 +149,14 @@ def print_all_rules(html_rules, css_rules, logical_rules):
         for rule in css_rules:
             print(rule.to_string())
     else:
-        print("Aucune règle CSS")
+        print("Aucune règle CSS\n")
 
     if len(logical_rules) != 0:
         print("---------- Logique ----------\n")
         for rule in logical_rules:
             print(rule.to_string())
     else:
-        print("Aucune règle Logique")
+        print("Aucune règle Logique\n")
 
     print("\n======================================\n")
 
@@ -245,44 +245,41 @@ def verif_all_html_rules(regles):
     rules_not_respected = []
     for i in range(len(regles)):
         if not regles[i].verif_rule():
-            print("Règle HTML",i,":  ❌")
             rules_not_respected.append(regles[i])
     print()
     if len(rules_not_respected) != 0:
-        print("⚠️  Règles HTML non respectées ⚠️ ")
+        print("❌  --------- HTML non respectées --------- ❌ ")
         for rule in rules_not_respected:
             print(" - " + rule.to_string())
     else:
-        print("Toutes les règles HTML sont OK")
+        print("✅ --------- HTML OK --------- ✅\n")
     return rules_not_respected
 
 def verif_all_css_rules(css_rules):
     rules_not_respected = []
     for i in range(len(css_rules)):
         if not css_rules[i].verif_rule():
-            print("Règle CSS",i,":  ❌")
             rules_not_respected.append(css_rules[i])
     print()
     if len(rules_not_respected) != 0:
-        print("⚠️  Règles CSS non respectées ⚠️ ")
+        print("❌  --------- CSS non respectées --------- ❌ ")
         for rule in rules_not_respected:
             print(" - " + rule.to_string())
     else:
-        print("Toutes les règles CSS sont OK")
+        print("✅ --------- CSS OK --------- ✅\n")
 
 def verif_all_logical_rules(logical_rules):
     rules_not_respected = []
     for i in range(len(logical_rules)):
         if not logical_rules[i].verif_rule():
-            print("Règle Logique",i,":  ❌")
             rules_not_respected.append(logical_rules[i])
     print()
     if len(rules_not_respected) != 0:
-        print("⚠️  Règles Logique non respectées ⚠️ ")
+        print("❌  --------- Logique non respectées --------- ❌ ")
         for rule in rules_not_respected:
             print(" - " + rule.to_string())
     else:
-        print("Toutes les règles Logiques sont OK")
+        print("✅ --------- Logiques OK --------- ✅\n")
 
 def verif_all_rules(html_rules, css_rules, logical_rules):
     verif_all_html_rules(html_rules)

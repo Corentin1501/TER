@@ -14,11 +14,15 @@ table.commande td {
 	border-collapse: collapse;
 }
 
-OR {
+AND {
 	css h1 {
 		font-size: 50px;
 	}
-	html section [id=section_form] form h2 "Ajouter un Produit"
+	html form [method=post] fieldset select [name=produit] option "Clavier"
+}
+
+NOT {
+	html header h2 "Ah! Ma Zone!"
 }
 
 html section [id=section_form] form h2 "Ajouter un Produit"

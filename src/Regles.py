@@ -30,11 +30,24 @@ class Logical_rule(Rule):
     
 
     def verif_rule(self):
-        if(self.logic_type == Logical_type.OR):
+        if self.logic_type == Logical_type.OR:
             for rule in self.rules_concerned:
                 if rule.verif_rule():
                     return True
             return False
+        
+        elif self.logic_type == Logical_type.AND:
+            for rule in self.rules_concerned:
+                if not rule.verif_rule():
+                    return False
+            return True
+        
+        elif self.logic_type == Logical_type.NOT:
+            for rule in self.rules_concerned:
+                if rule.verif_rule():
+                    return False
+            return True
+
         else:
             return False
 
