@@ -1,0 +1,8 @@
+OR {
+	css h1 {
+		font-size: 50px;
+	}
+	css h2 {
+		font-size: 100px;
+	}
+}

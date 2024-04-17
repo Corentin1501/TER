@@ -1,9 +1,46 @@
 from bs4 import BeautifulSoup
+from enum import Enum
 
-import cssutils
+
+class Rule:
+    pass
 
 
-class CSS_rule:
+class Logical_type(Enum):
+    OR = 'OR'
+    AND = 'AND'
+    NOT = 'NOT'
+
+class Logical_rule(Rule):
+    logic_type = Logical_type.AND
+    rules_concerned = []
+    numero = 0
+
+
+    def __init__(self, logic_type, rules):
+        self.logic_type = logic_type
+        self.rules_concerned = rules
+
+    def to_string(self):
+        out = "[" + str(self.numero) + "]   "
+        out += str(self.logic_type.name) + "\n"
+        for rule in self.rules_concerned:
+            out += "\t" + rule.to_string()
+        return out
+    
+
+    def verif_rule(self):
+        if(self.logic_type == Logical_type.OR):
+            for rule in self.rules_concerned:
+                if rule.verif_rule():
+                    return True
+            return False
+        else:
+            return False
+
+class CSS_rule(Rule):
+    css_file_rules = []
+
     selectors = []
     properties = {}
     numero = 0
@@ -12,6 +49,9 @@ class CSS_rule:
         self.selectors = selectors
         self.properties = properties
         self.numero = numero
+
+    def set_content(self, content):
+        self.css_file_rules = content
 
     def to_string(self):
         out = "[" + str(self.numero) + "]   "
@@ -24,12 +64,12 @@ class CSS_rule:
         out = out[:-2] + "}\n"
         return out
 
-    def verif_rule(self, css_file_rules):
+    def verif_rule(self):
 
         rules_to_test_again = []
 
         # on vérifie une première fois avec les règles en l'état actuel
-        for rule in css_file_rules:
+        for rule in self.css_file_rules:
             if all(selector in rule.selectors for selector in self.selectors):
                 if all(prop in rule.properties and rule.properties[prop] == self.properties[prop] for prop in self.properties):
                     return True
@@ -44,7 +84,7 @@ class CSS_rule:
             all_rules_verified = True
             for rule in rules_to_test_again:
                 # print("regle à re tester : " + rule.to_string())
-                if not rule.verif_rule(css_file_rules):
+                if not rule.verif_rule(self.css_file_rules):
                     all_rules_verified = False
             
             return all_rules_verified
@@ -100,7 +140,9 @@ class Attribut:
     
 #============ Règle Générale qui combine toutes les petites règles ============
 
-class Rule:
+class HTML_Rule(Rule):
+    html_content = ""
+
     balises = []
     secondary_rules_index = {}  # dictionnaire de regles : {0 : Attribut{class='titi'}, ...}
     numero = 0  
@@ -109,6 +151,9 @@ class Rule:
         self.balises = balises
         self.secondary_rules_index = secondary_rules_index
         self.numero = numero
+
+    def set_content(self, content):
+        self.html_content = content
 
 
     def to_string(self):
@@ -129,34 +174,34 @@ class Rule:
         self.secondary_rules_index[balise_index] = rule
 
 
-    def verif_hierarchy(self, html_content):
-        """Vérifie si la suite des balises existe dans le document HTML"""
+    # def verif_hierarchy(self):
+    #     """Vérifie si la suite des balises existe dans le document HTML"""
         
-        def verif_recursive(tag, balise_index):
-            if tag.name == self.balises[balise_index]:
-                if balise_index == 0:
-                    return True
-                else:
-                    return verif_recursive(tag.parent, balise_index - 1)
-            else:
-                return False
+    #     def verif_recursive(tag, balise_index):
+    #         if tag.name == self.balises[balise_index]:
+    #             if balise_index == 0:
+    #                 return True
+    #             else:
+    #                 return verif_recursive(tag.parent, balise_index - 1)
+    #         else:
+    #             return False
 
-        parser = BeautifulSoup(html_content, 'html.parser')
-        tags = parser.find_all(self.balises[-1])  # on cherche tous les tag correspondant à la dernière balise
+    #     parser = BeautifulSoup(self.html_content, 'html.parser')
+    #     tags = parser.find_all(self.balises[-1])  # on cherche tous les tag correspondant à la dernière balise
         
-        # Si aucun tag n'existe, alors on peut déjà retourner False
-        if tags is None :
-            return False
-        # Sinon, on va regarder si le tag a la bonne hiérarchie
-        else:
-            balise_index = len(self.balises) -1
-            for tag in tags:
-                if verif_recursive(tag,balise_index):
-                    return True
-            return False        
+    #     # Si aucun tag n'existe, alors on peut déjà retourner False
+    #     if tags is None :
+    #         return False
+    #     # Sinon, on va regarder si le tag a la bonne hiérarchie
+    #     else:
+    #         balise_index = len(self.balises) -1
+    #         for tag in tags:
+    #             if verif_recursive(tag,balise_index):
+    #                 return True
+    #         return False        
 
 
-    def verif_rule(self, html_content):
+    def verif_rule(self):
         """Vérifie si la règle est respectée, et toutes les règles secondaires associées"""
 
         def verif_recursive(tag, tag_index):
@@ -178,7 +223,7 @@ class Rule:
                 # print("Balises dans le mauvais ordre")
                 return False # mauvaise balise
 
-        parser = BeautifulSoup(html_content, 'html.parser')
+        parser = BeautifulSoup(self.html_content, 'html.parser')
         tags = parser.find_all(self.balises[-1])  # on cherche toutes les balises correspondant à la dernière balise
         
         # Si aucune balise n'existe, alors on peut déjà retourner False
