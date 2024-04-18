@@ -1,33 +1,22 @@
-# html table [class="client"]
-# html form fieldset input [type=number min=0 name=quantite]
-# html header h1 "Ah! Ma Zone!"
-# 
-# 
-# 
-# css body, header {
-# 	font-family: Verdana, Arial, sans-serif;
-# 	margin: 0;
-# 	font-size: 14px;
-# }
-# css table.commande th,
-# table.commande td {
-# 	padding: 10px;
-# 	border: 1px solid black;
-# 	border-collapse: collapse;
-# }
-#
-#
-#
-# AND {
-# 	css h1 {
-# 		font-size: 50px;
-# 	}
-# 	html form [method=post] fieldset select [name=produit] option "Clavier"
-# 	NOT {
-# 		html header h2 "Ah! Ma Zone!"
-# 	}
-# }
-#
+html table [class="client"]
+html form fieldset input [type=number min=0 name=quantite]
+html header h1 "Ah! Ma Zone!"
+
+
+
+css body, header {
+	font-family: Verdana, Arial, sans-serif;
+	margin: 0;
+	font-size: 14px;
+}
+
+css table.commande th, 
+table.commande td {
+	padding: 10px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
 AND {
 	html table [class="client"]
 	NOT {

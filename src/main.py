@@ -100,6 +100,11 @@ def get_rules(rules):
                     in_css_in_logic_rule = False
                 else:
                     logical_rule_stack.pop()  # Retirer la règle logique du sommet de la pile
+            else:
+                if in_css_rule:
+                    in_css_rule = False
+                    css_rules_in_string += line + "\n"
+
 
         else:
             if logical_rule_stack:
