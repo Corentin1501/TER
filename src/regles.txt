@@ -17,17 +17,17 @@ table.commande td {
 	border-collapse: collapse;
 }
 
-AND {
+AND (
 	html table [class="client"]
-	NOT {
+	NOT (
 		html header h2 "Ah! Ma Zone!"
-	}
-	OR {
+	)
+	OR (
 		css h1 {
 			font-size: 50px;
 		}
 		css h2 {
 			font-size: 80px;
 		}
-	}
-}
+	)
+)

@@ -92,14 +92,15 @@ def get_rules(rules):
                     in_css_rule = True
                     css_rules_in_string += line[line.find(" ") + 1:] + "\n"
 
-        elif line.startswith('}'):
+        elif line.startswith(')'):
             if logical_rule_stack:
-                if in_css_in_logic_rule:
-                    logical_rule_stack[-1].add_css_rule(line)  # Ajouter la règle CSS à la règle logique en cours de traitement
-                    # print("ajout de css :", line)
-                    in_css_in_logic_rule = False
-                else:
-                    logical_rule_stack.pop()  # Retirer la règle logique du sommet de la pile
+                logical_rule_stack.pop()  # Retirer la règle logique du sommet de la pile
+
+        elif line.startswith('}'):
+            if in_css_in_logic_rule:
+                logical_rule_stack[-1].add_css_rule(line)  # Ajouter la règle CSS à la règle logique en cours de traitement
+                # print("ajout de css :", line)
+                in_css_in_logic_rule = False
             else:
                 if in_css_rule:
                     in_css_rule = False
