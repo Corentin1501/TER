@@ -46,117 +46,79 @@ def get_css_rules_from_file(css_content):
 #============ Decoupage des regles HTML / CSS ============
 
 def get_rules(rules):
-    # Les différents type de règles
-
     html_rules_in_string = []
 
     css_rules_in_string = ""
     in_css_rule = False
 
     logical_rules = []
-    rules_in_logical_rule = []
-    in_logic_rule = False
-    in_css_rule_in_logic = False
-    css_rule_in_logic_string = ""
-    logic_type = None
+    logical_rule_stack = []  # Utiliser une pile pour les règles logiques imbriquées
+    in_css_in_logic_rule = False
 
-
-    # Initialise line_number
     line_number = 0
     while line_number < len(rules):
-        line = rules[line_number].strip()  # Supprimer les espaces inutiles au début et à la fin de la ligne
+        line = rules[line_number].strip()
 
-# --------------- HTML ---------------
+        # print("\t###### current :", line)
 
         if line.startswith("html"):
-
-            # --------------- Dans la logique ---------------
-
-            if in_logic_rule:
-                html_rule_string = []
-                html_rule_string.append(rules[line_number].replace("html ", ""))
-                html_rule = identify_html_rules(html_rule_string)
-                for rule in html_rule:
-                    
-                    rules_in_logical_rule.append(rule)
-
-            # --------------- Sinon ---------------
-
+            if logical_rule_stack:
+                current_html_rules = identify_html_rules([rules[line_number].replace("html ", "")])
+                for rule in current_html_rules:
+                    logical_rule_stack[-1].add_rule(rule)  # Ajouter les règles HTML à la règle logique en cours de traitement
             else:
                 html_rules_in_string.append(line.replace("html ", ""))
 
-# --------------- Logique ---------------
-
         elif line.startswith("OR") or line.startswith("AND") or line.startswith("NOT"):
 
-            if line.startswith("OR"):
-                logic_type = Logical_type.OR
-            elif line.startswith("AND"):
-                logic_type = Logical_type.AND
+            logic_type = Logical_type.OR if line.startswith("OR") else (Logical_type.AND if line.startswith("AND") else Logical_type.NOT)
+            logical_rule = Logical_rule(logic_type, [])
+            if logical_rule_stack:
+                logical_rule_stack[-1].add_rule(logical_rule)  # Ajouter la règle logique à la règle logique parente
             else:
-                logic_type = Logical_type.NOT
-            
-            in_logic_rule = True
-            rules_in_logical_rule.clear()
-            css_rule_in_logic_string = ""
+                logical_rules.append(logical_rule)
 
-# --------------- CSS ---------------
+            logical_rule_stack.append(logical_rule)  # Ajouter la règle logique à la pile
 
         elif line.startswith("css"):
-
-            if in_logic_rule:
-                in_css_rule_in_logic = True
-                css_rule_in_logic_string += line[line.find(" ") + 1:] + "\n"
+            if logical_rule_stack:
+                logical_rule_stack[-1].add_css_rule(line[line.find(" ") + 1:])  # Ajouter la règle CSS à la règle logique en cours de traitement
+                # print("ajout de css :", line[line.find(" ") + 1:])
+                in_css_in_logic_rule = True
             else:
                 if in_css_rule:
                     css_rules_in_string += line + "\n"
                 else:
-                    # Sinon, nous entrons dans une nouvelle règle CSS
                     in_css_rule = True
                     css_rules_in_string += line[line.find(" ") + 1:] + "\n"
 
-
         elif line.startswith('}'):
-
-            if in_logic_rule:
-                if in_css_rule_in_logic:
-                    css_rule_in_logic_string += line + "\n"
-                    in_css_rule_in_logic = False
+            if logical_rule_stack:
+                if in_css_in_logic_rule:
+                    logical_rule_stack[-1].add_css_rule(line)  # Ajouter la règle CSS à la règle logique en cours de traitement
+                    # print("ajout de css :", line)
+                    in_css_in_logic_rule = False
                 else:
-                    in_logic_rule = False
-                    css_rules_of_logic = get_css_rules_from_file(css_rule_in_logic_string)
-                    for rule in css_rules_of_logic:
-                        rules_in_logical_rule.append(rule)
-
-                    logical_rule = Logical_rule(logic_type, rules_in_logical_rule.copy())
-                    logical_rules.append(logical_rule)
-            else:
-                css_rules_in_string += line + "\n"
-                in_css_rule = False
+                    logical_rule_stack.pop()  # Retirer la règle logique du sommet de la pile
 
         else:
-            if in_logic_rule and in_css_rule_in_logic:
-                css_rule_in_logic_string += line + "\n"
+            if logical_rule_stack:
+                logical_rule_stack[-1].add_css_rule(line)  # Ajouter la règle CSS à la règle logique en cours de traitement
+                # print("ajout de css :", line)
             else:
-                # Si nous sommes dans une règle CSS, nous ajoutons simplement la ligne à la règle en cours
                 if in_css_rule:
                     css_rules_in_string += line + "\n"
                 else:
                     css_rules_in_string += "\n"
 
-        # Incrémenter line_number à la fin de la boucle while
         line_number += 1
 
-
-    # On identifie chacunes des règles
     html_rules = identify_html_rules(html_rules_in_string)
-    css_rules = get_css_rules_from_file (css_rules_in_string.strip())   
+    css_rules = get_css_rules_from_file(css_rules_in_string.strip())
+
+    set_css_rules_for_logic(logical_rules)
 
     return html_rules, css_rules, logical_rules
-
-
-
-
 
 #============ Affichage des regles ============
 
@@ -255,12 +217,30 @@ def set_content_rules_for_all_rules(html_content, html_rules_identified, css_fil
     for css_rule in css_rules_identified:
         css_rule.set_content(css_file_rules)
 
+    set_content_for_logic_rules(html_content, css_file_rules, logical_rules)
+
+def set_content_for_logic_rules(html_content, css_file_rules, logical_rules):
     for logic_rule in logical_rules:
+        for rule_concerned in logic_rule.rules_concerned:
+            if isinstance(rule_concerned, HTML_Rule):
+                rule_concerned.set_content(html_content)
+            elif isinstance(rule_concerned, CSS_rule):
+                rule_concerned.set_content(css_file_rules)
+            elif isinstance(rule_concerned, Logical_rule):
+                set_content_for_logic_rules(html_content, css_file_rules, [rule_concerned])
+
+def set_css_rules_for_logic(logical_rules):
+    # pour chacune des regles logiques
+    for logic_rule in logical_rules:
+        # si la regle a du css
+        if logic_rule.css_rules_string != "":
+            # on l'identifie et on lui ajoute les nouvelles regles
+            for css_rule in get_css_rules_from_file(logic_rule.css_rules_string):
+                logic_rule.add_rule(css_rule)
+        # si elle a des regles logique en elle, on fait pareil pour elles
         for rule in logic_rule.rules_concerned:
-            if isinstance(rule, CSS_rule):
-                rule.set_content(css_file_rules)
-            elif isinstance(rule, HTML_Rule):
-                rule.set_content(html_content)
+            if isinstance(rule, Logical_rule):
+                set_css_rules_for_logic([rule])
 
 #============ Vérification des regles HTML / CSS ============
 
@@ -330,7 +310,7 @@ def main():
 
     #*********** Affichage des règles ***********
 
-    display_rules = False
+    display_rules = True
 
     #*********** Faire la vérification ***********
 
