@@ -8,7 +8,7 @@ L1. Fournir un utilitaire qui prend en paramètre un fichier de règles, un fich
 -   **HTML** :
     -   Vérification de l'**existence** d'une balise
     -   Vérification des valeurs des **attributs** d'une balise
-    -   Vérification bitede la **valeur** d'une balise
+    -   Vérification de la **valeur** d'une balise
 -   **CSS** :
     -   Vérification des **propriétés** CSS
 
