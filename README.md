@@ -112,6 +112,12 @@ Il n'y a pas de limites au nombre de règles. Il faut juste que les règles soie
 Toutes les chaînes de caractères, que ce soit pour les attributs, les valeurs ou les balises, sont ***sensibles à la casse et aux espaces***.
 
 ---
+Chaque balises / attributs / valeurss doivent être séparés d'**un seul** espace !
+
+    html div [class="bodywrapper"] div [class="body"]       = AUTORISÉ
+    html div [class="bodywrapper"]  div [class="body"]      = REFUSÉ
+
+---
 Il est possible d'ajouter des ***commentaires*** dans le fichier de règles, en rajoutant `#` au début de la ligne.
 
 ---

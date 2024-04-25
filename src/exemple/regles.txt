@@ -17,6 +17,8 @@ table.commande td {
 	border-collapse: collapse;
 }
 
+# Ceci est un commentaire grâce au #
+
 AND {
 	html table [class="client"]
 	NOT {

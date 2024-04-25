@@ -1,0 +1,7 @@
+# html div [class="body"] section [id="searching-the-tree"] section [id="css-selectors-through-the-css-property"]
+# html div [class="body"] section [id="line-numbers"] p code span "html.parser"
+# html body div [class="related"]
+# html div [class="bodywrapper"] div [class="body"] section [id="module-bs4"]
+# html div [class="footer" role="contentinfo"] a "Sphinx"
+# html span "SoupStrainer"
+
