@@ -331,14 +331,14 @@ def main():
 
     #*********** Ou directement ici ***********
 
-    # rules_file = "src/exemple/regles.txt"
-    # html_file = "src/exemple/index.html"
+    rules_file = "src/exemple/regles.txt"
+    html_file = "src/exemple/L1/index.html"
 
-    rules_file = "src/exemple/regles2.txt"
-    html_file = "src/exemple/gros_fichier_html.html"
-    css_file = "src/exemple/gros_css.css"
+    # rules_file = "src/exemple/regles2.txt"
+    # html_file = "src/exemple/gros_fichier_html.html"
+    # css_file = "src/exemple/gros_css.css"
 
-    # css_file = "src/exemple/style.css"
+    css_file = "src/exemple/L1/style.css"
 
     #*********** Affichage des règles ***********
 
