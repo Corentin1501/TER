@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Ah! Ma Zone!</h1>
+        <img src="img/logo.png" alt="Logo">
+    </header>
+    <main>
+        <section>
+            <h2>Client</h2>
+            <table class="client">
+                <tbody>
+                    <tr>
+                        <td>Marc Decafer</td>
+                    </tr>
+                    <tr>
+                        <td>123 Rue du Percolateur</td>
+                    </tr>
+                    <tr>
+                        <td>75000 Paris</td>
+                    </tr>
+                    <tr>
+                        <td>France</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>Commande</h2>
+            <table class="commande">
+                <tbody>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Quantité</th>
+                        <th>Prix</th>
+                    </tr>
+                    <tr>
+                        <td>Carte mère</td>
+                        <td>4</td>
+                        <td>200,00</td>
+                    </tr>
+                    <tr>
+                        <td>Processeur</td>
+                        <td>4</td>
+                        <td>100,00</td>
+                    </tr>
+                    <tr>
+                        <td>SSD 2 To</td>
+                        <td>4</td>
+                        <td>150,00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">Total</td>
+                        <td>1800,00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>Ajouter un Produit</h2>
+            <form action="add.php" method="post">
+                <fieldset>
+                    <label for="produit">Produit</label>
+                    <select name="produit" id="produit">
+                        <option value="1">Clavier</option>
+                        <option value="2">Souris</option>
+                        <option value="3">Ecran</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label for="quantite">Quantité</label>
+                    <input type="number" min="0" max="10" value="1" name="quantite" id="quantite">
+                </fieldset>
+                <fieldset>
+                    <label for="prix">Prix</label>
+                    <input type="text" name="prix" id="prix">
+                </fieldset>
+                <fieldset>
+                    <input type="submit" value="Ajouter">
+                </fieldset>
+                <fieldset>
+                    <input type="reset" value="RAZ">
+                </fieldset>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright 2024 Jan Mickael Reacher</p>
+    </footer>
+</body>
+
+</html>

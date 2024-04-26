@@ -1,8 +1,8 @@
-from Regles import *
 import re
-
+import os
 import cssutils
-from lxml import etree
+
+from Regles import *
 
 #============ Lecture des fichiers ============
 
@@ -12,7 +12,7 @@ def read_file(filename):
             content = f.read()
         return content
     except FileNotFoundError:
-        print(f"Erreur : Le fichier '{filename}' est introuvable.")
+        print(f"ERREUR : Le fichier '{filename}' est introuvable.")
         return None
     except Exception as e:
         print(f"Une erreur s'est produite lors de la lecture du fichier '{filename}': {e}")
@@ -127,7 +127,7 @@ def get_rules(rules):
                         css_rules_in_string += "\n"
 
         except Exception as e:
-            print(f"Erreur lors de l'analyse de la règle à la ligne {line_number + 1}: {e}")
+            print(f"ERREUR lors de l'analyse de la règle à la ligne {line_number + 1}: {e}")
 
         line_number += 1
 
@@ -269,7 +269,7 @@ def verif_all_html_rules(regles):
             if not regles[i].verif_rule():
                 rules_not_respected.append(regles[i])
         except Exception as e:
-            print(f"Erreur lors de la vérification de la règle HTML {i + 1}: {e}")
+            print(f"ERREUR lors de la vérification de la règle HTML {i + 1}: {e}")
     print()
     if len(rules_not_respected) != 0:
         print("❌  --------- HTML non respectées --------- ❌ ")
@@ -286,7 +286,7 @@ def verif_all_css_rules(css_rules):
             if not css_rules[i].verif_rule():
                 rules_not_respected.append(css_rules[i])
         except Exception as e:
-            print(f"Erreur lors de la vérification de la règle CSS {i + 1}: {e}")
+            print(f"ERREUR lors de la vérification de la règle CSS {i + 1}: {e}")
     print()
     if len(rules_not_respected) != 0:
         print("❌  --------- CSS non respectées --------- ❌ ")
@@ -302,7 +302,7 @@ def verif_all_logical_rules(logical_rules):
             if not logical_rules[i].verif_rule():
                 rules_not_respected.append(logical_rules[i])
         except Exception as e:
-            print(f"Erreur lors de la vérification de la règle Logique {i + 1}: {e}")
+            print(f"ERREUR lors de la vérification de la règle Logique {i + 1}: {e}")
     print()
     if len(rules_not_respected) != 0:
         print("❌  --------- Logique non respectées --------- ❌ ")
@@ -318,6 +318,58 @@ def verif_all_rules(html_rules, css_rules, logical_rules):
         verif_all_css_rules(css_rules)
     if len(logical_rules) != 0:
         verif_all_logical_rules(logical_rules)
+
+#============ Process pair of files ============
+
+def process_pair(html_file, css_file, rules_file):
+    html_content = read_file(html_file)
+    css_content = read_file(css_file)
+    css_file_rules = get_css_rules_from_file(css_content)
+    html_rules, css_rules, logical_rules = get_rules(read_rules(rules_file))
+    set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
+
+    # verif_all_rules(html_rules, css_rules, logical_rules)
+    num_respected_rules = count_respected_rules(html_rules, css_rules, logical_rules)
+    return num_respected_rules
+
+def count_respected_rules(html_rules, css_rules, logical_rules):
+    total_respected_rules = 0
+    for rule in html_rules:
+        if rule.verif_rule():
+            total_respected_rules += 1
+    for rule in css_rules:
+        if rule.verif_rule():
+            total_respected_rules += 1
+    for rule in logical_rules:
+        if rule.verif_rule():
+            total_respected_rules += 1
+    return total_respected_rules
+
+def get_file_pairs(folder_path):
+    html_files = []
+    css_files = []
+    file_pairs = []
+
+    # Parcours des fichiers dans le dossier spécifié
+    for file_name in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, file_name)  # Chemin absolu du fichier
+
+        # Filtrage des fichiers HTML et CSS
+        if file_name.endswith(".html"):
+            html_files.append(file_path)
+        elif file_name.endswith(".css"):
+            css_files.append(file_path)
+
+    # Association des fichiers HTML et CSS
+    for html_file in html_files:
+        html_base_name = os.path.splitext(html_file)[0]  # Nom de base du fichier HTML (sans extension)
+        css_file_name = html_base_name + ".css"  # Nom du fichier CSS correspondant
+        css_file_path = os.path.join(folder_path, css_file_name)  # Chemin absolu du fichier CSS
+        if css_file_path in css_files:
+            file_pairs.append((html_file, css_file_path))  # Ajout de la paire de fichiers
+
+    return file_pairs
+
 
 #============ Main ============
 
@@ -340,6 +392,8 @@ def main():
 
     css_file = "src/exemple/L1/style.css"
 
+    folder_path = "src/fichiers/"
+
     #*********** Affichage des règles ***********
 
     display_rules = True
@@ -349,30 +403,42 @@ def main():
     verif_rules = True
     
     #*********** Lire les fichiers ***********
-    # HTML
-    html_content = read_file(html_file)
 
-    # CSS
-    css_content = read_file(css_file)
-    css_file_rules = get_css_rules_from_file(css_content)
+    files_pair = get_file_pairs(folder_path)
+
+    print(files_pair)
+
+    for html_file, css_file in files_pair:
+        nRules = process_pair(html_file, css_file, rules_file)
+        print(nRules, "règles respectées")
+
+
+
+
+    # # HTML
+    # html_content = read_file(html_file)
+
+    # # CSS
+    # css_content = read_file(css_file)
+    # css_file_rules = get_css_rules_from_file(css_content)
     
-    # Règles
-    html_rules, css_rules, logical_rules = get_rules(read_rules(rules_file))
+    # # Règles
+    # html_rules, css_rules, logical_rules = get_rules(read_rules(rules_file))
 
-    #*********** Attribution des fichiers correspondant aux règles ***********
+    # #*********** Attribution des fichiers correspondant aux règles ***********
 
-    set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
+    # set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
 
     #*********** Affichage ***********
 
-    if display_rules:
-        print_all_rules(html_rules, css_rules, logical_rules)
+    # if display_rules:
+    #     print_all_rules(html_rules, css_rules, logical_rules)
 
 
-    #*********** Verification ***********
+    # #*********** Verification ***********
 
-    if verif_rules:
-        verif_all_rules(html_rules, css_rules, logical_rules)
+    # if verif_rules:
+    #     verif_all_rules(html_rules, css_rules, logical_rules)
 
 
 
