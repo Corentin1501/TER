@@ -334,7 +334,6 @@ def get_student_files(directory_path):
 
     return liens_eleves_fichiers
 
-
 def verif_student(student_file, html_rules, css_rules, logical_rules):
     # HTML
     html_content = read_file(student_file[0])
@@ -358,14 +357,11 @@ def main():
     #*********** Noms des fichiers en ligne de commandes ***********
 
     # rules_file = input("Fichier de règles : ")
-    # html_file = input("Fichier HTML : ")
-    # css_file = input("Fichier CSS : ")
 
     #*********** Ou directement ici ***********
 
     rules_file = "src/exemple/regles.txt"
-    # html_file = "src/exemple/L1/test-perso/index.html"
-    # css_file = "src/exemple/L1/test-perso/style.css"
+    student_files_directory = "src/exemple/L1/petit-depot-eleves"
 
     #*********** Affichage des règles ***********
 
@@ -376,37 +372,21 @@ def main():
     verif_rules = False
     
     #*********** Lire les fichiers ***********
-    # HTML
-    # html_content = read_file(html_file)
-
-    # CSS
-    # css_content = read_file(css_file)
-    # css_file_rules = get_css_rules_from_file(css_content)
     
     # Règles
     html_rules, css_rules, logical_rules = get_rules(read_rules(rules_file))
 
-    #*********** Attribution des fichiers correspondant aux règles ***********
-
-    # set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
+    student_files = get_student_files(student_files_directory)
 
     #*********** Affichage ***********
 
     if display_rules:
         print_all_rules(html_rules, css_rules, logical_rules)
 
-
     #*********** Verification ***********
 
-    # if verif_rules:
-    #     verif_all_rules(html_rules, css_rules, logical_rules)
-
-    fichiers = get_student_files("src/exemple/L1/petit-depot-eleves")
-
-    verif_all_students(fichiers,html_rules, css_rules, logical_rules)
-    
-
-    # print(fichiers)
+    if verif_rules:
+        verif_all_students(student_files, html_rules, css_rules, logical_rules)
 
 
 if __name__ == "__main__":
