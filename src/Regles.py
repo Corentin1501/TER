@@ -106,9 +106,11 @@ class CSS_rule(Rule):
 
             # et on re test avec ces nouvelles règles
             all_rules_verified = True
+
             for rule in rules_to_test_again:
+                rule.set_content(self.css_file_rules)
                 # print("regle à re tester : " + rule.to_string())
-                if not rule.verif_rule(self.css_file_rules):
+                if not rule.verif_rule():
                     all_rules_verified = False
             
             return all_rules_verified

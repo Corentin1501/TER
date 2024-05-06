@@ -304,12 +304,12 @@ def verif_all_logical_rules(logical_rules):
         except Exception as e:
             print(f"Erreur lors de la vérification de la règle Logique {i + 1}: {e}")
     print()
-    if len(rules_not_respected) != 0:
-        print("❌  --------- Logique non respectées --------- ❌ ")
-        for rule in rules_not_respected:
-            print(rule.to_string())
-    else:
-        print("✅ --------- LOGIQUES OK --------- ✅\n")
+    # if len(rules_not_respected) != 0:
+    #     print("❌  --------- Logique non respectées --------- ❌ ")
+    #     for rule in rules_not_respected:
+    #         print(rule.to_string())
+    # else:
+    #     print("✅ --------- LOGIQUES OK --------- ✅\n")
 
 def verif_all_rules(html_rules, css_rules, logical_rules):
     if len(html_rules) != 0:
@@ -331,18 +331,18 @@ def main():
 
     #*********** Ou directement ici ***********
 
-    rules_file = "src/exemple/regles.txt"
-    html_file = "src/exemple/L1/index.html"
+    # rules_file = "src/exemple/regles.txt"
+    # html_file = "src/exemple/L1/index.html"
 
-    # rules_file = "src/exemple/regles2.txt"
-    # html_file = "src/exemple/gros_fichier_html.html"
-    # css_file = "src/exemple/gros_css.css"
+    rules_file = "src/exemple/regles2.txt"
+    html_file = "src/exemple/gros_fichier_html.html"
+    css_file = "src/exemple/gros_css.css"
 
-    css_file = "src/exemple/L1/style.css"
+    # css_file = "src/exemple/L1/style.css"
 
     #*********** Affichage des règles ***********
 
-    display_rules = True
+    display_rules = False
 
     #*********** Faire la vérification ***********
 

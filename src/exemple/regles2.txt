@@ -1,7 +1,64 @@
-# html div [class="body"] section [id="searching-the-tree"] section [id="css-selectors-through-the-css-property"]
-# html div [class="body"] section [id="line-numbers"] p code span "html.parser"
-# html body div [class="related"]
-# html div [class="bodywrapper"] div [class="body"] section [id="module-bs4"]
-# html div [class="footer" role="contentinfo"] a "Sphinx"
-# html span "SoupStrainer"
+html div [class="body"] section [id="searching-the-tree"] section [id="css-selectors-through-the-css-property"]
+html div [class="body"] section [id="line-numbers"] p code span "html.parser"
+html body div [class="related"]
+html div [class="bodywrapper"] div [class="body"] section [id="module-bs4"]
+html div [class="footer" role="contentinfo"] a "Sphinx"
+html span "SoupStrainer"
 
+
+css h1, h2 {
+    margin-bottom: 10px;
+}
+css nav, main {
+    padding: 20px;
+}
+css footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+css .btn:hover {
+    background-color: #0056b3;
+}
+css input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+css body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+AND {
+    html div [class="wrapper"]
+    OR {
+        html div [class="wrapper"] header
+        html div [class="wrapper"] footer
+    }
+}
+AND {
+    html section [class="content"]
+    NOT {
+        html section [class="content"] aside
+    }
+}
+AND {
+    html a
+}
+AND {
+    html div [class="container"]
+    AND {
+        html div [class="container"] header
+        html div [class="container"] footer
+    }
+}
+OR {
+    html p [class="important"]
+    html section [class="special"] p
+}
+OR {
+    html ul [class="menu"] li
+    html li [class="active"]
+}
