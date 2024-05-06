@@ -1,0 +1,79 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+
+}
+
+header {
+ padding-top: 200px;
+ color: green;
+ -ms-flex-align: center;
+}
+.header h1 {
+	font-size: 50px;
+  font-family: Arial;
+}
+
+.header h2 {
+padding-top: 30px;
+padding-left: 40px;
+}
+
+footer {
+ -ms-flex-align: center;
+ color: grey;
+ padding-top: 100px;
+ font-weight: bold;
+}
+
+.main section {
+font-display: 30px;
+-ms-flex-align: start;
+content: normal;
+margin: 10px;
+}
+section {
+	margin: 0;
+	padding: 20px;
+	border: black;
+	padding-inline-start: 350px;
+
+}
+
+table {
+	padding: 300px;
+	border-color: black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	-ms-flex-align: center;
+}
+
+.table h4 {
+	border: 0;
+}
+
+
+form {
+
+}
+
+

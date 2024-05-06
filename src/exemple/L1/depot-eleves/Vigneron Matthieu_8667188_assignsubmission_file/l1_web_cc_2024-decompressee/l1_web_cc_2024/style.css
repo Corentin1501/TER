@@ -1,0 +1,142 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+    margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+    margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+    width: 120px;
+    float: left;
+    display: inline;
+}
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+:root {
+    --hauteur_main: calc(100vh - 300px);
+}
+
+body {
+    margin: 0; /* garder cette propriété */
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 14px;
+}
+
+header {
+    height: 200px;
+    width: max-width;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+h1 {
+    font-size: 50px;
+    margin-top: 75px;
+}
+
+img {
+    position: fixed;
+    top: 30px;
+    left: 40px;
+    width: 200px;
+    height: 120px;
+}
+
+footer {
+    height: 100px;
+    width: max-width;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer > p {
+    margin-top: 43px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    height: var(--hauteur_main);
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+section {
+    width: 350px;
+    margin: 0;
+    padding: 20px;
+    border: solid black 1px;
+}
+ 
+table {
+    width: 350px;
+    border: solid black 1px;
+    margin: 30px 0;
+    align-items: center;
+    border-collapse: collapse;
+}
+
+.right {
+    text-align: right;
+}
+
+.middle {
+    text-align: center;
+}
+
+td, th {
+    border: solid black 1px;
+}
+
+.client, .client td {
+    border: none;
+    text-align: center;
+}
+
+.commande {
+    background-color: grey;
+}
+
+.commande tbody tr:nth-child(2n+1) {
+    background-color: orange;
+}
+
+.commande tbody tr:nth-child(2n+2) {
+    background-color: green;
+}
+    
+.commande tr:hover, .commande tbody tr:nth-child(2n+2):hover, .commande tbody tr:nth-child(2n+1):hover {
+    background-color: white;
+}
+
+form {
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 20px;
+}
+
+input[type="text"] {
+    background-color: wheat;
+}
+
+input, select {
+    margin-bottom: 20px;
+}
+
+input[type="submit"], input[type="reset"] {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+}

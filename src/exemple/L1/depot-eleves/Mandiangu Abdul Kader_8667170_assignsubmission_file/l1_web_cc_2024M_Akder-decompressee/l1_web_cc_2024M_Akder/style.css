@@ -1,0 +1,97 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, arial, sans-serif;
+  font-size: 14px; 
+
+}
+
+header {
+	
+	height: 200px;
+	background-color: green;
+ 
+}
+h1{
+	
+}
+
+footer {
+	height: 100px;
+	background-color: grey;
+	text-align: center;
+
+ 
+}
+
+main {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+
+}
+
+section {
+	margin: 0;
+	padding: 20px;
+	border: 1px solid black;
+
+
+}
+ 
+table {
+	border-collapse: collapse;
+	width: 300px;
+	border: 1px solid black;
+	align-items: center;
+	background-color: grey;
+}
+
+form {
+	background-color: orange;
+	flex-direction: column;
+	padding: 20px;
+	width: 90%;
+
+}
+
+.commande:first-child{
+	
+	text-align: center; 
+}
+
+#impair{
+	background-color: orange;
+}
+#pair{
+	background-color: green;
+}
+
+#prix{
+	background-color: wheat;
+}
+
+#ajouter{
+	font-size: 24px;
+	font-weight: bold;
+}

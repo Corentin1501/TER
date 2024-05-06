@@ -1,0 +1,109 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+}
+
+
+header {
+	width: 100vw;
+	height: 200px;
+	background: green;
+	text-align: center;
+}
+img{
+    position: fixed;
+	left: 30px;
+    width: 200px;
+	height: 120px;
+ }
+
+h1{
+	text-align: center;
+	font-size: 50px;
+}
+
+footer {
+	position: flex;
+    background: grey;
+	width: 100vw;
+	height: 100px;
+	text-align: center;
+	padding-bottom: 0px;
+}
+
+
+main {
+	display: flex;
+    height: 200;
+    display: inline;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+section {
+     width: 350px;
+	 margin: 0px;
+	 padding: 20px;
+	 border: 1px solid black;
+}
+ 
+table{
+    border-collapse : collapse;
+	caption-side: top;
+	width: 300px;
+	border: 1px solid black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+table.client{
+	border: none;
+}
+table.commande:nth-child(3n){
+	background-color: orange;
+}
+
+table.commande:nth-child(2n ){
+	background-color: green;
+}
+
+
+
+form {
+    display: flex-root;
+	padding: 20px;
+	background-color: orange;
+}
+
+
+input[type="text"]{
+	background: wheat;
+}
+
+input[type="submit"], input[type="reset"]{
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 24px;
+}
+

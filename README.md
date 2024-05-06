@@ -168,7 +168,3 @@ Dans un terminal :
             }
         )
     )
-
-## Notions importantes à implémenter 
-
--   Si un attribut de style dans une balise n'est pas respecté, on doit vérifier cette prorpiété dans le fichier CSS.

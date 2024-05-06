@@ -1,0 +1,127 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana,Arial;
+ font-size: 14px;
+
+}
+
+header {
+	width: auto;
+	height: 200px;
+	background-color: green;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+h1{
+font-size: 50px;
+}
+img{
+	position: fixed;
+	top: 30px;
+	left:40px;
+	height: 120px;
+	width: 200px;
+
+}
+footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: grey;
+ margin-top:100px;
+	/*width: 500px;*/
+	padding:20px;
+ 
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top:10px;
+}
+
+section {
+	
+	/*margin-top:10px;*/
+	width: 350px;
+	padding:20px;
+	border:1px solid black;
+	margin:0px;
+	}
+	
+	table{
+		width:300px;
+		border:1px solid black;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		text-align: center;
+		border-collapse: collapse;
+	}
+
+.commande th,td,tr{
+	border:1px solid black;
+
+}
+#cen , .centre{
+	text-align: center;
+}
+.droite{
+	text-align:right;
+}
+.gauche{
+	text-align: left;
+}
+.commande tr:nth-child(2n){
+	background-color: orange;
+}
+.commande tr:nth-child(2n+1){
+	background-color: green;
+}
+
+.commande :hover{
+	background-color: grey;
+	color:white;
+}
+
+form {
+background-color: orange;
+display: flex;
+flex-direction: column;
+width: 90%;
+padding:20px;
+}
+
+#pr{
+	background-color: wheat;
+}
+.btn{
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top:10px;
+
+}
+

@@ -1,0 +1,154 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 14px;
+}
+
+header {
+	height: 200px;
+	width: 100%;
+	background-color: green;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+header h1 {
+	font-size: 50px;
+}
+
+header img {
+	position: fixed;
+	top: 30px;
+	left: 40px;
+	height: 120px;
+	width: 200px;
+}
+
+footer {
+	background-color: grey;
+	height: 100px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	height: 610px;
+}
+
+section {
+	width: 350px;
+	margin: 0px;
+	padding: 20px;
+	border: 1px solid black;
+}
+
+table {
+	width: 300px;
+	border: 1px solid black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	align-self: center;
+	border-collapse: collapse;
+}
+
+section table.client {
+	border: none;
+	text-align: center;
+}
+
+section table.commande tr td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+section table.commande thead th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+section table.commande tfoot th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+section table.commande tr td:nth-child(2) {
+	text-align: center;
+}
+
+section table.commande tr td:nth-child(3) {
+	text-align: right;
+}
+
+section table.commande tr:nth-child(2n) {
+	background-color: green;
+}
+
+section table.commande tr:nth-child(2n+1) {
+	background-color: orange;
+}
+
+section table.commande tr td:hover {
+	color: white;
+	background-color: grey;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	background-color: orange;
+	width: 90%;
+	padding: 20px;
+}
+
+form input {
+	margin-bottom: 15px;
+}
+
+form input#price {
+	background-color: wheat;
+}
+
+form input#add {
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+form input#raz {
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom: 0px;
+}

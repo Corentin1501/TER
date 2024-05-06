@@ -1,0 +1,123 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, arial, sans-serif;
+  font-size: 14px;
+}
+
+header {
+	display: flex;
+	flex-direction:row,column;
+	height: 200px;
+	background-color: green;
+	justify-content: center;
+	align-items: center;
+}
+h1{
+	font-size: 50px;
+}
+img{
+	position: fixed;
+	top: 30px;
+	left: 40px;
+	width: 200px;
+	height: 100px;
+}
+footer {
+	display: flex ;
+	background-color: grey;
+	height:100px;
+	justify-content: center;
+	align-items: center;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	margin-top: 10px;
+	height:90%;
+}
+
+section {
+	min-width: 350px;
+	width: 350px;
+	margin: 0px;
+	border: solid black 1px;
+	padding:20px;
+}
+ 
+table {
+	border: solid black 1px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 300px;
+	text-align: center;
+}
+.client{
+	border: 0px;
+}
+.commande{
+	border-collapse: collapse;
+}
+.commande thead, .commande tfoot {
+	font-weight: bold;
+	text-align: center;
+}
+.commande thead td,.commande tfoot td{
+	border: solid black 1px;
+}
+.commande tbody tr{
+	border: solid black 1px;
+}
+.commande tbody tr td{
+	border: solid black 1px;
+}
+.commande tbody tr td:first-child{
+	text-align: left;
+}
+.commande tbody tr td:last-child{
+	text-align: right;
+}
+.commande tbody tr:nth-child(even){
+	background-color: green;
+}
+.commande tbody tr:nth-child(odd){
+	background-color: orange;
+}
+.commande:hover{
+	background-color: gray;
+	color: white;
+}
+form {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	background-color: orange;
+	padding: 20px;
+}
+button{
+	margin-top: 10px;
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: uppercase;
+}

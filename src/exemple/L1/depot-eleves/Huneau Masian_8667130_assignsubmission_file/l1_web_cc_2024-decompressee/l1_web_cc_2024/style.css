@@ -1,0 +1,138 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  	margin: 0; /* garder cette propriété */
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 14px;
+}
+
+header {
+	height: 200px;
+	background-color: green;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+img {
+	position: fixed;
+	top: 30px;
+	left: 40px;
+	width: 200px;
+	height: 120px;
+}
+
+footer {
+	height: 100px;
+	background-color: grey;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+main {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	height: calc(100vh - 310px);
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	padding: 20px;
+	border: 1px solid black;
+}
+ 
+table {
+	width: 300px;
+	border: 1px solid black;
+	margin: 30px auto 30px auto;
+	border-collapse: collapse;
+}
+
+.client {
+	border: none;
+	text-align: center;
+}
+
+.commande td, th{
+	border: 1px solid black;
+}
+
+.commande tr:hover {
+	background-color: grey;
+	color: white;
+}
+
+.commande tbody tr td:nth-child(2) {
+	text-align: center;
+}
+
+.commande tbody tr td:nth-child(3) {
+	text-align: right;
+}
+
+.commande tbody tr:nth-child(2n):not(:hover) {
+	background-color: green;
+}
+
+.commande tbody tr:nth-child(2n+1):not(:hover) {
+	background-color: orange;
+}
+
+.commande tfoot {
+	font-weight: bold;
+}
+
+.commande tfoot tr td:first-child {
+	text-align: center;
+}
+
+.commande tfoot tr td:nth-child(2) {
+	text-align: right;
+}
+
+
+form {
+	background-color: orange;
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	padding: 20px;
+}
+
+form input[type="text"] {
+	background-color: wheat;
+}
+
+form input[type="submit"], input[type="reset"] {
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+

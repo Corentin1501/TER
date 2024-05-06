@@ -1,0 +1,154 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: verdana,arial,sans-serif;
+}
+
+header {
+	height: 200px;
+	background-color: green;
+	display: flex;
+	align-items: center;
+}
+
+header h1
+{
+	margin: 0 auto;
+	font-size: 50px;
+	text-align: center;
+}
+header img
+{
+	margin-top: 30px;
+	margin-left: 40px;
+	width: 200px;
+	height: 120px;
+}
+
+footer {
+	height: 100px;
+	display: flex;
+	background-color: grey;
+	align-items: center;
+
+}
+
+main 
+{
+	display: inline-flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	height: fit-content;
+}
+
+section 
+{
+	width: 350px;
+	margin: 0;
+	margin-left: 20px;
+	padding: 20px;
+	border: solid black 1px;
+}
+ 
+table 
+{
+	width: 300px;
+	border: solid black 1px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.client
+{
+	border: none;
+	text-align: center;
+}
+
+.commande td:nth-child(2n+2)
+{
+	text-align: center;
+}
+
+
+.commande tbody td:nth-child(3n+3)
+{
+	justify-content: right;
+	text-align: right;
+}
+
+.commande tfoot td:nth-child(1)
+{
+	text-align: center;
+}
+
+.commande tbody tr:nth-child(2n+1)
+{
+	background-color: orange;
+}
+
+.commande tbody tr:nth-child(2n)
+{
+	background-color: green;
+}
+
+.commande tr:hover
+{
+	background-color: grey;
+	color: white;
+}
+
+form
+{
+	display: block;
+	background-color: orange;
+	width: 90%;
+	padding: 20px;
+}
+
+#id_prix
+{
+	background-color: wheat;
+	width: 90%;
+}
+#id_nombre
+{
+	width: 90%;
+}
+
+#id_produit
+{
+	background-color: white;
+	width: 90%;
+}
+
+button
+{
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 24px;
+	width: 90%;
+}
+
+
+
+

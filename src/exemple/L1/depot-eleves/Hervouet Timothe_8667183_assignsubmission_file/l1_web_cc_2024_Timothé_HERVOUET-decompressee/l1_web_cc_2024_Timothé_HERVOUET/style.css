@@ -1,0 +1,137 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+
+}
+
+header {
+	margin: 0;
+	height: 200px;
+	background-color: green;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+header h1{
+	text-align: center;
+	font-size: 50px;
+}
+
+header img{
+	position: static;
+	height: 120px;
+	width: 200px;
+}
+
+footer {
+	background-color: grey;
+	margin: 0;
+	height: 100px;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+
+	justify-content: space-around;
+	margin-top: 10px;
+	height: calc(100vh - 270px);
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	padding: 20px 20px;
+	border: solid 1px black;
+}
+ 
+table{
+	width: 300px;
+	border-collapse: collapse;
+	border: solid 1px black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	justify-content: center;
+}
+
+table.client{
+	border: 0px;
+}
+
+table.commande *{
+	border: solid 1px black;
+}
+
+table.commande tbody tr:nth-child(odd){
+	background-color: orange;
+}
+
+table.commande tbody tr:nth-child(even){
+	background-color: green;
+}
+
+table.commande tbody td:nth-child(1){
+	text-align: left;
+}
+
+table.commande tbody td:nth-child(2){
+	text-align: center;
+}
+
+table.commande tbody td:nth-child(3){
+	text-align: right;
+}
+
+
+table.commande tr:hover{
+	background-color: gray;
+	color: white;
+}
+
+form {
+	background-color: orange;
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	padding: 20px;
+}
+
+form [type="text"]{
+	background-color: wheat;
+}
+
+form [type="submit"]{
+	font-size: 24px;
+	text-transform: capitalize;
+	font-weight: bold;
+}
+
+footer p{
+	justify-content: center;
+	text-align: center;
+}

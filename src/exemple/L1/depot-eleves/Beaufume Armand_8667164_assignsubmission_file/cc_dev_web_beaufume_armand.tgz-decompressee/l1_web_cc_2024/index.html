@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CC L1P3 Developpement web</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <img src="img/logo.png">
+    <h1>Ah! Ma zone!</h1>
+
+  </header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      <tr>
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Prix</th>
+      </tr>
+
+      <tr class="data">
+        <td>Carte Mère</td>
+        <td class="quantity">4</td>
+        <td class="price">200,00</td>
+      </tr>
+
+      <tr class="data">
+        <td>Processeur</td>
+        <td class="quantity">4</td>
+        <td class="price">100,00</td>
+			</tr>
+
+      <tr class="data">
+        <td>SSD 2 To</td>
+        <td class="quantity">4</td>
+        <td class="price">150,00</td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="total">Total</td>
+        <td class="price">1800,00</td>
+      </tr>  
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form action="add.php" method="post" name="formulaire">
+        <label for="produit">Produit :</label>
+        <br>
+        <select name="champ_produit" id="produit">
+          <option value="1">Clavier</option>
+          <option value="2">Souris</option>
+          <option value="3">Ecran</option>
+        </select>
+        <br>
+        <br>
+        <label for="quantite">Quantité :</label>
+        <br>
+        <input type="number" name="champ_quantite" id="quantite" min="0" max="10" value="1">
+        <br>
+        <br>
+        <label for="prix">Prix :</label>
+        <br>
+        <input type="text" name="champ_prix" id="prix">
+        <br>
+        <br>
+        <input type="submit" name="button_ajouter" id="ajouter" value="Ajouter" onclick="return _formulaire();">
+        <br>
+        <br>
+        <input type="submit" name="button_raz" id="raz" value="RAZ" onclick="">
+      </form>
+    </section>
+    
+  </main>
+
+  <footer>
+    <p>Paragraphe footer</p>
+  </footer>
+</body>
+</html>
+

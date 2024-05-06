@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <img src="img/logo.png">
+    <h1>Ah! Ma Zone!</h1>
+  </header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+        <thead>
+          <tr>
+            <td>Produit</td>
+            <td>Quantité</td>
+            <td>Prix</td>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td class="center" colspan="2">Total</td>
+            <td class="right">1800,00</td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr>
+            <td>Carte mère</td>
+            <td class="center">4</td>
+            <td class="right">200,00</td>
+          </tr>
+          <tr>
+            <td>Processeur</td>
+            <td class="center">4</td>
+            <td class="right">100,00</td>
+          </tr>
+          <tr>
+            <td>SSD 2 To</td>
+            <td class="center">4</td>
+            <td class="right">150,00</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form name="addproduit" method="post" action="add.php">
+        <label for="produit">Produit :</label>
+        <select>
+          <option value="1" selected>Clavier</option>
+          <option value="2">Ecran</option>
+          <option value="3">Souris</option>
+        </select>
+        <br>
+
+        <label for="quantite">Quantité :</label>
+        <input type="number" name="quantite" value="1" id="quantite" min="0" max="10">
+        <br>
+
+        <label for="prix">Prix :</label>
+        <input type="text" name="prix">
+        <br>
+
+        <input class="button" type="submit" value="ajouter" onclick="return _addproduit();">
+        <br>
+
+        <input class="button" type="reset" value="raz">
+      </form>
+    </section>
+    
+  </main>
+
+  <footer>
+    <p>Copyright 2024 Jan Mickael Reacher</p>
+  </footer>
+
+</body>
+</html>
+

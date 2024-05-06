@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf_8">
+</head>
+
+<body>
+  <header>
+    <img src="img/logo.png">
+    <h1>Ah! Ma Zone!</h1>
+  </header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      	
+        <thead>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+        </thead>
+			
+        <tr>
+          <td>Carte mère</td>
+          <td>4</td>
+          <td>200,00</td>
+        </tr>
+
+        <tr>
+          <td>Processeur</td>
+          <td>4</td>
+          <td>100,00</td>
+        </tr>
+
+        <tr>
+          <td>SSD 2 To</td>
+          <td>4</td>
+          <td>150,00</td>
+        </tr>
+
+        <tfoot>
+          <tr>
+            <th colspan="2">Total</th>
+            <th>1800,00</th>
+          </tr>
+        </tfoot>
+        
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form method="post" action="add.php">
+        <label for="prod">Produit</label>
+        <input id="prod" name="sel_produit" type="select" value="Clavier">
+        <br>
+
+        <label for="quantity">Quantité</label>
+        <input id="quantity" name="num_quantity" type="number" value="1" min="0" max="10">
+        <br>
+
+        <label for="price">Prix</label>
+        <input id="price" type="text">
+        <br>
+
+        <input id="add" name="but_add" type="submit" value="Ajouter">
+        <br>
+
+        <input id="raz" name="but_raz" type="submit" value="RAZ">
+      </form>
+    </section>
+    
+  </main>
+
+  <footer>
+    <p>Copyright 2024 Sacha Roy</p>
+  </footer>
+
+</body>
+</html>
+

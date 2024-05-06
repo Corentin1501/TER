@@ -1,0 +1,141 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family:"Verdana","Arial","sans-serif";
+  font-size:14px;
+
+}
+
+
+header {
+    display: flex;
+    background:green;
+    text-align:center;
+    height:200px;
+}
+
+header h1{
+    display:flex;
+    font-size:50px;
+    text-align:center;
+    justify-content:center;
+}
+
+header img{
+    position:fixed;
+    top:30px;
+    left:40px;
+    width:200px;
+    height:120px;
+}
+
+
+footer {
+    display:flex;
+    text-align:center;
+    justify-content:center;
+    background:grey;
+    height:100px;
+}
+
+main {
+    display:flex;
+    justify-content:space-around;
+    text-align: flex-start;
+    margin:10px;
+    height:calc(100vh - (200px + 100px));
+}
+
+section {
+    width:350px;
+    margin:0;
+    padding:20px;
+    border: 1px solid black;
+}
+ 
+table {
+    width:300px;
+    border: 1px solid black;
+    margin: 30px 0;
+    text-align:center;
+}
+
+.client {
+    border:none;
+}
+
+.commande tr td{
+    border:1px solid black;
+    
+}
+
+.commande tr:nth-child(2n+1){
+    background:orange;
+    
+}
+
+.commande tr:nth-child(2n){
+    background:green;
+    
+}
+
+.commande tr:hover{
+    background:grey;
+    
+}
+
+.commande tr:hover{
+    color:white;
+    
+}
+
+.produit {
+    text-align:left;
+}
+
+.quantité {
+    text-align:center;
+}
+
+.prix {
+    text-align:right;
+}
+
+form {
+    display:flex;
+    flex-direction:column;
+    background:orange;
+    width:90%;
+    padding:20px;
+}
+
+input[type="text"] {
+    background:wheat;
+}
+
+button {
+    size:24px;
+    font-weight:bold;
+    font-size:24px;
+}
+
+

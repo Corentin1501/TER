@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="image">
+    <h1>Ah! Ma Zone!</h1>
+  </header>
+<main>
+  <section>
+    <h2>Client</h2>
+      
+    <table class="client">
+      <tr>
+        <td>Marc Decafer</td>
+      </tr>
+      <tr>
+      
+        <td>123 Rue du Percolateur</td>
+      </tr>
+      <tr>
+      
+        <td>75000 Paris</td>
+      </tr>
+      <tr>
+      
+        <td>France</td>
+      </tr>
+    </table>
+  </section>
+
+
+  <section>
+    <h2>Commande</h2>
+      
+    <table class="commande">
+      
+      <tr >
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Prix</th>
+      </tr>
+
+      <tr>
+        <td>Carte mère</td>
+        <td>4</td>
+        <td>200,00</td>
+      </tr>
+    
+    
+    
+      <tr>
+        <td>Processeur</td>
+        <td>4</td>
+        <td>100,00</td>
+      </tr>
+    
+    
+    
+
+    <tr>
+      <td>SSD 2 To</td>
+      <td>4</td>
+      <td>150,00</td>
+    </tr>
+    
+    
+    <tr>
+      <th colspan="2">Total</th>
+      <th>1800,00</th>
+    </tr>
+    
+    
+    
+      
+        
+        
+    
+      
+    </table>
+  </section>
+
+
+  <section>
+
+    <h2>Ajouter un Produit</h2>
+
+    <form method="post" action="add.php">
+
+
+<label for="i_produit">produit:</label>
+<select id="i_produit">
+  <option value="1">clavier</option>
+  <option value="2">souris</option>
+  <option value="3">ecran</option>
+</select>
+
+<br>
+
+<label for="i_quant">Quantité :</label>
+<input type="number" name="n_quant" value="1" id="i_quant" min="1" max="10">
+
+<br>
+
+
+<label for="i_prix">Prix :</label>
+<input type="text" name="n_prix"  id="i_prix" >
+
+<br>
+
+
+<input type="submit" value="ajouter" class="button">
+<br>
+<input type="reset" value="raz" class="button">
+
+
+    </form>
+  </section>
+</main>
+  <footer>
+    <p>&copy; jean mickael reacher</p>
+  </footer>
+</body>
+</html>

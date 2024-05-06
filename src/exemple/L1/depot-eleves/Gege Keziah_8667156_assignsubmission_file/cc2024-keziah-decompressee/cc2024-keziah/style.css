@@ -1,0 +1,123 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+
+}
+
+header {
+    height: 200px;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    
+}
+
+header h1{
+    font-size: 50px;
+}
+
+footer {
+    display: flex;
+    background-color: grey;
+    height: 100px;
+    width: max-content;
+}
+
+main {
+    font-size: 14px;
+    font-family: verdana,Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+section {
+    display: flex;
+    width: 350px;
+    margin: 0;
+    padding: 20px 20px 20px 20px;
+    border-width: 1px;
+    border: 1px solid black;
+
+}
+ 
+table {
+    width: 300px;
+    border: 1px solid black;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+table.client{
+    border: 0px;
+}
+
+table.commande{
+    border: 1px solid black;
+    columns: center;
+    background-color: grey;
+}
+
+table.commande:nth-child(1n+2){
+    background-color: orange;
+}
+
+table.commande:nth-child(0n+2){
+    background-color: green;
+}
+
+table.commande:hover{
+    background-color: white;
+
+}
+
+
+
+form {
+    
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+    width: 90%;
+    padding: 20px;
+}
+
+input[type=text]{
+    background-color: wheat;
+}
+
+input[type=submit]{
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+input[type=reset]{
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+
+

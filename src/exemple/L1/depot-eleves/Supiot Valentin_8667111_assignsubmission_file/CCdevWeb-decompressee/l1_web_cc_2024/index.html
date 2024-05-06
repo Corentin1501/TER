@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="/home/vsupiot/Téléchargements/l1_web_cc_2024/style.css">
+</head>
+<body>
+  <header>
+    <img src="/home/vsupiot/Téléchargements/l1_web_cc_2024/img/logo.png" widht="300" height="200">
+    <h1>Ah! Ma Zone!</h1>
+  </header>
+  <main>
+  
+    <section name="client">
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section name="table">
+      <h2>Commande</h2>
+      
+      <table class="commande">
+        <tr>
+          <td>Produit</td>
+          <td>Produit</td>
+          <td>Produit</td>
+        </tr>
+        <tr>
+          <td>Carte mère</td>
+          <td>4</td>
+          <td>200.00</td>
+        </tr>
+        <tr>
+          <td>Processeur</td>
+          <td>4</td>
+          <td>100.00</td>
+        </tr>
+        <tr background-color="orange">
+          <td>SSd 2 To</td>
+          <td>4</td>
+          <td>150.00</td>
+        </tr>
+        <tr></tr>
+      </table>
+    </section>
+    <section>
+      <h2>Ajouter un Produit</h2>
+      <form name="formulaire" method="post">
+        <fieldset> <br>
+          <label for="produit">produit</label>
+          <select id="produit" name="produit">
+            <option value="1">Clavier</option>
+            <option value="2">Souris</option>
+            <option value="3">Ecran</option>
+          </select> <br>
+          <label for="quantite">quantité</label>
+          <input type="number" id="quantite" pattern="[1-10]"> <br>
+          <label for="prix">prix</label>
+          <input type="text" id="prix"><br>
+          <input type="submit" value="soumettre"><br>
+          <input type="reset" value="RAZ">
+        </fieldset>
+      </form>
+    </section>
+    
+  </main>
+  <footer>
+    <h2 id="copyright">Copyright Jhon Micheal Reacher</h2>
+  </footer>
+
+
+</body>
+</html>
+

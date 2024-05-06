@@ -1,0 +1,118 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Arial, sans-serif;
+
+}
+
+
+header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	height: 200px;
+	background-color: green;
+}
+
+header h1{
+	font-size: 50px;
+
+}
+
+header img{
+	width: 200px;
+	height: 120px;
+	margin-top: 30px;
+	margin-left: 40px;
+}
+
+footer {
+ height: 100px;
+ background-color: grey;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ text-align: center;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	margin-top: 10px;
+}
+
+table.client{
+	border: 0px;
+}
+
+section {
+	width: 350px;
+	margin: 0px;
+	padding: 20px;
+	border: solid 1px;
+	border-color: black;
+}
+ 
+table {
+	width: 300px;
+	border-collapse: collapse;
+	border: solid 1px;
+	border-color: black;
+	margin-top: 30px;
+	margin-left: 30px;
+	text-align: center;
+}
+table.commande:nth-child(2n){
+	background-color: green;
+}
+
+table.commande:first-child{
+	background-color: white;
+}
+
+table.commande:nth-child(2n+1){
+	background-color: orange;
+}
+table.commande:hover{
+	color: white;
+	background-color: grey;
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	padding: 20px;
+	background-color: orange;
+}
+
+input[type="text"]{
+	background-color: wheat;
+}
+
+button{
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: uppercase;
+}

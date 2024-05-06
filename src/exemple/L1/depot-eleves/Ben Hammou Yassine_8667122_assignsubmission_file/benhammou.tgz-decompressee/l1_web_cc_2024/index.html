@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+<header>
+  <h1> Ah!Ma Zone! </h1>
+  <label for="image"><img src="img/logo.png" alt="logo"></label>
+</header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+        </tr>
+		
+      </thead>
+      <tbody>
+        <tr>
+          <th>Carte mère</th>
+          <td>4</td>
+          <td>200,00</td>
+        </tr>
+			
+    
+      <tr>	
+        <th>Processeur</th>
+        <td>4</td>
+        <td>100,00</td>
+      </tr>
+			
+			<tr>
+        <th>SSD 2 To</th>
+        <td>4</td>
+        <td>150,00</td>
+   
+      </tr>
+    </tbody>
+        
+        	<tfoot>
+            <tr> 	
+              <th colspan="2">Total</th>
+              <th>1800,00</th>
+            </tr>
+           
+          </tfoot>
+        
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form method="post" action="add.php">
+        <label for="produit">Produit</label> <br>
+        <select name="pro" id="pro">
+          <option value="c">Clavier</option>
+          <option value="z">Souris</option>
+          <option value="y">Ecran</option>
+         
+        </select><br>
+        <label for="quantite">Quantité</label><br>
+        <input type="number" min="0" max="10" placeholder="1"><br>
+        <br/>
+        <label for="prix">Prix</label><br>
+        <input id="prix" type="text"><br/>
+        <button type="submit">Ajouter</button><br/>
+        <button type="reset">RAZ</button>
+
+
+         
+      </form>
+    </section>
+    
+  </main>
+  <footer>
+    <p>
+      &copy;Copyright 2024 BENHAMMOU YASSINE
+    </p>
+  </footer>
+</body>
+</html>
+

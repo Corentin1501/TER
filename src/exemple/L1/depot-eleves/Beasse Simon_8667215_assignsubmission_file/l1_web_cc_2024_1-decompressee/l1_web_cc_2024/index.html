@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <title>CC 2024</title>
+
+  <head></head>
+
+  <body>
+
+    <header>
+      <img src="img/logo.png" alt="logo ah!ma zone!">
+      <h1>Ah!Ma Zone!</h1>
+    </header>
+    <main>
+    
+      <section>
+        <h2>Client</h2>
+        
+        <table class="client">
+          <tr>
+            <td>Marc Decafer</td>
+          </tr>
+          <tr>
+          
+            <td>123 Rue du Percolateur</td>
+          </tr>
+          <tr>
+          
+            <td>75000 Paris</td>
+          </tr>
+          <tr>
+          
+            <td>France</td>
+          </tr>
+        </table>
+      </section>
+      
+      <article></article>
+
+      <section>
+        <h2>Commande</h2>
+        
+        <table class="commande">
+          
+          <thead>
+            <tr>
+              <th>Produit</th>
+              <th>Quantité</th>
+              <th>Prix</th>
+            </tr>
+            
+          </thead>  
+          <tbody>
+            <tr>
+              <td>Carte mère</td>
+              <td>4</td>
+              <td>200,00</td>
+            </tr>
+            <tr>
+              <td>Processeur</td>
+              <td>4</td>
+              <td>100,00</td>
+            </tr>
+            <tr>
+              <td>SSD 2 To</td>
+              <td>4</td>
+              <td>150,00</td>
+            </tr>
+          </tbody>
+            
+          <tfoot>  
+              <tr>
+                <th colspan="2">Total</th> 
+                <th>1800,00</th>
+              </tr>
+          </tfoot>  
+          
+        </table>
+      </section>
+      
+      <article></article>
+      
+      <section>
+        <h2>Ajouter un Produit</h2>
+
+        <form method="post" action="add.php">
+            
+          <label>Produit :</label>
+          <select name="choix_outils" id="id_outils">
+            <option value="clavier">Clavier</option>
+            <option value="souris">Souris</option>
+            <option value="ecran">Ecran</option>
+          </select>
+            
+          <br />
+            
+          <label>Quantité :</label>
+          <input type="number" name="quantite" id="id_quant" min="0" max="10" value="1">
+          
+          <br />
+
+          <label>Prix :</label>
+          <input type="text" name="prix" id="id_prix">
+
+          <br />
+
+          <input type="submit" value="Ajouter" class="bouton">
+
+          <br />
+
+          <input type="reset" value="RAZ" class="bouton">
+
+        </form>
+      </section>
+      
+    </main>
+    <footer>
+      <p>Copyright 2024 Simon Beasse</p>
+    </footer>
+
+
+  </body>
+</html>
+

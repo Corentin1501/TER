@@ -1,0 +1,113 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+}
+
+header {
+ background-color: green;
+ height:200px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.logo{
+	width:200px;
+	height: 120px;
+}
+h1{
+	font-size: 50px;
+}
+footer {
+ background-color: gray;
+ height:100px;
+ display: flex;
+}
+
+main {
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	padding-bottom: 420px;
+}
+
+section{
+	display: flex;
+	justify-content: space-around;
+	margin-top: 10px;
+	width:350px;
+	margin:0px;
+	padding-top:20px;
+	padding-bottom:20px;
+	padding-left:20px;
+	padding-right:20px;
+	border: 1px solid;
+	border-color: black;
+}
+ 
+table {
+	width:300px;
+	border:1px solid;
+	border-color: 1px;
+	margin-top:30px;
+	margin-bottom: 30px;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+.client{
+	border:0px solid;
+}
+.commande{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid;
+	border-color: black;
+}
+.Quantité{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.impair{
+	background-color: orange;
+}
+.pair{
+	background-color: green;
+}
+
+form {
+	display:flex;
+	justify-content: start;
+	align-items: center;
+	background-color: orange;
+	width: 200px;
+	padding: 20px;
+}
+
+

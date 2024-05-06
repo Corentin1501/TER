@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <head>
+    
+
+  </head>
+
+  <body>
+    <header>
+      <img src="img/logo.png" alt="logo" width="200" height="120">
+      <h1>Ah! Ma Zone</h1>
+    </header>
+
+
+    <main>
+    
+      <section>
+        <h2>Client</h2>
+        
+        <table class="client">
+          <tr>
+            <td>Marc Decafer</td>
+          </tr>
+          <tr>
+          
+            <td>123 Rue du Percolateur</td>
+          </tr>
+          <tr>
+          
+            <td>75000 Paris</td>
+          </tr>
+          <tr>
+          
+            <td>France</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Commande</h2>
+        
+        <table class="commande">
+          <thead>
+            <td>Produit</td>
+            <td>Quantité</td>
+            <td>Prix</td>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Carte mère</td>
+              <td>4</td>
+              <td>200,00</td>
+            </tr>
+            <tr>
+              <td>Processeur</td>
+              <td>4</td>
+              <td>100,00</td>
+            </tr>
+            <tr>
+              <td>SSD 2 To</td>
+              <td>4</td>
+              <td>150,00</td>
+            </tr>
+            <tfoot>
+              <td colspan="2">Total</td>
+              <td>1800,00</td>
+            </tfoot>
+          </tbody>          
+        </table>
+      </section>
+
+      <section>
+        <h2>Ajouter un Produit</h2>
+
+        <form method="post" action="add.php">
+          <label for="produit">Produit</label>
+          <select name="produit" id="produit">
+            <option id="1" value="Clavier">Clavier</option>
+            <option id="2" value="Souris">Souris</option>
+            <option id="3" value="Ecran">Ecran</option>
+          </select>
+          </br>
+          <label for="quantite">Quantité</label>
+          <input type="number" value="1" id="quantite" max="10" min="0">
+          </br>
+          <label for="prix">Prix</label>
+          <input type="text" id="prix">
+          </br>
+          <button type="submit" value="AJOUTER">ajouter</button>
+          </br>
+          <button type="reset" value="RAZ">raz</button>
+          
+        </form>
+      </section>
+      
+    </main>
+    <footer>
+      <p>Copyright 2024 Ambre ETCHEBERRY</p>
+    </footer>
+
+
+  </body>
+</html>
+

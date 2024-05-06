@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" name="ccp3"/>
+  <link rel="stylesheet" href="style.css"/>
+  <title>Cc P3</title>
+</head>
+<header>
+  <img src="img/logo.png"/>
+  <h1>Ah! Ma Zone!</h1>
+
+</header>
+<body>
+
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      	
+			<thead>
+        <tr>
+          <td>Produit</td>
+          <td>Quantité</td>
+          <td>Prix</td>
+        </tr>
+      </thead> 
+      <tbody>
+			<tr>
+        <td>Carte mère</td>
+			  <td>4</td>
+			  <td>200,00</td>
+      </tr>
+
+			<tr>
+        <td>Processeur</td>
+        <td>4</td>
+        <td>100.00</td>
+      </tr>
+			
+      <tr>
+        <td>SSD 2 To</td>
+        <td>4</td>
+        <td>150.00</td>
+      </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Total</td>
+          <td>1800.00</td>
+        </tr>
+      </tfoot>
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form method="post" name="nom_formulaire">
+          <label>Produit :</label>
+        </br>
+          <select name="Produit" id="id_produit">
+            <option name="clavier" value="1">clavier</option>
+            <option name="souris" value="2">souris</option>
+            <option name="ecran" value="3">ecran</option>
+          </select>
+        </br>
+        </br>
+          <label>Quantité :</label>
+          <input type="number" name="nombre" id="id_nombre" max="10" min="1" value="1"/>
+        </br>
+       </br>
+        <label>Prix :</label>
+        <input type="text" name="prix" id="id_prix"/>
+        </br>
+        </br>
+        <button type="submit" name="envoie" id="id_envoie">Ajouter</button>
+        </br>
+        </br> 
+        <button type="reset"name="raz" id="id_raz">RAZ</button>
+        
+      </form>
+    </section>
+    
+  </main>
+
+
+</body>
+<footer>
+  <p>Copyright 2024 Matthieu Boré</p>
+</footer>
+</html>
+

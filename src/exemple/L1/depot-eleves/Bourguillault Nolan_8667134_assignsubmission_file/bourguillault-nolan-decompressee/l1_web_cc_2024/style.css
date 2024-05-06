@@ -1,0 +1,114 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+
+}
+
+header {
+ height: 200px;
+ background-color: green;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+}
+
+img {
+	position:relative;
+	margin-top: 30px;
+	margin-left: 40px;
+	width: 200px;
+	height: 120px;
+	display: flex;
+	justify-content: flex-start;
+}
+
+footer {
+ height: 100px;
+ background-color: grey;
+ justify-content: center;
+ text-align: center;
+}
+footer p {
+	padding-top: 40px;
+}
+main {
+ height: 600px;
+ display: flex;
+ justify-content: space-around;
+ align-items: flex-start;
+ margin-top: 10px;
+}
+
+section {
+ width: 350px;
+ margin: 0;
+ padding: 20px;
+ border: 1px solid black;
+}
+ 
+table {
+ width: 300px;
+ border: 1px solid black;
+ margin-top: 30px;
+ margin-bottom: 30px;
+ text-align: center;
+}
+
+tr:hover {
+	background-color: grey;
+}
+
+.client {
+	border:none;
+}
+
+.prix {
+	text-align: right;
+}
+
+.produit {
+	text-align: left;
+}
+.impair {
+	background-color: orange;
+}
+.pair {
+	background-color: green;
+}
+
+form {
+	background-color: orange;
+	height: 90%;
+	padding: 20px;
+}
+
+.button {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.text {
+	background-color: wheat;
+}

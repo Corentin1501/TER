@@ -1,0 +1,135 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Arial, sans-serif
+}
+
+/* Header */
+
+header {
+	width: 100%;
+	height: 200px;
+	background-color: green;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+header>h1{
+	font-size: 50px;
+}
+
+header>img{
+	top: 30px;
+	left: 40px;
+	width: 200px;
+	height: 120px;
+}
+
+/* Footer */
+
+footer {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	background-color: grey;
+	width: 100%;
+	height: 100px;
+}
+
+/* Main */
+
+main {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	height: auto;
+}
+
+section {
+	width: 350px;
+	margin: 0px;
+	padding: 20px 20px 20px 20px;
+	border: 1px solid black;
+}
+ 
+table {
+	width: 300px;
+	border: 1px solid black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+section table.client{
+	border-collapse: collapse;
+}
+
+.justified-right{
+	text-align: right;
+}
+
+.justified-left{
+	text-align: left;
+}
+
+section table.commande tr:nth-child(2n+1) td{
+	background-color: orange;
+}
+
+section table.commande tr:nth-child(2n) td{
+	background-color: green;
+}
+
+
+.commande{
+	background-color: grey;
+	border: 1px solid black;
+}
+
+:hover.commande{
+	background-color: white;
+}
+
+form label{
+	display: flex;
+	flex-direction: column;
+	background-color: orange;
+	width: 90%;
+	padding: 20px;
+}
+
+input[type="text"]{
+	background-color: wheat;
+}
+
+input[type=submit]{
+	font-size: 24px;
+	font-weight: bold;
+}
+
+input[type=reset]{
+	font-size: 24px;
+	font-weight: bold;
+}
+

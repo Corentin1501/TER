@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <header>
+    <img src="img/logo.png" alt="image">
+    <h1>"Ah! Ma Zone!</h1>
+  </header>
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      <thead>	
+			<th>Produit</th>
+			<th>Quantité</th>
+			<th>Prix</th>
+      </thead>
+      
+      <tbody>
+      <tr>
+			<td>Carte mère</td>
+			<td>4</td>
+			<td>200,00</td>
+      </tr>
+
+      <tr>
+			<td>Processeur</td>
+			<td>4</td>
+			<td>100,00</td>
+			
+      <tr>
+			<td>SSD 2 To</td>
+			<td>4</td>
+			<td>150,00</td>
+      </tr>
+      <tbody></tbody>
+        
+      <tfoot> 	 
+      <td colspan="2">Total</td>
+			<td>1800,00</td>
+      </tfoot>
+        
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form name="produits" form="post" action="add.php">
+        <label for="produit">Produit</label>
+        <select name="produit" id="produit">
+          <option value="1">Clavier</option>
+          <option value="2">Souris</option>
+          <option value="3">Ecran</option>
+        </select>
+        <br>
+       
+        <label for="quantite">Quantité</label>
+        <input type="number" name="quantite" id="quantite" value="1" min="0" max="10">
+        <br>
+        
+        <label for="prix">Prix</label>
+        <input type="text" name="prix" id="prix">
+        <br>
+        <button>Ajouter</button>
+        <button type="reset">RAZ</button>
+     
+        
+      </form>
+    </section>
+    
+  </main>
+  <footer>
+    <p></p>
+  </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    
+</head>
+
+<body>
+  <header>
+    <img src="./img/logo.png" width="200px" height="120px" ><img>
+    <h1>
+      Ha! ma zone!
+    </h1>
+  </header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      <tr><td>
+			Produit</th><th>
+			Quantité</th><th>
+			Prix</th>
+      </tr><tr><td>
+			Carte mère</td><td>
+			4</td><td>
+			200,00</td>
+      </tr><tr><td>
+
+			Processeur</td>
+			4</td><td>
+			100,00</td>
+			</tr><tr><td>
+			SSD 2 To</td><td>
+			4</td><td>
+			150,00</td>
+        </tr><tr><td>
+        	
+        	Total</td><td>
+			1800,00</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form method="post" action="add.php">
+      
+        <label>produit</label>
+        <select id="Produit" name="Produit">
+          <option value="souri">souri</option>
+          <option value="ecran">ecran</option>
+          <option value="clavier">clavier</option>
+        </select>
+        
+        <label>quantite</label>
+        <input type="number" name="Quantite" value="1" id="Quantite" min="0" max="10"/>
+        
+        <label>prix</label>
+        <input type="text" name="prix" id="prix" style="background-color: wheat;"/>
+        
+        <input type="submit" value="AJOUTEZ" style="font-size:24px;"></input>
+        <input type="reset" value="RAZ" style="font-size:24px;"></input>
+      </form>
+    </section>
+    
+  </main>
+  
+  <footer>
+    <p> copyrigth </p>
+  </footer>
+  
+</body>
+</html>
+

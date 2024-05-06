@@ -1,0 +1,136 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 14px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+
+}
+
+header {
+ display: flex;
+ justify-content: center;
+ text-align: center;
+ width: 100%;
+ height: 200px;
+ background-color: green;
+}
+.image {
+position: fixed;
+
+
+
+
+}
+
+.titre {
+	font-size: 50px;
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	background-color: grey;
+	width: 100%;
+	height: 100px;
+}
+
+main {
+height: 700px;
+}
+
+section {
+display: flex;
+margin-top: 10px;
+align-items: flex-start;
+justify-content: space-around;
+width: 350px;
+margin: 0;
+padding-left: 20px;
+padding-top: 20px;
+padding-bottom: 20px;
+padding-right: 20px;
+border: 1px black;
+}
+ 
+table {
+	width: 300px;
+	border: 1px black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	align-items: center;
+}
+
+.client{
+border: 0;
+}
+.commande {
+	border: 1px black;
+
+}
+.commande:nth-child(2n){
+	background-color: green;
+}
+.commande:nth-child(2n+1){
+	background-color: orange;
+}
+.commande {
+	visibility: hidden;
+	background-color: grey;
+	color: white;
+}
+.Quantite {
+	display: flex;
+	justify-content: center;
+}
+.prix {
+	display: flex;
+	justify-content: right;
+}
+.cf {
+	display: flex;
+	justify-content: center;
+}
+
+form {
+	display: flex;
+	background-color: orange;
+	width: 90%;
+	padding: 20px;
+
+}
+form price {
+	background-color: wheat;
+}
+.MM {
+font-size: 24px;
+text-transform:uppercase;
+font-weight: bold;
+}
+.RR {
+font-size: 24px;
+text-transform:uppercase;
+font-weight: bold;
+
+}
+
+

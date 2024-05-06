@@ -1,0 +1,116 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family:Verdana, Arial, sans-serif;
+	font-size: 14px;
+
+}
+
+header {
+	height: 200px;
+	background-color: green;
+	display: flex;
+	
+}
+img{
+	
+	display: inline;
+	float: left;
+	height: 120px;
+	width: 200px;
+	margin-inline: 0px;
+
+}
+h1{
+	font-size: 50px 0;
+	align-items:last baseline;
+    
+}
+
+footer {
+	display: flex;
+	background-color: grey;
+	width: 100%;
+    height: 100px;
+	align-items: center;
+}
+
+main {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+margin: 10px;
+font-size: 100% ;
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	padding: 20px;
+   border: 1px black solid;
+}
+ 
+table {
+	width: 300px;
+	border: 1px black solid;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	align-items: center;
+	justify-content: center;
+}
+.client td
+{
+    align-items: center;
+	border: 0;
+
+}
+.commande tbody tr:nth-child(odd)
+{
+	background-color: orange;
+}
+.commande tbody tr:nth-child(even)
+{
+	background-color: green;
+}
+.commande:hover
+{
+	background-color: grey;
+	color: white;
+}
+
+form {
+	background-color: orange;
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+    padding: 20px;
+}
+#prix
+{
+  background-color: wheat;
+}
+button
+{
+   font-size: 24px;
+   text-transform: capitalize bold 24px;
+}
+

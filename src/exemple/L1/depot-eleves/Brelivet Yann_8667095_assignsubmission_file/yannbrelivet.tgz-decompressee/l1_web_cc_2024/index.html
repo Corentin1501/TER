@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body>
+  <header>
+    <h1> Ah! Ma Zonne!</h1>
+    <img src="img/logo.png" alt="logo">
+  </header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+        <thead>
+          <td>Produit</td>
+          <td>Quantité</td>
+          <td>Prix</td>
+        </thead>
+        <tbody>
+          <tr>
+			<td>Carte mère</td>
+			<td>4</td>
+			<td>200,00</td>
+</tr>
+<tr>
+			<td>Processeur</td>
+			<td>4</td>
+			<td>100,00</td>
+</tr>
+<tr>	
+			<td>SSD 2 To</td>
+			<td>4</td>
+			<td>150,00</td>
+    </tr>
+    </tbody>
+        
+    <tfoot> 	
+        	<td colspan="2">Total</td>
+			<td>1800,00</td>
+    </tfoot>
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form method="post" action="add.php">
+        <label for="Produit">Produit</label>
+        <input name = "Produit" id="Produit" type="number" min="1" max="3">
+        <br>
+        <label for="qte">Quantité</label>
+        <input name="qte" id="qte"type="number" min="1" max="10" value="1">
+        <br>
+        <label for="prix">Prix</label>
+        <input style="background-color: wheat;" name="prix" id="prix" type="text">
+        <button type="submit">submit</button>
+        <br>
+        <button type="reset"> reset</button>
+      </form>
+    </section>
+    
+    
+  </main>
+  <footer>
+    <p>Yann Brelivet</p>
+  </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,101 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body 
+{
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, arial, sans-serif;
+  height: 14px;
+
+}
+
+header 
+{
+	height: 200px;
+	background-color: rgb(115, 207, 115);
+	flex-direction: column;
+	text-justify: center;
+	text-align: center;
+}
+h1 header 
+{
+	text-align: center;
+	text: center;
+	font-size: 10px;
+}
+img 
+{
+	height: 150px;
+	width: 200px;
+	float: left ; //mettre l'image en bas a gauche de la fenetre
+	margin-bottom: 20px;
+
+}
+
+footer 
+{
+	background-color: rgb(158, 158, 158);
+	margin: 0px;
+	flex: center;
+	height: 100px;
+	text-align: center;
+	
+
+}
+
+main 
+{
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	text-align: center;
+}
+//question 5?
+
+section 
+{
+	width: 350 px;
+	margin: 0;
+	padding: 20px;
+	text-align: center;
+}
+.client1
+{
+	border: 5px solid black;
+}
+.commande
+{
+	border: 5px solid black;
+}
+table 
+{
+	width: 300px;
+	margin-top: 3Opx;
+	margin-bottom: 30px;
+	border: 5px solid black;
+	flex: center;
+}
+//question 8?
+form {
+
+}
+
+

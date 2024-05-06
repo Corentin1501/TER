@@ -1,0 +1,125 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana,arial, sans-serif;
+  font-size: 14px;
+
+}
+
+header {
+    height: 200px;
+    width: 100%;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    font-size: 50px;
+}
+img{
+    margin-top:  30px;
+    margin-left: 40px;
+    width: 200px;
+    height: 120px; 
+    position: fixed;
+}
+
+
+footer {
+    height: 100px;
+    width: 100%;
+    background-color:grey;
+    display: flex;
+    justify-content:flex-start;
+    margin: 10px;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin: 10px;
+    height: auto;
+}
+
+section {
+    width: 350px;
+    margin: 0;
+    padding: 20px;
+    border-radius: 1px black;
+}
+ 
+table {
+    width: 300px;
+    border: 1px black;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    align-items: center;
+
+}
+.client{
+    border: 0px;
+}
+.commande{
+    border: 1px black;
+
+}
+.centr{
+    align-items: center;
+}
+.drt{
+    justify-content: right;
+}
+
+table:tr:nth-child(even){
+    background-color: green;
+
+}
+table:tr:nth-child(odd){
+    background-color: orange;
+}
+
+table:hover{
+    background-color: grey;
+    color: white;
+}
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+    width: 90%;
+    padding:20px;
+}
+#txt{
+    background-color: orange;
+}
+footer{
+    background-color: grey;
+}
+
+

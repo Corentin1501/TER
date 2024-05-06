@@ -1,0 +1,150 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+	margin: 0; /* garder cette propriété */
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 14px;
+}
+
+header {
+	width: 100%;
+	height: 200px;
+	background-color: green;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
+header h1 {
+	font-size: 50px;
+}
+
+header img {
+	position: fixed;
+	top: 30px;
+	left: 40px;
+	width: 200px;
+	height: 120px;
+}
+
+footer {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	height: 100px;
+	background-color: grey;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
+main {
+	height: 100%;
+	display: flex;
+}
+
+section {
+	width: 33%;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin: 10px;
+	padding: 20px;
+	border: solid black 1px;
+	height: min-content;
+}
+ 
+table {
+	width: 300px;
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-collapse: collapse;
+}
+
+.client {
+	text-align: center;
+}
+
+.commande th {
+	border: solid black 1px;
+}
+
+.commande td {
+	border: solid black 1px;
+}
+
+.client {
+	border: none;
+}
+
+.commande .data:nth-child(2n) {
+	background-color: orange;
+}
+
+.commande .data:nth-child(2n-1) {
+	background-color: green;
+}
+
+.commande .data:hover {
+	background-color: grey;
+	color: #ffffff;
+}
+
+.white {
+	background-color: #fff;
+}
+
+.quantity {
+	text-align: center;
+}
+
+.price {
+	text-align: right;
+}
+
+.total {
+	text-align: center;
+	font-weight: bold;
+}
+
+form {
+	background-color: orange;
+	padding: 15px;
+}
+
+input {
+	width: 100%;
+}
+
+select {
+	width: 100%;
+}
+
+
+input[type="text"] {
+	background-color: wheat;
+}
+
+input[type="submit"] {
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: uppercase;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+<body>
+
+<header>
+<img src="img/logo.png" alt="logo">
+<h1>Ah! Ma Zone!</h1>
+</header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      <thead>
+        <tr>
+        <td>Produit</td>
+      <td>Quantité</td>
+      <td>Prix</td>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td>Carte mère</td>
+      <td id="quantite">4</td>
+      <td id="prix">200,00</td>
+    </tr>
+      <tr>
+        <td>Processeur</td>
+        <td id="quantite">4</td>
+        <td id="prix">100,00</td>
+      </tr>
+      <tr>
+        <td>SSD 2 To</td>
+        <td id="quantite">4</td>
+        <td id="prix">150,00</td>
+      </tr></tbody>
+      <tfoot>
+      <tr>
+        <td colspan="2" id="total">Total</td>
+        <td>1800,00</td>
+      </tr></tfoot>        
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form action="add.php" method="post" name="Produit">
+        <label for="">Produit</label>
+        <input type="select" value="1" value="2">
+      </br>
+        <label for="">Quantité</label>
+        <input type="number" name="quantite" value="1" min="0" max="10"/></br>
+        <label for="">Prix</label></br>
+        <input type="text" name="prix"></br>
+        <input type="submit" value="Ajouter" ></br>
+        <input type="reset" value="RAZ" >
+      </form>
+    </section>
+    
+  </main>
+<footer>
+  <p>Copyright 2024 Lardeux Hugo</p>
+</footer>
+
+</body>
+</html>
+

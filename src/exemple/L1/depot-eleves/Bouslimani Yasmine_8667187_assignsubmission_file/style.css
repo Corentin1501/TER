@@ -1,0 +1,120 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+font-family: verdana,Arial, sans-serif;
+font-size: 14px;
+}
+
+header {
+ width: 100%;
+ height: 200px;
+ background-color: green;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+p+footer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: grey;
+	width:100%;
+	height:100px;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	height: ;
+
+}
+
+section {
+width: 350px;
+margin: 0;
+padding: 20px;
+border-width: black;
+}
+ 
+table {
+	width: 300px;
+	border-width: black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin: auto;
+}
+
+form {
+background-color: orange;
+display: flex;
+flex-direction: column;
+background-color: orange;
+width: 90%;
+padding: 20px;
+}
+
+h1{
+	font-size:50px ;
+}
+
+#image{
+	margin-top: 30px;
+	margin-left: 40px;
+	height: 120px;
+	width: 200px;
+}
+table.client{
+	border-width: 0px;
+}
+.commande{
+	border: 1px solid black;
+	background-color: grey;
+	
+
+}
+.commande:hover{
+	background-color: white;}
+#quantite{
+text-align: center;
+}
+
+#prix{
+text-align: right;
+}
+#total{
+	text-align: center;
+}
+.commande tr:nth-child(2n+1){
+	background-color: orange;
+
+}
+.commande tr:nth-child(2n){
+	background-color: green;
+
+}
+#text{
+    background-color: wheat;
+}

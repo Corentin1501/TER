@@ -1,0 +1,88 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+
+}
+
+table {
+	width: 300px;
+}
+
+
+h1 {
+	font-size: 50px;
+}
+
+header { 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 200;
+	background-color: green;
+}
+
+img {
+	width: 200px;
+	height: 120px;
+}
+
+footer {
+	background-color: grey;
+	height: 100px; 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+main {
+	height: min-content;
+}
+
+section {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	width: 350px;
+	margin: 0;
+	padding: 20px;
+	border: 1px;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 1px;
+}
+ 
+table {
+	width: 300px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border: 1px;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 1px;
+}
+
+form {
+	background-color: orange;
+}
+
+

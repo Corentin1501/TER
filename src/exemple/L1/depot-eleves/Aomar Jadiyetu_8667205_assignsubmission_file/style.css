@@ -1,0 +1,120 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana,Arial,sans-serif,14px;
+
+}
+
+header {
+	width: 100%;
+	height: 200px;
+	background-color: green;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+h1{
+	font-size: 50px ;
+}
+
+header img {
+	position: fixed;
+	height: 30px;
+	left: 40px;
+	width: 200px;
+	top: 120px;
+}
+
+footer {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: grey;
+	
+}
+
+main {
+	width: 100%;
+	display: inline-flex;
+	align-items: flex-start;
+	margin-top: 10px;
+	justify-content: space-around;
+
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	padding: 20px;
+	border: 1px solid black;
+}
+ 
+table {
+	width: 300px;
+	border: 1px solid black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	align-items: center;
+}
+
+
+.client {
+	border: none;
+}
+
+.qte {
+	text-align: center;
+}
+
+table Prix {
+	justify-content: right;
+}
+
+table commande {
+	border: 1px solid black;
+}
+
+table commande:hover{
+	background-color: white;
+}
+
+input[type="text"]{
+	background-color: wheat;
+}
+
+input[type="submit"], input[type="reset"]{
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+form {
+	display: inline-block;
+	background-color: orange;
+	width: 90%;
+	padding: 20px;
+}
+
+

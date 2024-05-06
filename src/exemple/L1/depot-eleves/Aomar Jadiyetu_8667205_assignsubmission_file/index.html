@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+<body>
+  
+</body>
+</html>
+
+<head>
+  <header>
+    <img src="img/logo.png" alt="logo.png">
+  <h1>Ah! Ma Zone!</h1>
+  </header>
+</head>
+
+<body>
+
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      	
+			Produit
+			Quantité
+			Prix
+        
+			Carte mère
+			4
+			200,00
+
+
+			Processeur</td>
+			4
+			100,00
+			
+			SSD 2 To
+			4
+			150,00
+        
+        	
+        	Total
+			1800,00
+        
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form>
+        <label id="id_produit">Produit:</label><br/>
+          <select name="Produit" id="id_produit">
+            <option value="1">Clavier</option>
+            <option value="2">Souris</option>
+            <option value="3">Ecran</option>
+          </select>
+
+          <label for="id_qte">Quantité:</label><br/>
+          <input type="number" min="0" max="10" name="champ_qte" id="id_qte" placeholder="1"> <br/>
+
+          <label id="id_prix">Prix:</label><br/>
+          <input type="text" name="champ_prix" id="id_prix"><br/>
+
+          <input type="submit" value="AJOUTER">
+          <input type="reset" value="RAZ">
+      </form>
+    </section>
+    
+  </main>
+  <footer>
+    <p>&copy; 2024 Jan Michel Reacher</p>
+  </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,157 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Arial, sans-serif;
+  
+
+}
+
+header {
+	width: 100% ; 
+	height: 200px;
+	background-color: green;
+	flex: auto;
+
+    
+	
+}
+header h1{
+    font-size: 50px;
+	text-align: center;
+	align-items: center;
+	
+	margin-bottom: auto;
+	margin-top: auto;
+	padding: 60px;
+
+}
+header img {
+	position: fixed;
+	height: 30px;
+	margin-left: 40px;
+	width: 200px;
+	height: 120px;
+	padding: 10px;
+}
+
+footer {
+ flex: auto;
+ background-color: grey;
+ width: 100%;
+ height: 100px;
+ text-align: center ; 
+
+
+}
+p {
+	padding: 33px;
+}
+
+main {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	height: calc(100vh - 300px);
+	margin-right: auto;
+	margin-left: auto;
+	
+
+	
+
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border: 1px solid black ; 
+    
+
+
+}
+ 
+table {
+	width: 300px;
+	border: 1px solid black; 
+	margin-top: 30px;
+	margin-bottom: 30px;
+	justify-content: center;
+	border-collapse: collapse;
+	
+}
+
+.client{
+	border: none;
+	border-collapse: initial;
+
+}
+.quant{
+	text-align: center;
+}
+.Prix{
+	text-align: right;
+}
+.Total{
+	text-align: center;
+}
+
+.commande td , tr , th  {
+	border: 1px solid black;
+}
+.commande {
+	background-color: grey;
+}
+.commande:hover{
+	background-color: white;
+}
+.commande tbody tr:nth-child(even){
+	background-color: green;
+}
+.commande tbody tr:nth-child(odd){
+	background-color: orange;
+}
+
+form {
+	background-color: orange;
+	display: flex ;
+	flex-direction: column;
+	width: 90%;
+	padding: 20px;
+
+
+}
+#Prix{
+	background-color: wheat;
+}
+#button{
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 5px;
+
+}
+

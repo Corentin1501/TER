@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=utf-8">  
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <img src="img/logo.png" width="200px" height="120px">
+    <h1>Ah ! Ma Zone</h1>
+  </header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      	
+			<thead>
+        <tr>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Carte mère</th>
+			    <th>4</th>
+          <th>200,00</th>
+        </tr>
+        <tr>
+			    <th>Processeur</th>
+			    <th>4</th>
+			    <th>100,00<th>
+        </tr>
+        <tr>
+          <th>SSD 2 To</th>
+			    <th>4</th>
+			    <th>150,00</th>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th rowspan="2">Total</th>
+			  <th>1800,00</th>
+      </tr>
+    </tfoot>
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form action="add.php" method="post">
+            <label name ="Champ_Produit" id="Produit">Produit:</label>
+            <br>
+            <select style="width:100%;">
+              <option value="1" id="Produit">Clavier</option>
+              <option value="2" id="Produit">Souris</option>
+              <option value="3" id="Produit">Ecran</option>
+            </select>  
+              <br>
+            <label>Quantité:</label>
+            <br>
+              <input type="number" id="Quantité" placeholder="1" min="0" max="10" style="width:100%;">
+            <br>
+            <label>Prix :</label>
+              <input type="text" style="border:2px solid black; width:100%;">
+
+            <br>
+              <input type="submit" value="AJOUTER" style="font-size: 24px; font-size: large; width: 100%; border:1px solid black">
+            <br>
+              <input type="reset" value="RAZ" style="font-size: 24px; font-size: large; width: 100%; border:1px solid black">
+      </form>
+    </section>
+    
+  </main>
+
+  <footer>Copyright 2024 Enzo Côme</footer>
+
+</body>
+</html>
+

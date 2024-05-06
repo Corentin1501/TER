@@ -1,0 +1,112 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+
+}
+
+header {
+	display: flex;
+
+	width: 1920px;
+	height: 200px;
+	background-color: green;
+	
+}
+
+header h1 {
+	font-size: 50px;
+	margin-top:70px;
+	margin-left: 480px;
+}
+
+header img {
+	margin-top: 30px;
+	margin-left: 40px;
+}
+
+footer {
+	background-color: grey;
+	width: 1920;
+	height:100px;
+	text-align: center;
+}
+
+main {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top:10px;
+	height:600px;
+}
+
+section {
+	width:350px;
+	margin:0px;
+	padding-left:20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	padding-top:20px;
+	border-style:solid;
+	border-width: 1px;
+	border-color:black;
+}
+ 
+table{
+	width:300px;
+	border-style:solid;
+	border-width: 1px;
+	border-color:black;
+	margin-top:30px;
+	margin-bottom: 30px;
+	
+}
+
+
+
+table.client {
+	border-style:solid;
+	border-width: 0px;
+	border-color:white;
+	text-align: center;
+}
+
+td.quantité {
+	text-align: center;
+}
+
+tr.quantité {
+	text-align: center;
+}
+
+td.prix {
+	text-align:right ;
+}
+
+tr.prix {
+	text-align: right;
+}
+
+form {
+
+}
+
+

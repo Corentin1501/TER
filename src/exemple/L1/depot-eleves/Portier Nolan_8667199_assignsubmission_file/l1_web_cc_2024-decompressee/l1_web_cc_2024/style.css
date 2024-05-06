@@ -1,0 +1,98 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+	margin: 0; /* garder cette propriété */
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 14px;
+}
+
+header {
+	width: auto;
+	height: 200px;
+	background-color: green;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+header h1 {
+	font-size: 50px;
+}
+
+header img {
+	margin-top: 30px;
+	margin-left: 40px;
+	width: 200px;
+	height: 120px;
+}
+
+footer {
+	display: flex;
+	flex-direction: row;
+	background-color: grey;
+	width: auto;
+	height: 100px;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+    min-height: calc(100vh - 340px);
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	padding: 20px;
+	border: 1px black solid;
+	display: flex;
+	flex-direction: column;
+}
+ 
+table {
+	width: 300px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	align-self: center;
+	border-collapse: collapse;
+}
+
+table td, th {
+	border: 1px black solid;
+}
+
+.client td {
+	border: none;
+}
+
+tbody tr:nth-child(2) {
+	align-content: center;
+}
+
+form {
+
+}
+
+

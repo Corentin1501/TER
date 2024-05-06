@@ -1,0 +1,123 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  width: 100%;
+}
+
+header {
+ width: 100%;
+ height: 200px;
+ background-color: green;
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+
+}
+header h1{
+	font-size: 50px;
+
+}
+header img{
+	position: fixed;
+	top: 30px;
+	left: 40px;
+	width: 200px;
+	height: 120px;
+}
+
+footer {
+	width: 100%;
+	height: 100px;
+	background-color: grey;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 10px ;
+  justify-content: space-around;
+}
+
+section {
+  width: 350px;
+  margin: 0;
+  padding: 20px;
+  border: 1px black solid;
+  
+ 
+}
+section .client{
+	border: 0;
+	text-align: center;
+}
+ 
+table {
+	width: 300px;
+	border-collapse :collapse;
+	border: 2px black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+
+
+}
+.t{
+ text-align:right ;
+}
+
+.l{
+   text-align:center ;
+}
+.o{
+	text-align: center;
+}
+.tbody :nth-child(2n+1){
+	background-color: green;
+}
+.tbody :nth-child(2n){
+	background-color: orange;
+}
+.commande:hover{
+	background-color: grey;
+}
+form {
+  background-color: orange;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+}
+#p{
+	font-size: 24px;
+	text-transform: capitalize bold 24px;
+}
+
+

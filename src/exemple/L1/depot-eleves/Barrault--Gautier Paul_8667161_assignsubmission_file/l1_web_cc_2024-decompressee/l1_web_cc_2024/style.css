@@ -1,0 +1,95 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+
+}
+
+header {
+	height: 200px;
+	background-color: green;
+	position: flex;
+}
+
+h1{
+	height: 50px;
+	text-align: center;
+	
+}
+
+img{
+	position: fixed;
+	margin-top: 30px;
+	margin-left: 40px;
+    width: 200px;
+    height: 120px;
+
+}
+footer {
+    background-color: grey;
+    width: auto;
+    height: 100px;
+	position: flex;
+	text-align: center;
+	padding-bottom: 0;
+}
+
+main {
+	height: 200px;
+	display: inline;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	padding: 20px;
+	border: 1px solid black;
+
+}
+ 
+table {
+	width: 300px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: flex;
+	border-collapse: collapse;
+}
+
+
+form {
+	display: flex;
+	background-color: orange;
+	width: 90%;
+	padding: 20px;
+}
+
+input[type="submit"], input[type="reset"]{
+	font-size: 20px;
+}
+
+textarea
+{
+	background-color: wheat;
+}

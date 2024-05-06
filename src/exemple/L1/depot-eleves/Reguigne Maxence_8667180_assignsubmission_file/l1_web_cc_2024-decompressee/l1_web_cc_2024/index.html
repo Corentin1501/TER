@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CC Dev Web</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" width="200px" height="120px">
+    <h1>Ah! Ma Zone!</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      	<tr>
+          <td><b>Produit</b></td>
+          <td><b>Quantité</b></td>
+          <td><b>Prix</b></td>
+        </tr>
+        <tr>
+          <td>Carte mère</td>
+          <td>4</td>
+          <td>200,00</td>
+        </tr>
+        <tr>
+          <td>Processeur</td>
+          <td>4</td>
+          <td>100,00</td>
+        </tr>
+        <tr>
+          <td>SSD 2 To</td>
+          <td>4</td>
+          <td>150,00</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><b>Total</b></td>
+          <td><b>1800,00</b></td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+      <form action="add.php" method="POST">
+        <input type="" name="Produit" id="id_produit">
+        <input type="" name="Quantité" id="id_quantité">
+        <input type="text" name="Prix" id="id_prix">
+        <input type="submit" name="Ajouter" id="id_ajouter" value="Ajouter">
+        <input type="submit" name="Raz" id="id_raz" value="RAZ">
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>Copyright 2024 Jan Mickael Reacher</p>
+  </footer>
+</body>
+</html>

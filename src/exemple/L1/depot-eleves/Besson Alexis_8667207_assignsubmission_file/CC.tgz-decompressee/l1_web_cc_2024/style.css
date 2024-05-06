@@ -1,0 +1,136 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family : Verdana, Arial, sans-serif;
+}
+
+header {
+    width : 100vw;
+    height : 200px;
+    background-color : green;
+    display : flex;
+}
+
+header h1 {
+    margin-left : 30vw;
+    margin-top : 75px;
+    font-size : 50px;
+    align : center;
+}
+
+header img {
+    width : 200px;
+    height : 120px;
+    margin-left : 40px;
+    margin-top : 30px;
+}
+
+footer {
+    width : 100vw;
+    height : 100px;
+    background-color : grey;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+}
+
+footer p {
+    text-align : center;
+}
+
+main {
+    display :flex;
+    justify-content : space-around;
+    align-items : flex-start;
+    margin-top : 10px;
+    min-height: calc(100vh - 300px);
+}
+
+section {
+    width : 350px;
+    margin : 0px;
+    padding : 20px;
+    border : 1px solid black;
+}
+ 
+table {
+    width : 300px;
+    border : 1px solid black;
+    margin-top : 30px;
+    margin-bottom : 30px;
+    text-align : center;
+}
+
+.commande{
+    border-collapse : collapse;
+    background-color : grey;
+}
+
+.commande:hover{
+    background-color : white;
+}
+
+.commande th,.commande td{
+    border : 1px solid black;
+}
+
+.gauche{
+    text-align : left;
+}
+
+.centrer{
+    text-align : center;
+}
+
+.droite{
+    text-align : right;
+}
+
+.o {
+    background-color : orange;
+}
+
+.g {
+    background-color : green;
+}
+
+.client {
+    border : 0px;
+}
+
+form {
+    display : flex 1;
+    background-color : orange;
+    padding : 20px;
+    width : 315px;
+}
+
+[type = "text"]{
+    background-color : wheat;
+}
+
+[type = "submit"]{
+    height : 35px;
+    font-size : 20px;
+    font-weight : bold;
+    text-transform: capitalize;
+}

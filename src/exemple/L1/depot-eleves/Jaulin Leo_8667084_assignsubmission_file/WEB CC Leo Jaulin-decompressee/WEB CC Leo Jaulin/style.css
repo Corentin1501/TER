@@ -1,0 +1,103 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Arial, sans-serif;
+}
+
+header {
+	width: max-content;
+	height: 200px;
+	background-color: green;
+	display: flex;
+	-ms-flex-align: center;
+}
+header h1 {
+	font-size: 50px;
+}
+
+footer {
+	display: flex;
+	background-color: grey;
+	width: max-content;
+	height: 100px;
+	 
+}header img{
+	
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	height: max-content;
+
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	padding: 20px 20px 20px 20px;
+	border: 1px black;
+}
+ 
+table {
+	width:  300px;
+	border: 1px black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	-ms-flex-align: center;
+
+}
+
+.client  {
+	border-collapse: collapse;
+}
+.commande {
+	border: 1px black;
+	columns: center;
+	background-color: grey;
+}
+.commande :hover{
+	background-color: white;
+}
+
+
+.commande tbody:nth-child(n1+1){
+	color: orange;
+}
+
+.commande tbody:nth-child(n1+2){
+	color: green;
+}
+
+form {
+	background-color: orange;
+	display: flex;
+	flex-direction: column;
+	width: 90vw;
+	padding: 20px;
+
+}
+
+

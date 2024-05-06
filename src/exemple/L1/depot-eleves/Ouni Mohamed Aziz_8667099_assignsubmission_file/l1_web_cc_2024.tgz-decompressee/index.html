@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./tt.css" />
+    </head>
+    <body>
+        <header>
+            <img src="./logo.png" class="img1" />
+            <h1>Ah! ma zone ! </h1>
+        </header>
+        <main>
+            <section>
+                <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+            </section>
+            <section>
+                <h2>Commande</h2>
+      
+      <table class="commande">
+      	<tr>
+            <th>Produit</th>
+			<th class="centr">Quantité</th>
+			<th class="drt">Prix</th>
+            </tr>
+            <tr>       
+			<td>Carte mère</td>
+			<td class="centr">4</td>
+			<td class="drt">200,00</td>
+            </tr>
+            <tr>
+			<td>Processeur</td>
+			<td class="centr">4</td>
+			<td class="drt">100,00</td>
+            </tr>
+            <tr>
+			
+			<td>SSD 2 To</td>
+			<td class="centr">4</td>
+			<td class="drt">150,00</td>
+            </tr>
+            <tr>
+        	<td colspan="1">Total</td>
+			<td>1800,00</td>
+        </tr>
+
+        
+      </table>
+            </section>
+            <section>
+                <h2>Ajouter un Produit</h2>
+
+      <form>
+        <label for="produit">Produit : </label>
+        <select class="produit" name="produit">
+            <option value="1">Clavier</option>
+            <option value="2">Souris</option>
+            <option value="3">Ecran</option>
+        </select><br>
+        <label for="quan">Quantité</label>
+        <input type="number" class="quan" name="quan" min="1" max="10" value="1" /><br>
+        <label for="prix">Prix</label>
+        <input type="text" id="txt" /><br>
+        <input type="submit" id="env" value="Soumettre" /><br>
+        <input type="reset " id="res " value="RAZ" /><br>
+
+
+
+      </form>
+            </section>
+        </main>
+        <footer>
+            <p>Copyright 2024 jan michel ... </p>
+
+        </footer>
+    </body>
+</html>

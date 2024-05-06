@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <header>
+    <img src="./img/logo.png" alt="Ah! Ma Zone!">
+    <h1>Ah! Ma Zone!</h1>
+
+  </header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      <tr></tr>
+      <th>Produit</th>
+      <th>Quantité</th>
+      <th>Prix</th>
+      <tr>
+        <td class="justified-left">Carte mère</td>
+        <td>4</td>
+        <td class="justified-right">200,00</td>
+      </tr>
+      <tr>
+        <td class="justified-left">Processeur</td>
+        <td>4</td>
+        <td class="justified-right">100,00</td>
+      </tr>
+      <tr>
+        <td class="justified-left">SSD 2 To</td>
+        <td>4</td>
+        <td class="justified-right">150,00</td>
+      </tr>
+      <tr>
+        <th colspan="2">Total</th>
+        <th class="justified-right">1800,00</th>
+      </tr>
+
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form>
+
+        <label for="Produit">
+          Produit : <select name="Produit" id="id-produit">
+            <option value="Produit 1">Clavier</option>
+            <option value="Produit 2">Souris</option>
+            <option value="Produit 3">Ecran</option>
+          </select>
+        </label>
+        <br>
+        <label for="Quantité">
+          Quantité : <input type="number" min="0" max="10" value="1">
+        </label>
+        <br>
+        <label for="Prix">
+          Prix <input type="text">
+        </label>
+        <label for="Raz-et-Ajouter">
+          <input type="submit" value="AJOUTER">
+          <input type="reset" value="RAZ">
+        </label>
+
+      </form>
+    </section>
+    
+  </main>
+
+  <footer>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </footer>
+
+
+</body>
+</html>
+

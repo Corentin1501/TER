@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="stylesheet" href="style.css" >
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+
+  <main>
+  <header>
+    <img >
+    <h1>Ah! Ma Zone!</h1>
+  </header>
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      	
+			<th>
+        <td>Produit</td>
+        <td>Quantité</td>
+			  <td>Prix</td>
+      </th>
+    <tbody>
+      <tr> 
+			  <td>Carte mère</td>
+			  <td>4</td>
+			  <td>200,00</td>
+      </tr>
+
+      <tr>
+			  <td>Processeur</td>
+			  <td>4</td>
+			  <td>100,00</td>
+      </tr>
+
+      <tr>
+			  <td>SSD 2 To</td>
+			  <td>4</td>
+			  <td>150,00</td>
+      </tr>
+    </tbody>
+      <tfoot>  	
+        <td colspan="2">Total</td>
+			  <td>1800,00</td>
+      </tfoot>
+        
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form method="post" action="add.php">
+        <label>Produit :</label>
+        <input type="select">
+
+        <br/>
+
+        <label>Quantité :</label>
+        <input type="number" value="1" min="0" max="10">
+        
+        <br />
+
+        <label class="prix">Prix</label>
+        <input type="text">
+
+      <br />
+
+      <input type="submit" value="AJOUTER">
+
+      <br />
+
+      <input type="reset" value="RAZ">
+      </form>
+    </section>
+    
+  </main>
+
+
+</body>
+</html>
+

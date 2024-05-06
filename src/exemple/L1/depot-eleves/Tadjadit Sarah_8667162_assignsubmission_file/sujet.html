@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    </html>
+  </head>
+  <style>
+    header{
+      height: 200px;
+      text-align: center;
+      background-color: green;
+      display: flex;
+    }
+    h1{
+      text-align: center;
+    }
+    img{
+      height: 120px;
+      width: 200px;
+    }
+  
+    main{
+      display flex-direction: line;
+      margin: 10px;
+    }
+    s1{
+      border-left: 1px;
+      
+    }
+    s2{
+      border-style: solid;
+    }
+    th,tr,td{
+      box-sizing: border-box;
+      border: 1px; 
+    }
+    
+    label,input{
+      border: 1px;
+      background-color: orange;
+    }
+    s2 td:nth-child(2n){
+      background-color: orange;
+    }
+    s2 td:nth-child(2n+1){
+      background-color: green;
+    }
+    fieldset{
+      border-spacing: 1px;
+    }
+td:nth-child(2n){
+  color: orange;
+}
+td:nth-child(2n+1){
+  color:green;
+}
+    section{
+      align-items: display: flex: ;
+      border-style: solid;
+      align-items: flex-start;
+      justify-content: space-around;
+    }
+    tabele{
+      border-collapse: collapse;
+    }
+  </style>
+  <body>
+    <header>
+      <img src="logo.pnj">
+      <h1>Libellé "Ah! Ma Zone"</h1>
+    </header>
+    <footer>
+
+<fieldset>
+<section class="s1">
+  <h2>Client</h2>
+  <p>MarcDecader</p>
+<p>123 Rue du percolateur</p>
+<p>75000 Paris</p>
+<p>France</p>
+</section>
+</fieldset>
+<fieldset>
+<section class="s2">
+  <h2>commande</h2>
+  <table style="border-collapse: collapse;" >
+  <tr>
+    <th>Produit</th>
+    <th>Quantité</th>
+    <th>prix</th>
+  </tr>
+  <tr>
+    <td>carte mére</td>
+    <td>4</td>
+    <td>200.00</td>
+  </tr>
+  <tr>
+    <td>processeur</td>
+    <td>4</td>
+    <td>100.00</td>
+  </tr>
+  <tr>
+    <td>SSD 2 td</td>
+    <td>4</td>
+    <td>150.00</td>
+  </tr>
+  <tr>
+    <td colspan="2">total</td>
+    <td>1800.00</td>
+  </tr>
+  </table>
+</fieldset>
+</section>
+<fieldset>
+<section class="s3">
+  <h3>Ajouter un produit</h3>
+  <label for="inp">Produit :</label></br>
+  <input type="checkbox">
+</br>
+<label>quantite :</label></br>
+<input type="genre" placeholder="1"> </br>
+<label>Prix: </label></br>
+<input type="number"> </br>
+<label >Ajouter</label>
+<input type="submit"> </br>
+<label>RAZ</label>
+<input type="submit">
+</fieldset>
+
+</section>
+
+  </body>
+

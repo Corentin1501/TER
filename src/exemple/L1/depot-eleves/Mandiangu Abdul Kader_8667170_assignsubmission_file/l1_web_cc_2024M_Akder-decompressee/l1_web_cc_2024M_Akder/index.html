@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <link rel = "stylesheet" href = "style.css"/>
+    <meta charset="UTF-8"> 
+
+
+    
+
+  </head>
+
+
+  <body>
+    <header> 
+      <img src= "logo.png" alt="logo de l'image" width="200" height="120"/>
+      <h1> Ah! Ma Zone ! </h1>
+
+    </header>
+
+
+    <main>
+    
+      <section>
+        <h2>Client</h2>
+        
+        <table class="client">
+          <tr>
+            <td>Marc Decafer</td>
+          </tr>
+          <tr>
+          
+            <td>123 Rue du Percolateur</td>
+          </tr>
+          <tr>
+          
+            <td>75000 Paris</td>
+          </tr>
+          <tr>
+          
+            <td>France</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Commande</h2>
+        
+        <table class="commande">
+          <tbody>
+
+            
+
+            <tr> 
+              <th> Produit </th>
+              <th> Quantité </th>
+              <th>  Prix </th>
+            </tr>
+            
+            <tr id = "impair"> 
+              <td> Carte mère </td>
+              <td> 4 </td>
+              <td> 200,00</td>
+            </tr>
+
+            <tr id = "pair"> 
+              <td> Processeur</td>
+              <td> 4 </td>
+              <td> 100,00</td>
+            </tr>
+            
+            <tr id ="impair"> 
+              <td> SSD 2 To </td>
+              <td> 4 </td>
+              <td> 150,00</td>
+            </tr>
+
+            <tr> 
+              <td colspan="2"> Total </td>
+              <td> 1800,00</td>
+              
+            </tr>
+          </tbody>
+          
+            
+              
+        </table>
+      </section>
+
+      <section>
+        <h2>Ajouter un Produit</h2>
+
+        <form action="" method="post" name = "formulaire">
+          
+
+          <label> Produit </label>
+          <input type="select" name="nomproduit" value=""/> 
+          <input type = "select" name = "Clavier" value = "1"/> 
+          <input type = "select" name = "souris" value = "2"/> 
+          <input type = "select" name = "Ecran" value = "3"/> 
+
+          <br/> 
+
+          <label> Quantité </label>
+          <input type="number" name="quantite" value = "" id = "numberu" min = "1" max="10"/>
+
+          <br/>
+
+          <label> Prix </label>
+          <input type = "text" name="Prix" value = "" id = "prix"/> 
+
+          <br/> 
+
+          <button type = "submit" name="ajouter" value = "" id = "ajouter"> Ajouter </button>
+          <br/>
+
+          <button  type="reset" name = "Raz" value = "" id="ajouter"> Raz </button>
+
+
+        </form>
+      </section>
+      
+    </main>
+
+
+  </body>
+  <footer> 
+    <p> MANDIANGU Abdul Kader </p>
+    
+
+  </footer>
+</html>
+

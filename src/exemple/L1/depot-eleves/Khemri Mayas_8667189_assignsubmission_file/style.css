@@ -1,0 +1,116 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Arial, sans-serif;
+  line-height: 14px;
+}
+
+header {
+ padding: 200px auto;
+ background-color: green;
+ display: flex;
+
+}
+header img {
+	
+	
+	margin: 30px 40px;
+ text-align:left ;
+}
+	
+h1{
+	font-size: 50px;
+	text-align: center;
+	margin: auto;
+}
+
+
+
+main {
+display: flex;
+justify-content: space-around;
+align-items: flex-start;
+margin-top: 10px;
+margin-bottom:420px;
+}
+
+section {
+width: 350px;
+margin: 0;
+padding: 20px;
+border: 1px solid black;
+}
+ 
+table {
+	width: 300px;
+	border: 1px solid black;
+	margin: 30px auto;
+	text-align: center;
+}
+#ta
+{
+	border: 1px solid black;
+}
+
+.commande tr:nth-child(2n){
+
+	background-color: green;
+}
+.commande tr:nth-child(2n+1){
+	background-color: orange;
+}
+.client{
+	border: 0px;
+}
+.commande{
+	border: 1px solid blqck;
+	border-collapse: collapse;
+}
+.commande:hover{
+	background-color: gray;
+	color: white;
+}
+.prix{
+	text-align: right;
+}
+
+form {
+	background-color: orange;
+	padding: 20px;
+	width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+#text{
+	background-color: wheat;
+}
+footer p{
+	
+	height: 100px;
+	background-color: grey;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin-bottom: 0px;
+	
+}
+

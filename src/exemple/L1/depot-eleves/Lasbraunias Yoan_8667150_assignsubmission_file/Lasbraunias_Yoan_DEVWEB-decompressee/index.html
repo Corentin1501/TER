@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="/home/ylasbraunias/Documents/HTML CC/l1_web_cc_2024/style.css">
+
+</head>
+
+<body>
+  <header>
+    <img 
+      src="/home/ylasbraunias/Documents/HTML CC/l1_web_cc_2024/img/logo.png"
+      width="200" height="120">
+    <h1>
+      Ah! Ma Zone!
+    </h1>
+  </header>
+
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      <thead>
+        <tr id=""> 
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+        </tr>
+      </thead>	
+			<tbody id="commande">
+        <tr id="paire">
+          <td>Carte mère</td>
+          <td>4</td>
+          <td>200,00</td>
+        </tr>
+        <tr id="impaire">
+          <td>Processeur</td>
+          <td>4</td>
+          <td>100,00</td>
+        </tr>
+        <tr id="paire">
+          <td>SSD 2 To</td>
+          <td>4</td>
+          <td>150,00</td>
+        </tr>
+        <tr>
+          <th colspan="2">Total</th>
+          <th>1800,00</th>
+        </tr>
+      </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form post="add.php">
+        <label>Produit</label>
+        <select name="Produit">
+          <option value="1">Clavier</option>
+          <option value="2">Souris</option>
+          <option value="3">Ecran</option>
+        </select>
+        <label>Quantité</label>
+        <input type="number" min="0" max="10" value="1">
+        <label>Prix</label>
+        <input type="text" name="text" id="text">
+      </br>
+        <input type="submit" value="AJOUTER">
+    </br>
+        <input type="reset" value="RAZ">
+      </form>
+    </section>
+    
+  </main>
+  <footer>
+    <p>Copyright 2024 Lasbraunias Yoan L1MI2A</p>
+  </footer>
+
+</body>
+</html>
+

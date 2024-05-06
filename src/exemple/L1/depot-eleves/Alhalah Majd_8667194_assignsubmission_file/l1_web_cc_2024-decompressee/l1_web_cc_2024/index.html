@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Ah! Ma Zone!</title>
+</head>
+
+<body>
+
+  <header>
+    <img src="./img/logo.png" alt="Ah! Ma Zone!" />
+    <h1>Ah! Ma Zone!</h1>
+  </header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+
+        <tr>
+          <td>123 Rue du Percolateur</td>
+        </tr>
+
+        <tr>
+          <td>75000 Paris</td>
+        </tr>
+
+        <tr>
+          <td>France</td>
+        </tr>
+      </table>
+
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      	
+        <thead>
+          <tr>
+            <th colspan="3">Produit</th>
+            <th colspan="3">Quantité</th>
+            <th colspan="3">Prix</th>
+          </tr>
+        </thead>
+
+        <tfoot>
+          <tr>
+            <th colspan="6"> Total</th>
+            <th colspan="3" class="right">1800,00</th>
+          </tr>
+        </tfoot>
+
+        <tbody>
+          <tr>
+            <td colspan="3">Carte mère</td>
+            <td colspan="3" class="center">4</td>
+            <td colspan="3" class="right">200,00</td>
+          </tr>
+
+          <tr>
+            <td colspan="3">Processeur</td>
+            <td colspan="3" class="center">4</td>
+            <td colspan="3" class="right">100,00</td>
+          </tr>
+
+          <tr>
+            <td colspan="3">SSD 2 To</td>
+            <td colspan="3" class="center">4</td>
+            <td colspan="3" class="right">150,00</td>
+          </tr>
+        </tbody>
+        
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form method="post" action="./add.php">
+        <label for="Produit">Produit:</label>
+        <select name="Produit" id="Produit">
+          <option value="1" id="1">Clavier</option>
+          <option value="2" id="2">Souris</option>
+          <option value="3" id="3">Ecran</option>
+        </select> <br />
+        <label for="Quantite">Quantité:</label>
+        <input name="Quantite" type="number" value="1" min="0" max="10" id="Quantite" /> <br />
+        <label for="Prix">Prix:</label>
+        <input name="Prix" type="text" id="Prix"> <br />
+        <button type="submit" name="Submit" id="Submit">Ajouter</button> <br />
+        <button type="reset" name="Reset" id="Reset">RAZ</button>
+      </form>
+
+    </section>
+    
+  </main>
+
+  <footer>
+    <p>Copyright 2024 Jan Mickael Reacher</p>
+  </footer>
+
+</body>
+</html>
+

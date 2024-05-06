@@ -1,0 +1,145 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family:Verdana,Arial,sans-serif;
+  font-size: 14px;
+}
+
+
+
+
+
+
+
+header {
+	
+ width:auto;
+ height: 200px;
+ background:green;
+ display:flex;
+align-items: center;
+}
+header h1{
+	font-size: 50px;
+	border: auto;
+
+}
+img{
+	margin-top: 10px;
+	margin-left: 40px;
+	width: 200px;
+	height: 120px;
+}
+
+footer {
+	display: flex;
+	align-items: center;
+ background: grey;
+ width: auto;
+ height: 100px;
+
+}
+
+main {
+	display: flex;
+    flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	height:auto;
+
+
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	padding: 20px;
+	border: 1px black solid;
+}
+
+ 
+table{
+	width: 300px;
+	border: 1px black solid;
+	margin: 30px 0px;
+	display: flex;
+	align-items: center;
+	
+}
+.client{
+	border: 0;
+}
+
+
+
+
+
+.qnt{
+	text-align: center;
+
+}
+.prix{
+display: flex;
+justify-content: end;
+}
+.total{
+	text-align: center;
+}
+.command~tr:nth-child(2n){
+	color: green;
+}
+.command :nth-child(2n+1){
+	color: orange;
+
+}
+.command{
+	background: gray;
+}
+.command:hover{
+background: white;
+}
+
+
+
+
+form {
+	background: orange;
+display: flex;
+flex-direction: column;
+width: 90%;
+padding: 20px;
+
+}
+#pr{
+	background: wheat;
+}
+.aj{
+	font-size: 24px;
+	text-transform: capitalize;
+	font-weight: bold;
+	width: auto;
+
+
+}
+
+

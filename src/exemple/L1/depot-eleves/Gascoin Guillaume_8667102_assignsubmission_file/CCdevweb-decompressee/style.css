@@ -1,0 +1,145 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-size: 14px;
+  font-family: Verdana;
+
+
+}
+
+header {
+	width: 100%;
+	height: 200px;
+	background-color: green;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+ 
+}
+
+footer {
+	width: 100%;
+	height: 100px;
+	background-color: gray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+header h1
+{
+	font-size: 50px;
+}
+header img
+{
+	position: fixed 30px top 40px left;
+	width:200px ;
+	height: 120px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-top:10px;
+
+}
+
+section {
+
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+	margin:0;
+	padding:20px;
+	border: 1px black solid;
+    width: 350px;
+}
+ 
+table {
+	width: 300px;
+	border:1px black solid;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: center;
+
+}
+.client
+{
+    border: 0px;
+}
+
+.centrer{
+
+	text-align: center;
+}
+.commande 
+{
+    border:1px black solid
+}
+.commande:tbody:nth-child(2n)
+{
+    background-color:green;
+}
+.commande:tbody:nth-child(2n+1)
+{
+    background-color:orange;
+}
+.commande table,td,th,tr
+{
+    border:1px black solid:
+}
+.left
+{
+	text-align: left;
+}
+.right
+{
+	text-align: right;
+}
+form {
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding:20px;
+
+}
+#id-texte
+{
+    background-color: wheat;
+}
+#id-reset
+{
+    text-transform:uppercase;
+    font-size: 24px;
+    
+}
+#id-envoyer
+{
+    text-transform:uppercase;
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+

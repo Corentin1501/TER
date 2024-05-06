@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+  
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet"  href="style.css">
+
+</head>
+
+<body>
+  <header>
+    <h1>Ah! Ma Zone!</h1>
+    <img src="img/logo.png">
+  </header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande" border="2">
+      <thead class="n">
+			<th>Produit</th>
+			<th>Quantité</th>
+			<th>Prix</th>
+    </thead>	
+    <tbody class="tbody">
+      <tr >
+			<td class="h">Carte mère</td>
+			<td class="l">4</td>
+			<td class="t">200,00</td>
+    </tr>
+     <tr>
+			<td class="h">Processeur</td>
+			<td class="l">4</td>
+			<td class="t">100,00</td>
+    </tr>
+    <tr>
+			<td class="h">SSD 2 To</td>
+			<td class="l">4</td>
+			<td class="t">150,00</td>
+    </tr>
+    </tbody>
+      <tfoot>
+        <tr >
+        	<td colspan="2" class="o">Total</td>
+			   <td>1800,00</td>
+    </tr>
+    </tfoot>	
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form method="post" action="add.php">
+     <fieldset>
+      <label for="m"> produit:</label>
+      <input type="select" name="produit" id="a" >
+       <select>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+       </select>
+       <br/>
+       <label for="z">Quantité:</label>
+       <input type="number" name="numero" id="a" value="">
+     
+    <br/>
+    <label for="1">prix</label>
+    <input type="text" name="prix" id="q" >
+
+    <br/>
+    <label for="2"></label>
+    <input type="submit" name="ajout" id="p" value="Ajouter">
+    <br/>
+    <label for="3"></label>
+    <input type="reset" name="ajout" id="p" value="raz">
+  </fieldset>
+      </form>
+    </section>
+    
+  </main>
+
+
+ 
+</body>
+<footer>
+  <p>copyright 2024 Jan Mickael Reacher</p>
+ </footer>
+
+</html>
+

@@ -1,0 +1,126 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-size: 14px;
+  font-family: Verdana,Arial,sans-serif;
+
+}
+
+header h1{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 200px;
+	background-color: green;
+	font-size: 50px ;
+}
+
+header img{
+	position: fixed;
+	margin-top: 30px;
+	margin-left: 40px;
+	height: 120px;
+	width: 200px;
+	
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: gray;
+	width: 100%;
+	height: 100px;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	margin-top: 10px;
+	width: 100%;
+	height: 611px;
+}
+
+article{
+	width: 50px;
+}
+
+section {
+	width: 350px;
+	margin: 0px;
+	padding: 20px;
+	border: solid 1px black;
+}
+ 
+table {
+	width: 300px;
+	border: solid 1px black;
+	border-collapse: collapse;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+.client{
+	border: solid 0px black;
+	text-align: center;
+}
+.commande tbody tr :first-child{
+	text-align: left;
+	background-color: orange;
+}
+.commande tbody tr :last-child{
+	text-align: right;
+	background-color: orange;
+}
+.commande tbody tr :nth-child(2){
+	text-align: center;
+	background-color: green;
+}
+.commande tr, .commande td, .commande th{
+	border: solid black 1px;
+}
+.commande tr :hover{
+	background-color: gray;
+	color: white;
+}
+
+
+form {
+	background-color: orange;
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	padding: 20px;
+}
+
+input[type=text] {
+	background-color: wheat;
+}
+
+.bouton{
+	font-size: 24px;
+	size: 24px;
+	font-weight: bold;
+	font-variant: initial;
+}

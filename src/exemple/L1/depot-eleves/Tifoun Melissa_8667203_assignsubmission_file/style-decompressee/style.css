@@ -1,0 +1,148 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    
+}
+
+header {
+ width: auto;
+ height: 200px;
+ background-color: green;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+}
+
+header h1{
+    font-size: 50px;
+}
+
+header p img{
+    position: fixed;
+    top: 30px; left: 40px;
+    width: 200px;
+    height: 120px;
+}
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    width: auto;
+    height: 100px;   
+    
+    margin: 0;
+
+}
+main section{
+   
+    margin-top: 10px;
+    width: 350px;
+    margin: 0;
+    padding: 20px;
+    border: 1px;
+    border-color: black;
+}
+main {
+ display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+table section{
+    width: 300px;
+    border: 1px;
+    border-color: black;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-self: center;
+}
+.client{
+    border: 1px;
+    border-style: double;
+    border-color: black;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.comm{
+    border: 1px;
+    border-style: double;
+    border-color: black;
+    margin-top: 20px;
+}
+.formulaire{
+    border: 1px;
+    border-style: double;
+    border-color: black;
+    margin-top: 20px;
+}
+
+.commande{
+    border-collapse: collapse;
+}
+
+.commande tr:nth-child(2n+1){
+background-color: orange;
+}
+
+.commande tr:nth-child(2n){
+background-color: green;
+}
+
+.commande tr:hover{
+    background-color: gray;
+    color: white;
+}
+
+table.commande td{
+    text-align: center;
+}
+
+form {
+background-color: orange;
+display: flex;
+flex-direction: column;
+width: 90%;
+padding: 20px;
+
+}
+
+input#prix{
+     background-color:wheat;
+     border-color: black;
+}
+
+form button{
+    height: 30px;
+    
+    text-transform: uppercase;
+    font-weight: bold;
+    height: 24px;
+}

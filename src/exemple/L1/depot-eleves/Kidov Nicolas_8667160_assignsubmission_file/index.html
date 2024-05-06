@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <link href="style.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <header>
+    <h1>Ah! Ma Zone!</h1>
+    <img class="logo src" src="Documents/l1_web_cc_2024/img/logo.png">
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Client</h2>
+
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+
+      <table class="commande">
+        <tr>
+          <td>Produit</td>
+          <td class="Quantité">Quantité</td>
+          <td class="prix">Prix</td>
+        </tr>
+        <tr class="impair">
+          <td>Carte mère</td>
+          <td class="Quantité">4</td>
+          <td class="prix">200,00</td>
+        </tr>
+        <tr class="pair">
+          <td >Processeur</td>
+          <td class="Quantité">4</td>
+          <td class="prix">100,00</td>
+        </tr>
+        <tr class="impair">
+          <td >SSD 2 To</td>
+          <td class="Quantité">4</td>
+          <td class="prix">150,00</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td class="prix">1800,00</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form method="post" action="">
+        <p>
+          <label for="produit">Produit: </label><br>
+          <select name="produit" id="produit">
+            <option value="clavier">Clavier</option>
+            <option value="Souris">Souris</option>
+            <option value="Ecran">Ecran</option>
+          </select>
+        </p>
+        <p>
+          Quantité: <br>
+          <imput type="number" value="nombre" name="nombre" min="1" max="10"></imput>
+          
+
+        </p>
+      </form>
+    </section>
+
+  </main>
+  <footer>
+    <p></p>
+  </footer>
+
+</body>
+
+</html>

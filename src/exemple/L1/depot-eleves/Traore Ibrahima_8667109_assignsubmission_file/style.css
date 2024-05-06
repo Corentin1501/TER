@@ -1,0 +1,120 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+    font-family:Verdana, arial, sans-serif ;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+
+}
+
+header {
+	background-color: green;
+	display: flex;
+	flex-flow: row,wrap;
+	height: 200px;
+	align-items: center;
+    text-align: center;
+	
+
+
+}
+img{
+	align-self: ;
+	height: 120px;
+	width: 200;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+h1{
+	font-size: 50px;
+    text-align: center;
+    align-items: center;
+}
+footer {
+	display: flex;
+	background-color: gray;
+    flex-flow: wrap;
+    align-items: flex-end;
+    text-align: center;
+
+ 
+}
+
+main {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: space-around;
+}
+
+section {
+    flex-flow: wrap;
+	display: flex;
+	flex-direction: row;
+
+	align-items: flex-start;
+	margin-top: 10px;
+    width: 350px;
+    margin: 0;
+    padding: 20px;
+    border-color: black;
+    border: solid;
+
+}
+ 
+table {
+    width: 300px;
+    border-color: black;
+    border: solid;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    align-items: center;
+
+}
+
+.commande{
+    border: solid,black,1px;
+
+}
+.commande tr:nth-child(odd){
+    background-color: orange;
+}
+.commande tr:nth-child(even):nth-child(even){
+    background-color: green;
+}
+.commande:hover{
+    background-color: gray;
+    color: white;
+}
+
+.client{
+    border: 0;
+    text-align: center;
+}
+
+form {
+    background-color: orange;
+    display: flex;
+    flex-flow: column;
+    width: 90%;
+    padding: 20px;
+
+}
+
+

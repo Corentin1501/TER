@@ -1,0 +1,109 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, arial, sans-serif;
+  font-size: 14px;
+}
+
+header {
+	height: 200px;
+	width: 100%;
+	background-color: green;
+	flex-direction: row;
+	flex: content=center;
+}
+header h1{
+	font-size: 50px;
+}
+header img{
+	margin-top: 30px;
+	margin-left: 40px;
+	height: 120px;
+	width: 200px;
+}
+
+footer {
+	flex-direction: row;
+	background-color: grey;
+	height: 100px;
+	width: 100px;
+}
+
+main {
+	flex-direction: row;
+	justify-content: space-around;
+	flex-direction: flex-start;
+	margin-top: 10px;
+	height: max-content;
+}
+
+section {
+	width: 350px;
+	margin:0;
+	padding: 20px 20px;
+	border-radius: 1px;
+	border-color: black;
+	
+}
+
+section table{
+	flex: content center;
+}
+
+table {
+	width: 300px;
+	border-radius: 1px;
+	border-color: black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	
+}
+
+.client{
+	border-collapse: collapse;
+}
+
+.commande{
+	border-radius: 1px;
+	border-color: black;
+	/* ne me souvenant plus de quelle commande "child utiliser, je vais faire une classe paire et une impaire*/
+}
+.quantite{
+	text-align: center;
+}
+.prix{
+	text-align: right;
+}
+.titre{
+	text-align: center;
+}
+.impaire{
+	background-color: orange;
+}
+.paire{
+	background-color: green;
+}
+form {
+
+}
+
+

@@ -1,0 +1,156 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+
+}
+
+header {
+	height: 200px;
+	width: 100%;
+	background-color: green;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+}
+header h1 {
+	font-size: 50px;
+}
+
+header img {
+	position: absolute;
+	top:30px;
+	left:40px;
+	height: 120px;
+	width: 200px;
+
+}
+
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: grey;
+	width: 100%;
+	height: 100px;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	height: calc(100vh - 300px);
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	padding: 20px;
+	border: solid black 1px;
+	
+	
+}
+ 
+table {
+	width: 300px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border: solid black 1px;
+	border-collapse: collapse;
+	
+
+}
+
+.client {
+	border:none;
+	text-align: center;
+
+}
+
+.commande {
+	border: solid black 1px;
+
+
+}
+
+.commande td {
+	border: solid black 1px;
+}
+
+.commande th {
+	border: solid black 1px;
+}
+
+.quantite {
+	text-align: center;
+}
+
+.prix {
+	text-align: right;
+}
+
+
+.commande tbody tr:nth-child(even) {
+	background: green;
+}
+
+.commande tbody tr:nth-child(odd) {
+	background: orange;
+}
+
+.commande tr:hover {
+	background: grey;
+	color:white;
+
+}
+
+.commande tbody tr:hover {
+	background: grey;
+	color:white;
+
+}
+
+form {
+	background-color: orange;
+	display: flex;
+	flex-direction: column;
+	columns: 1;
+	width: 90%;
+	padding: 20px;
+
+}
+
+input[type="text"] {
+	background-color: wheat;
+}
+
+input[type="submit"],input[type="reset"] {
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: bold;
+
+}
+

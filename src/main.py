@@ -1,7 +1,9 @@
 from Regles import *
 import re
+import os
 
 import cssutils
+import tinycss2
 
 #============ Lecture des fichiers ============
 
@@ -19,29 +21,32 @@ def read_rules(filename):
     return rules
 
 def get_css_rules_from_file(css_content):
-    # Parser le fichier CSS
-    sheet = cssutils.parseString(css_content)
+    try:
+        # Utiliser tinycss2 pour parser le contenu CSS
+        rules = tinycss2.parse_stylesheet(css_content)
 
-    rules = []
+        # Créer une liste pour stocker les règles CSS
+        css_rules = []
 
-    # Parcourir les règles CSS
-    for index, rule in enumerate(sheet):
-        if rule.type == rule.STYLE_RULE:
-            selectors_string = rule.selectorText
+        # Parcourir les règles CSS
+        for index, rule in enumerate(rules):
+            # Vérifier si la règle est un style
+            if rule.type == 'qualified-rule':
+                # Extraire les sélecteurs
+                selectors = [selector.serialize().strip() for selector in rule.prelude if selector.type == 'literal']
+                
+                # Extraire les propriétés
+                properties = {declaration.name.strip(): declaration.value.strip() for declaration in rule.content if declaration.type == 'declaration'}
+                
+                # Créer un objet CSS_rule avec les sélecteurs et les propriétés
+                new_rule = CSS_rule(selectors, properties, index)
+                css_rules.append(new_rule)
 
-            # Utiliser une expression régulière plus précise pour diviser les sélecteurs
-            selectors = re.findall(r'[^,{]+', selectors_string)
-
-            selectors = [s.strip() for s in selectors if s.strip()]  # Enlever les espaces vides et vides
-
-            properties = {}
-            for prop in rule.style:
-                properties[prop.name] = prop.value
-
-            new_rule = CSS_rule(selectors, properties, index)
-            rules.append(new_rule)
-
-    return rules
+        return css_rules
+    
+    except Exception as e:
+        print("Erreur lors de l'analyse du fichier CSS:", e)
+        return []
 
 #============ Decoupage des regles HTML / CSS ============
 
@@ -300,6 +305,54 @@ def verif_all_rules(html_rules, css_rules, logical_rules):
 
 #============ Main ============
 
+def get_student_files(directory_path):
+    # Dictionnaire pour stocker les liens entre élèves et fichiers HTML/CSS
+    liens_eleves_fichiers = {}
+
+    # Fonction récursive pour trouver les fichiers HTML et CSS
+    def find_html_css_file(chemin_dossier):
+        chemin_html = ""
+        chemin_css = ""
+        for racine, _, fichiers in os.walk(chemin_dossier):
+            for fichier in fichiers:
+                if fichier.endswith('.html'):
+                    chemin_html = os.path.join(racine, fichier)
+                elif fichier.endswith('.css'):
+                    chemin_css = os.path.join(racine, fichier)
+        return chemin_html, chemin_css
+
+    # Parcours des dossiers des élèves
+    for dossier_eleve in os.listdir(directory_path):
+        nom_prenom = dossier_eleve.split('_')[0]
+        chemin_dossier_eleve = os.path.join(directory_path, dossier_eleve)
+
+        if os.path.isdir(chemin_dossier_eleve):
+            chemin_html, chemin_css = find_html_css_file(chemin_dossier_eleve)
+            liens_eleves_fichiers[nom_prenom] = (chemin_html, chemin_css)
+        else:
+            print(chemin_dossier_eleve, "n'est pas un dossier")
+
+    return liens_eleves_fichiers
+
+
+def verif_student(student_file, html_rules, css_rules, logical_rules):
+    # HTML
+    html_content = read_file(student_file[0])
+    # CSS
+    css_content = read_file(student_file[1])
+    css_file_rules = get_css_rules_from_file(css_content)
+
+    set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
+
+    verif_all_rules(html_rules, css_rules, logical_rules)
+
+def verif_all_students(students_files, html_rules, css_rules, logical_rules):
+
+    for nom_prenom, fichiers in students_files.items():
+        print("⏳ Verification de", nom_prenom, "⏳")
+        verif_student(fichiers, html_rules, css_rules, logical_rules)
+        print()
+
 def main():
 
     #*********** Noms des fichiers en ligne de commandes ***********
@@ -310,32 +363,32 @@ def main():
 
     #*********** Ou directement ici ***********
 
-    rules_file = "src/regles.txt"
-    html_file = "src/index.html"
-    css_file = "src/style.css"
+    rules_file = "src/exemple/regles.txt"
+    # html_file = "src/exemple/L1/test-perso/index.html"
+    # css_file = "src/exemple/L1/test-perso/style.css"
 
     #*********** Affichage des règles ***********
 
-    display_rules = True
+    display_rules = False
 
     #*********** Faire la vérification ***********
 
-    verif_rules = True
+    verif_rules = False
     
     #*********** Lire les fichiers ***********
     # HTML
-    html_content = read_file(html_file)
+    # html_content = read_file(html_file)
 
     # CSS
-    css_content = read_file(css_file)
-    css_file_rules = get_css_rules_from_file(css_content)
+    # css_content = read_file(css_file)
+    # css_file_rules = get_css_rules_from_file(css_content)
     
     # Règles
     html_rules, css_rules, logical_rules = get_rules(read_rules(rules_file))
 
     #*********** Attribution des fichiers correspondant aux règles ***********
 
-    set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
+    # set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
 
     #*********** Affichage ***********
 
@@ -345,9 +398,15 @@ def main():
 
     #*********** Verification ***********
 
-    if verif_rules:
-        verif_all_rules(html_rules, css_rules, logical_rules)
+    # if verif_rules:
+    #     verif_all_rules(html_rules, css_rules, logical_rules)
 
+    fichiers = get_student_files("src/exemple/L1/petit-depot-eleves")
+
+    verif_all_students(fichiers,html_rules, css_rules, logical_rules)
+    
+
+    # print(fichiers)
 
 
 if __name__ == "__main__":

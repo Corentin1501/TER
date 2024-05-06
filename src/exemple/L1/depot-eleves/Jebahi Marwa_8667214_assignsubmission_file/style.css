@@ -1,0 +1,128 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+
+}
+
+header {
+	width: 100%;
+ height: 200px;
+ background-color: green;
+ display: flex;
+ justify-content: center;
+}
+
+header h1 {
+	font-size: 50px;
+}
+
+header img{
+	display: flex;
+	justify-content: left;
+	height: 200px;
+	margin-left: 40px;
+}
+
+footer {
+ display: flex;
+ justify-content: center;
+ background-color: grey;
+ width: 100%;
+ height: 100px;
+}
+
+main {
+
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	display: inline-flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	padding: 20px;
+	border: 1px, black, solid;
+	border-color: black;
+}
+ 
+table {
+	width: 300px;
+	border: 1px, black, solid;
+	border-color: black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+table.client{
+	border: none;
+}
+
+.commande table{
+	width: 100px;
+}
+
+.quant{
+	display: flex;
+	justify-content: center;
+}
+
+.prix{
+	text-align: right;
+}
+
+.total{
+	text-align: center;
+}
+
+.commande tr:nth-child(2n+1){
+	background-color: orange;
+}
+
+.commande tr:nth-child(2n){
+	background-color: green;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	background-color: orange;
+	width: 90%;
+	padding: 20px;
+}
+
+#prix{
+	background-color: wheat;
+}
+
+.bouton{
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+

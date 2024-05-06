@@ -1,0 +1,113 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+
+}
+
+header {
+	display: flex;
+ background-color: green;
+ height: 200px;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+ 
+}
+h1{
+	font-size: 50px;
+}
+header>img{
+position: fixed;
+left: 40px;
+top: 30px;
+width: 200px;
+height: 120px;
+}
+
+footer {
+ background-color: grey;
+ height: 100px;
+ display: flex;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+}
+
+main {	
+	font-family: verdana,Arial,sans-serif;
+	font-size: 14px;
+	height: max-content;
+	flex-direction: row;
+ justify-content: space-around;
+ align-items: flex-start;
+ margin-top: 10px;
+ max-height: fit-content;
+}
+
+section {
+display: flex;
+
+width: 350px;
+margin: 0;
+padding: 20px;
+border: solid;
+border-width: 1px;
+border-color: black;
+}
+ 
+table {
+	width: 300px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+td,th{
+	border: solid;
+	border-width: 1px;
+	border-color: black;
+	border-collapse: collapse;
+}
+section:first-of-type {
+	border: none;
+}
+tbody>tr:nth-child(2n+2){
+	background-color: green;
+}
+tbody>tr:nth-child(2n+1){
+	background-color: orange;
+}
+tr:nth-child(2n)
+{
+	justify-content: center;
+}
+.commande:hover{
+	background-color: grey;
+}
+form {
+	display: flex;
+	background-color: orange;
+	flex-direction: column;
+	width: 90%;
+	padding: 20px;
+
+}
+
+

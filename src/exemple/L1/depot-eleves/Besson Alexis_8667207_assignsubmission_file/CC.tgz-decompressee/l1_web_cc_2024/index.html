@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <img src="img/logo.png">
+        <h1>Ah! Ma Zone!</h1>
+    </header>
+        <main>
+        <section>
+        <h2>Client</h2>
+        <table class="client">
+            <tr>
+            <td>Marc Decafer</td>
+            </tr>
+            <tr>
+            
+            <td>123 Rue du Percolateur</td>
+            </tr>
+            <tr>
+            
+            <td>75000 Paris</td>
+            </tr>
+            <tr>
+            
+            <td>France</td>
+            </tr>
+        </table>
+        </section>
+
+        <section>
+        <h2>Commande</h2>
+        
+        <table class="commande">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Quantité</th>
+                    <th>Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="gauche o">Carte mère</td>
+                    <td class="centrer o">4</td>
+                    <td class="droite o">200,00</td>
+                </tr>
+                <tr>
+                    <td class="gauche g">Processeur</td>
+                    <td class="centrer g">4</td>
+                    <td class="droite g">100,00</td>
+                </tr>
+                <tr>
+                    <td class="gauche o">SSD 2 To</td>
+                    <td class="centrer o">4</td>
+                    <td class="droite o">150,00</td>
+                </tr>
+            </tbody>
+            <tfooter>
+                <tr>
+                    <td colspan = "2"  class="centrer">Total</td>
+                    <td class="droite">1800,00</td>
+                </tr>
+            </tfooter>
+        </table>
+        </section>
+
+        <section>
+        <h2>Ajouter un Produit</h2>
+        <form post="add.php">
+            <label>Produit :</label>
+            <br>
+            <select>
+                <option value="1">Clavier
+                <option value="2">Souris
+                <option value="3">Ecran
+            </select>
+            <br>
+            <br>
+            <label>Quantité :</label>
+            <br>
+            <input type="number" min="0" max="10" value="1">
+            <br>
+            <br>
+            <label>Prix :</label>
+            <br>
+            <input type="text">
+            <br>
+            <br>
+            <input type="submit" value="AJOUTER">
+            <br>
+            <br>
+            <input type="submit" value="RAZ">
+        </form>
+        </section>
+        
+    </main>
+    <footer>
+        <p>Copyright 2024 Besson Alexis</p>
+    </footer>
+</body>
+</html>
+

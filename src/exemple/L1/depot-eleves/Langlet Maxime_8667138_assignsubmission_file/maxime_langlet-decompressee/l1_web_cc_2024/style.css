@@ -1,0 +1,137 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font:Verdana, Arial, sans-serif, 14px;
+
+}
+
+header {
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	width:100%;
+	height:200px;
+	background-color: green;
+}
+
+header h1 {
+	font-size:50px;
+}
+
+header img {
+	position:fixed;
+	top:30px;
+	left:40px;
+	height:120px;
+	width:200px;
+}
+
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: grey;
+	width:100%;
+	height: 100px;
+}
+
+main {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;	
+	top:200px;
+	height: calc(100vh -300);
+	margin-top: 10px;
+}
+
+section {
+	width:350px;
+	margin:0px;
+	padding: 20px;
+	align-content: center;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+}
+ 
+table {
+	width:300px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+tr, td {
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+}
+
+.client tr{
+	border-width: 0px;
+}
+
+.client td{
+	border-width: 0px;
+}
+
+.quantite {
+	text-align: center;
+}
+
+.prix {
+	text-align: right;
+}
+
+.commande tbody tr:nth-child(odd) {
+	background-color: orange;
+}
+
+.commande tbody tr:nth-child(even) {
+	background-color: green;
+}
+
+.commande tbody tr:hover {
+	background-color: black;
+	color: white;
+}
+
+form {
+	background-color: orange;
+	display: flex;
+	flex-direction: column;
+	width:90%;
+	padding:20px;
+}
+
+input[type="text"] {
+	background-color: wheat;
+}
+
+form input[type="submit"], input[type="reset"] {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size:24px;
+}
+
+

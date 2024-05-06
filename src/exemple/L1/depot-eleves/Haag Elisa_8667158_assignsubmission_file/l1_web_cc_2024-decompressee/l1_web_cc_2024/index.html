@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./style.css"/>
+</head>
+
+<body>
+
+
+  <main>
+    <header>
+      <img src="./img/logo.png" alt="logo"></a>
+      <h1>Ah! Ma Zone !</h1>
+    </header>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      	<thead>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Carte mère</td>
+            <td>4</td>
+            <td>200,00</td>
+          </tr>
+          <tr>
+            <td>Processeur</td>
+            <td>4</td>
+            <td>100,00</td>
+          </tr>
+          <tr>
+            <td>SSD 2 To</td>
+            <td>4</td>
+            <td>150,00</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <td colspan="2">Total</td>
+          <td>1800,00</td>
+        </tfoot>
+        
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form method="post" action="add.php">
+        <label>produit</label>
+       
+        <label>quantité</label>
+        <input type="range" max="10 " min="0">
+        <label>Prix</label>
+        <input type="text">
+        <input type="submit" value="AJOUTER">
+        <input type="reset"  value="raz">
+
+      </form>
+    </section>
+    
+  </main>
+  <footer>
+   <p> copyright 2024 Jan Mickael Reacher</p>
+  </footer>
+
+
+</body>
+</html>
+

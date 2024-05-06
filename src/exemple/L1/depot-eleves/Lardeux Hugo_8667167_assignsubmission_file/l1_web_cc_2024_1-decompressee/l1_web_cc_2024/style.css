@@ -1,0 +1,145 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 14px;
+}
+
+
+
+header {
+display: flex;
+width: 100%;
+height: 200px;
+background-color: green;
+justify-content: center;
+align-items: center;
+}
+
+header h1{
+font-size: 50px;
+}
+
+header img{
+	top: 30px;
+	right: 40px;
+	width: 200px;
+	height: 120px;
+}
+
+footer {
+display: flex;
+width: 100%;
+height: 100px;
+background-color: grey;
+justify-content: center;
+align-items: center;
+}
+
+main {
+display: flex;
+justify-content: space-around;
+align-items: flex-start;
+margin-top: 10px;
+height: 100% - (200px+100px);
+}
+
+section {
+width: 350px;
+margin: 0;
+padding: 20px;
+border: 1px solid black;
+border-collapse: collapse;
+}
+ 
+table {
+	width: 300px;
+	border: 1px solid black;
+	margin-top:30px;
+	margin-bottom: 30px;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.client{
+	border: 0px;
+	text-align: center;
+}
+
+.commande td,tr{
+	border: 1px solid black;
+	border-collapse: collapse;
+	
+}
+
+.commande #quantite {
+	text-align: center;
+}
+
+.commande #prix{
+	text-align: right;	
+}
+
+.commande #total{
+	text-align: center;
+}
+
+.commande thead,tfoot{
+	font-weight: bold;
+	background-color: white;
+}
+
+.commande thead{
+	text-align: center;
+}
+
+.commande tbody tr:nth-child(even){
+	background-color: green;
+}
+
+.commande tr:nth-child(odd){
+	background-color: orange;
+}
+
+form {
+background-color: orange;
+display: flex;
+flex-direction: column;
+width: 90%;
+padding: 20px;
+}
+
+form input[type=text]{
+	background-color: wheat;
+}
+
+form input[type=submit],input[type=reset]{
+	font-size: 24px;
+	text-transform: capitalize;
+	font-weight: bold;
+}
+
+
+
+
+

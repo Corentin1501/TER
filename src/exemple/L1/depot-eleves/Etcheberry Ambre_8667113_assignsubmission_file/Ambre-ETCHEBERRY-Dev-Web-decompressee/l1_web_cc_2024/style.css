@@ -1,0 +1,144 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana,Arial,sans-serif;
+  font-size: 14px;
+
+}
+
+header {
+	width: 100%;
+	height: 200px;
+	background-color: green;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+header h1 {
+	font-size: 50px;
+}
+
+header img {
+	position: fixed;
+	top :30px;
+	left: 40px;
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: grey;
+	width: 100%;
+	height: 100px;
+}
+
+main {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin-top: 10px;
+	min-height: calc(100vh - 310px);
+}
+
+section {
+	width: 350px;
+	margin: 0;
+	padding: 20px;
+	border: 1px black solid;
+}
+ 
+table {
+	width: 300px;
+	border: 1px black solid;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	align-self: center;
+	border-collapse: collapse;
+}
+
+.client {
+	border: 0;
+	text-align: center;
+}
+
+.commande td {
+	border: 1px solid black;
+}
+
+.commande tbody td:nth-child(2) {
+	text-align: center;
+}
+
+.commande tbody td:nth-child(3) {
+	text-align: right;
+}
+
+.commande tfoot td:first-child {
+	text-align: center;
+}
+
+.commande tbody tr:nth-child(odd) {
+	background-color: orange;
+}
+
+.commande tbody tr:nth-child(even) {
+	background-color: green;
+}
+
+.commande {
+	background-color: grey;
+}
+
+.commande:hover {
+	background-color: white;
+}
+
+.commande thead, tfoot {
+	font-weight: bold;
+	text-align: center;
+}
+
+form {
+	background-color: orange;
+	flex-direction: column;
+	display: flex;
+	width: 90%;
+	padding: 20px;
+}
+
+form input[id=prix] {
+	background-color: wheat;
+}
+
+button {
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-size-adjust: 24px;
+	margin: 5px;
+}
+
+
+
+

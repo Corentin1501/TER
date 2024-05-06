@@ -1,0 +1,98 @@
+/* !!!! ne pas modifier cette règle !!!! */
+* {
+	margin: 0;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+h2 {
+	margin: 10px;
+}
+
+/* !!!! ne pas modifier cette règle !!!! */
+label {
+   	width: 120px;
+   	float: left;
+   	display: inline;
+}
+
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+
+body {
+  margin: 0; /* garder cette propriété */
+  font-family: Verdana, Arial, sans-serif;
+}
+
+header {
+ width: 100%;
+ height: 200px;
+ background-color: green;
+ display: flex;
+}
+
+img{
+	margin-left: 40px;
+	margin-top: 30px;
+}
+
+h1{
+	font-size: 50px;
+	margin: auto;
+}
+
+footer {
+	width: 100%;
+	height: 100px;
+	background-color: grey;
+	display: flex;
+}
+
+
+
+main {
+	display: flex;
+	height: 800px;
+	justify-content: space-around;
+	justify-items: flex-start;
+	margin-top: 10px;
+}
+
+section {
+width: 350px;
+margin: 0;
+padding: 20px;
+border: 1px solid black;
+}
+
+.espace{
+	width: 10px;
+}
+ 
+table {
+	width: 300px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	justify-content: center;
+	justify-items: center;
+}
+
+table :hover{
+	background-color: grey;
+
+}
+
+tr:nth-child(2n){
+background-color: green;
+}
+
+tr:nth-child(2n+1){
+background-color: orange;
+}
+
+form {
+background-color: orange;
+}
+
+
+
+

@@ -1,0 +1,76 @@
+body{
+font-family:Verdana;
+font-family:Arial;
+font-family:sans-serif;
+font-size: top 14px;
+}
+header{
+    width:100vw;
+    height: 200px;
+    background-color: green;
+    display: flex;
+    flex-direction: center;
+
+}
+h1{
+    font-size:top 50px;
+
+}
+.image{
+    padding-top: 30px;
+    padding-left: 40px;
+    width: 200px;
+    height: 120;
+}
+footer{
+    background-color: grey;
+    width:100vw;
+    height:100px top;
+}
+footer p[texte]
+main[section1=section2=section3="width"]{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+main{
+    width:100vw;
+}
+.sections{
+    width:350px;
+    margin:0;
+    padding: 20px;
+    background-color:black;
+
+}
+style{
+    width:300px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin:auto;
+}
+.table-section-client {
+    border:none;
+}
+table{
+    border: 1px solid black;
+    justify-content: center;
+}
+table
+     div p:nth-child(n+1){
+        background-color: orange;
+
+     }
+     table div p:nth-child(n){
+        background-color: green;
+     }
+     
+
+
+
+
+

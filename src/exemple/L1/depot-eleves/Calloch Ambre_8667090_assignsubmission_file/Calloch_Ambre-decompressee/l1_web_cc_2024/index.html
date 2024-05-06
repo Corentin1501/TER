@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <header>
+    <img src="img/logo.png" alt="logo">
+    <h1>Ah! Ma Zone!</h1>
+  </header>
+
+  <main>
+  
+    <section>
+      <h2>Client</h2>
+      
+      <table class="client">
+        <tr>
+          <td>Marc Decafer</td>
+        </tr>
+        <tr>
+        
+          <td>123 Rue du Percolateur</td>
+        </tr>
+        <tr>
+        
+          <td>75000 Paris</td>
+        </tr>
+        <tr>
+        
+          <td>France</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Commande</h2>
+      
+      <table class="commande">
+      	<tr>
+			<td>Produit</td>
+			<td class="quantite">Quantité</td>
+			<td class="prix">Prix</td>
+        </tr>
+        <tr>
+			<td>Carte mère</td>
+			<td class="quantite">4</td>
+			<td class="prix">200,00</td>
+        </tr>
+        <tr>
+			<td>Processeur</td>
+			<td class="quantite">4</td>
+			<td class="prix">100,00</td>
+			  </tr>
+        <tr>
+			<td>SSD 2 To</td>
+			<td class="quantite">4</td>
+			<td class="prix">150,00</td>
+        </tr>
+        <tr>	
+      <td colspan="2">Total</td>
+			<td class="prix">1800,00</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Ajouter un Produit</h2>
+
+      <form method="post" action="add.php">
+        <label for="produit">Produit</label>
+        <select name="" id="produit">
+          <option value="1">Clavier</option>
+          <option value="2">Souris</option>
+          <option value="3">Ecran</option>
+        </select>
+        <br>
+        <label for="quantite">Quantité</label>
+        <input type="number" min="0" max="10" id="quantite">
+        <br>
+        <label for="prix">Prix</label>
+        <input type="text">
+        <br>
+        <input type="submit" value="AJOUTER" id="bouton">
+        <br>
+        <input type="reset" value="RAZ" id="bouton">
+      </form>
+    </section>
+    
+  </main>
+  <footer>
+    <p>Copright 2024 Jan Mickael Reacher
+    </p>
+  </footer>
+
+</body>
+</html>
+

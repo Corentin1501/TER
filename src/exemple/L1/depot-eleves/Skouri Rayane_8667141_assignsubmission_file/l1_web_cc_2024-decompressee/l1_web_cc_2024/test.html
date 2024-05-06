@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/home/raysko/Téléchargements/l1_web_cc_2024/style.css">
+</head>
+<body>
+    <header>
+        <img src="/home/raysko/Téléchargements/l1_web_cc_2024/img/logo.png">
+        <h1>AH!Ma Zone</h1>
+    </header>
+    <main>
+        <section>
+            <table id="client">
+                <h2>Client</h2>
+                <tr>
+                <td>Marc Decafer</td></tr>
+                <tr>
+                <td>123 rue du percolateur</td></tr>
+                <tr>
+                <td>7500 Paris</td></tr>
+                <tr>
+                <td>France</td></tr>
+                
+            </table>
+        </section>
+        <section>
+            <table id="commande">
+            <thead>
+                <h2>commande</h2>
+           
+            <tr>
+                <th>produit</th>
+                <th>quantité</th>
+                <th>prix</th>
+            </tr>
+        </thead>
+            <tbody>
+            <tr>
+                <td>carte mère</td>
+                <td>4</td>
+                <td>200.00</td>
+            </tr>
+            <tr>
+                <td>processeur</td>
+                <td>4</td>
+                <td>100.00</td>
+            </tr>
+            <tr>
+                <td>ssd 2to</td>
+                <td>4</td>
+                <td>150.00</td>
+            </tr>
+            <tfoot>
+            <tr>
+                <td colspan="2">total</td>
+                <td>1800.00</td>
+            </tr>
+        </tfoot>
+        </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>ajouter un produit</h2>
+            <form  method="post" action="add.php">
+                <label for="produit">produit</label>
+                <input type="text">
+                <label for="quantité">quantité</label>
+                <input type="number" min="1" max="3">
+            </form>
+            
+        </section>
+    </main>
+    <footer></footer>
+</body>
+</html>
