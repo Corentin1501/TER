@@ -3,14 +3,16 @@ import re
 import os
 
 import cssutils
-import tinycss2
 
 #============ Lecture des fichiers ============
 
 def read_file(filename):
-    with open(filename, 'r') as f:
-        content = f.read()
-    return content
+    if os.path.isfile(filename):
+        with open(filename, 'r') as f:
+            content = f.read()
+        return content
+    else:
+        return ""
 
 def read_rules(filename):
     rules = []
@@ -328,8 +330,11 @@ def get_student_files(directory_path):
                     chemin_css = os.path.join(racine, fichier)
         return chemin_html, chemin_css
 
-    # Parcours des dossiers des élèves
-    for dossier_eleve in os.listdir(directory_path):
+    # Obtention de la liste des dossiers d'élèves et tri par ordre alphabétique
+    dossiers_eleves = sorted(os.listdir(directory_path))
+
+    # Parcours des dossiers des élèves dans l'ordre alphabétique
+    for dossier_eleve in dossiers_eleves:
         nom_prenom = dossier_eleve.split('_')[0]
         chemin_dossier_eleve = os.path.join(directory_path, dossier_eleve)
 
@@ -343,10 +348,14 @@ def get_student_files(directory_path):
 
 def verif_student(student_file, html_rules, css_rules, logical_rules, display_errors):
     html_content = read_file(student_file[0])
-    css_file_rules = get_css_rules_from_file(read_file(student_file[1]))
-    set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
+    css_content = read_file(student_file[1])
 
-    return verif_all_rules(html_rules, css_rules, logical_rules, display_errors)
+    if html_content != "" and css_content != "":
+        css_file_rules = get_css_rules_from_file(css_content)
+        set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
+        return verif_all_rules(html_rules, css_rules, logical_rules, display_errors)
+    else:
+        return len(html_rules) + len(css_rules) + len(logical_rules)
 
 def verif_all_students(students_files, html_rules, css_rules, logical_rules, display_errors):
     total_rules = len(html_rules) + len(css_rules) + len(logical_rules)
@@ -369,11 +378,11 @@ def main():
     #*********** Ou directement ici ***********
 
     rules_file = "src/exemple/regles.txt"
-    student_files_directory = "src/exemple/L1/petit-depot-eleves"
+    student_files_directory = "src/exemple/L1/depot-eleves"
 
     #*********** Affichage  ***********
 
-    display_rules = True
+    display_rules = False
     display_errors = False
 
     #*********** Faire la vérification ***********
