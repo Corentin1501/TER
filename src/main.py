@@ -21,32 +21,29 @@ def read_rules(filename):
     return rules
 
 def get_css_rules_from_file(css_content):
-    try:
-        # Utiliser tinycss2 pour parser le contenu CSS
-        rules = tinycss2.parse_stylesheet(css_content)
+    # Parser le fichier CSS
+    sheet = cssutils.parseString(css_content, validate=False)  # Ignorer les erreurs de validation
 
-        # Créer une liste pour stocker les règles CSS
-        css_rules = []
+    rules = []
 
-        # Parcourir les règles CSS
-        for index, rule in enumerate(rules):
-            # Vérifier si la règle est un style
-            if rule.type == 'qualified-rule':
-                # Extraire les sélecteurs
-                selectors = [selector.serialize().strip() for selector in rule.prelude if selector.type == 'literal']
-                
-                # Extraire les propriétés
-                properties = {declaration.name.strip(): declaration.value.strip() for declaration in rule.content if declaration.type == 'declaration'}
-                
-                # Créer un objet CSS_rule avec les sélecteurs et les propriétés
-                new_rule = CSS_rule(selectors, properties, index)
-                css_rules.append(new_rule)
+    # Parcourir les règles CSS
+    for index, rule in enumerate(sheet):
+        if rule.type == rule.STYLE_RULE:
+            selectors_string = rule.selectorText
 
-        return css_rules
-    
-    except Exception as e:
-        print("Erreur lors de l'analyse du fichier CSS:", e)
-        return []
+            # Utiliser une expression régulière plus précise pour diviser les sélecteurs
+            selectors = re.findall(r'[^,{]+', selectors_string)
+
+            selectors = [s.strip() for s in selectors if s.strip()]  # Enlever les espaces vides et vides
+
+            properties = {}
+            for prop in rule.style:
+                properties[prop.name] = prop.value
+
+            new_rule = CSS_rule(selectors, properties, index)
+            rules.append(new_rule)
+
+    return rules
 
 #============ Decoupage des regles HTML / CSS ============
 
@@ -281,6 +278,7 @@ def verif_all_css_rules(css_rules):
             print(" - " + rule.to_string())
     else:
         print("✅ ---------   CSS OK    --------- ✅\n")
+    return rules_not_respected
 
 def verif_all_logical_rules(logical_rules):
     rules_not_respected = []
@@ -294,14 +292,20 @@ def verif_all_logical_rules(logical_rules):
             print(" - " + rule.to_string())
     else:
         print("✅ --------- LOGIQUES OK --------- ✅\n")
+    return rules_not_respected
 
 def verif_all_rules(html_rules, css_rules, logical_rules):
+    html_rules_not_respected = []
+    css_rules_not_respected = []
+    logic_rules_not_respected = []
     if len(html_rules) != 0:
-        verif_all_html_rules(html_rules)
+        html_rules_not_respected = verif_all_html_rules(html_rules)
     if len(css_rules) != 0:
-        verif_all_css_rules(css_rules)
+        css_rules_not_respected = verif_all_css_rules(css_rules)
     if len(logical_rules) != 0:
-        verif_all_logical_rules(logical_rules)
+        logic_rules_not_respected = verif_all_logical_rules(logical_rules)
+
+    return len(html_rules_not_respected) + len(css_rules_not_respected) + len(logic_rules_not_respected)
 
 #============ Main ============
 
@@ -343,7 +347,12 @@ def verif_student(student_file, html_rules, css_rules, logical_rules):
 
     set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
 
-    verif_all_rules(html_rules, css_rules, logical_rules)
+    number_of_rules_not_respected = verif_all_rules(html_rules, css_rules, logical_rules)
+    total_rules = len(html_rules) + len(css_rules) + len(logical_rules)
+
+    score = total_rules - number_of_rules_not_respected
+
+    print(score, "/", total_rules)
 
 def verif_all_students(students_files, html_rules, css_rules, logical_rules):
 
@@ -365,11 +374,11 @@ def main():
 
     #*********** Affichage des règles ***********
 
-    display_rules = False
+    display_rules = True
 
     #*********** Faire la vérification ***********
 
-    verif_rules = False
+    verif_rules = True
     
     #*********** Lire les fichiers ***********
     

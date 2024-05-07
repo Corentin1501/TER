@@ -2,7 +2,9 @@ html table [class="client"]
 html form fieldset input [type=number min=0 name=quantite]
 html header h1 "Ah! Ma Zone!"
 
-
+css h1 {
+			font-size: 50px;
+}
 
 css body, header {
 	font-family: Verdana, Arial, sans-serif;
@@ -17,17 +19,17 @@ table.commande td {
 	border-collapse: collapse;
 }
 
-AND (
-	html table [class="client"]
-	NOT (
-		html header h2 "Ah! Ma Zone!"
-	)
-	OR (
-		css h1 {
-			font-size: 50px;
-		}
-		css h2 {
-			font-size: 80px;
-		}
-	)
-)
+#AND (
+#	html table [class="client"]
+#	NOT (
+#		html header h2 "Ah! Ma Zone!"
+#	)
+#	OR (
+#		css h1 {
+#			font-size: 50px;
+#		}
+#		css h2 {
+#			font-size: 80px;
+#		}
+#	)
+#)

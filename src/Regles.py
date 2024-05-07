@@ -61,12 +61,8 @@ class Logical_rule(Rule):
         else:
             return False
 
-class CSS_rule(Rule):
+class CSS_rule:
     css_file_rules = []
-
-    selectors = []
-    properties = {}
-    numero = 0
 
     def __init__(self, selectors, properties, numero):
         self.selectors = selectors
@@ -78,42 +74,30 @@ class CSS_rule(Rule):
 
     def to_string(self):
         out = "[" + str(self.numero) + "]   "
-        out = "-   "
         aux_out = ""
         for selector in self.selectors:
-            aux_out += " , " + selector
-        out += aux_out[3:] + "\n\t{'"
-        for property, value in self.properties.items():
-            out += property + "':'" + value + "', "
+            aux_out += ", " + selector
+        out += aux_out[2:] + "\n\t{"
+        for prop, value in self.properties.items():
+            out += prop + ":'" + value + "', "
         out = out[:-2] + "}\n"
         return out
 
     def verif_rule(self):
-
-        rules_to_test_again = []
-
-        # on vérifie une première fois avec les règles en l'état actuel
+        # Vérifier la règle avec les règles du fichier CSS
         for rule in self.css_file_rules:
             if all(selector in rule.selectors for selector in self.selectors):
                 if all(prop in rule.properties and rule.properties[prop] == self.properties[prop] for prop in self.properties):
                     return True
-                
-        # si on a pas trouvé de correspondance avec le fichier CSS, on divise la regle en 
-        # autant de fois qu'il y a de selecteurs mais seulement s'il y a plusieurs selecteurs
+
+        # Si aucune correspondance n'a été trouvée, diviser la règle en règles individuelles et les retester
         if len(self.selectors) > 1:
             for selector in self.selectors:
-                rules_to_test_again.append(CSS_rule([selector], self.properties, 0))
+                new_rule = CSS_rule([selector], self.properties, 0)
+                if not new_rule.verif_rule():
+                    return False
+            return True
 
-            # et on re test avec ces nouvelles règles
-            all_rules_verified = True
-            for rule in rules_to_test_again:
-                # print("regle à re tester : " + rule.to_string())
-                if not rule.verif_rule():
-                    all_rules_verified = False
-            
-            return all_rules_verified
-
-        # print("[CSS] Une règle n'est pas respecté")
         return False
 
 #============ Précision sur la valeur d'une balise ============
