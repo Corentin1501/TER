@@ -19,6 +19,10 @@ table.commande td {
 	border-collapse: collapse;
 }
 
+css header {
+	display: flex;
+}
+
 #AND (
 #	html table [class="client"]
 #	NOT (

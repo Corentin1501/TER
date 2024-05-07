@@ -252,62 +252,65 @@ def set_css_rules_for_logic(logical_rules):
 
 #============ Vérification des regles HTML / CSS ============
 
-def verif_all_html_rules(regles):
+def verif_all_html_rules(regles, display_errors):
     rules_not_respected = []
     for i in range(len(regles)):
         if not regles[i].verif_rule():
             rules_not_respected.append(regles[i])
-    print()
-    if len(rules_not_respected) != 0:
-        print("❌  --------- HTML non respectées --------- ❌ ")
-        for rule in rules_not_respected:
-            print(" - " + rule.to_string())
-    else:
-        print("✅ ---------   HTML OK   --------- ✅\n")
+    if display_errors:
+        print()
+        if len(rules_not_respected) != 0:
+            print("❌  --------- HTML non respectées --------- ❌ ")
+            for rule in rules_not_respected:
+                print(" - " + rule.to_string())
+        else:
+            print("✅ ---------   HTML OK   --------- ✅\n")
     return rules_not_respected
 
-def verif_all_css_rules(css_rules):
+def verif_all_css_rules(css_rules, display_errors):
     rules_not_respected = []
     for i in range(len(css_rules)):
         if not css_rules[i].verif_rule():
             rules_not_respected.append(css_rules[i])
-    print()
-    if len(rules_not_respected) != 0:
-        print("❌  --------- CSS non respectées --------- ❌ ")
-        for rule in rules_not_respected:
-            print(" - " + rule.to_string())
-    else:
-        print("✅ ---------   CSS OK    --------- ✅\n")
+    if display_errors:
+        print()
+        if len(rules_not_respected) != 0:
+            print("❌  --------- CSS non respectées --------- ❌ ")
+            for rule in rules_not_respected:
+                print(" - " + rule.to_string())
+        else:
+            print("✅ ---------   CSS OK    --------- ✅\n")
     return rules_not_respected
 
-def verif_all_logical_rules(logical_rules):
+def verif_all_logical_rules(logical_rules, display_errors):
     rules_not_respected = []
     for i in range(len(logical_rules)):
         if not logical_rules[i].verif_rule():
             rules_not_respected.append(logical_rules[i])
-    print()
-    if len(rules_not_respected) != 0:
-        print("❌  --------- Logique non respectées --------- ❌ ")
-        for rule in rules_not_respected:
-            print(" - " + rule.to_string())
-    else:
-        print("✅ --------- LOGIQUES OK --------- ✅\n")
+    if display_errors:
+        print()
+        if len(rules_not_respected) != 0:
+            print("❌  --------- Logique non respectées --------- ❌ ")
+            for rule in rules_not_respected:
+                print(" - " + rule.to_string())
+        else:
+            print("✅ --------- LOGIQUES OK --------- ✅\n")
     return rules_not_respected
 
-def verif_all_rules(html_rules, css_rules, logical_rules):
+def verif_all_rules(html_rules, css_rules, logical_rules, display_errors):
     html_rules_not_respected = []
     css_rules_not_respected = []
     logic_rules_not_respected = []
     if len(html_rules) != 0:
-        html_rules_not_respected = verif_all_html_rules(html_rules)
+        html_rules_not_respected = verif_all_html_rules(html_rules, display_errors)
     if len(css_rules) != 0:
-        css_rules_not_respected = verif_all_css_rules(css_rules)
+        css_rules_not_respected = verif_all_css_rules(css_rules, display_errors)
     if len(logical_rules) != 0:
-        logic_rules_not_respected = verif_all_logical_rules(logical_rules)
+        logic_rules_not_respected = verif_all_logical_rules(logical_rules, display_errors)
 
     return len(html_rules_not_respected) + len(css_rules_not_respected) + len(logic_rules_not_respected)
 
-#============ Main ============
+#============ Traitement plusieurs élèves ============
 
 def get_student_files(directory_path):
     # Dictionnaire pour stocker les liens entre élèves et fichiers HTML/CSS
@@ -338,28 +341,24 @@ def get_student_files(directory_path):
 
     return liens_eleves_fichiers
 
-def verif_student(student_file, html_rules, css_rules, logical_rules):
-    # HTML
+def verif_student(student_file, html_rules, css_rules, logical_rules, display_errors):
     html_content = read_file(student_file[0])
-    # CSS
-    css_content = read_file(student_file[1])
-    css_file_rules = get_css_rules_from_file(css_content)
-
+    css_file_rules = get_css_rules_from_file(read_file(student_file[1]))
     set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
 
-    number_of_rules_not_respected = verif_all_rules(html_rules, css_rules, logical_rules)
+    return verif_all_rules(html_rules, css_rules, logical_rules, display_errors)
+
+def verif_all_students(students_files, html_rules, css_rules, logical_rules, display_errors):
     total_rules = len(html_rules) + len(css_rules) + len(logical_rules)
 
-    score = total_rules - number_of_rules_not_respected
-
-    print(score, "/", total_rules)
-
-def verif_all_students(students_files, html_rules, css_rules, logical_rules):
-
     for nom_prenom, fichiers in students_files.items():
-        print("⏳ Verification de", nom_prenom, "⏳")
-        verif_student(fichiers, html_rules, css_rules, logical_rules)
-        print()
+        print("⏳", nom_prenom, "⏳", end="\t")
+        number_of_rules_not_respected = verif_student(fichiers, html_rules, css_rules, logical_rules, display_errors)
+        score = total_rules - number_of_rules_not_respected
+        
+        print(score, "/", total_rules)
+
+#============ Main ============
 
 def main():
 
@@ -372,9 +371,10 @@ def main():
     rules_file = "src/exemple/regles.txt"
     student_files_directory = "src/exemple/L1/petit-depot-eleves"
 
-    #*********** Affichage des règles ***********
+    #*********** Affichage  ***********
 
     display_rules = True
+    display_errors = False
 
     #*********** Faire la vérification ***********
 
@@ -395,7 +395,7 @@ def main():
     #*********** Verification ***********
 
     if verif_rules:
-        verif_all_students(student_files, html_rules, css_rules, logical_rules)
+        verif_all_students(student_files, html_rules, css_rules, logical_rules, display_errors)
 
 
 if __name__ == "__main__":
