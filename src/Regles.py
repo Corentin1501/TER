@@ -73,7 +73,7 @@ class CSS_rule:
         self.css_file_rules = content
 
     def to_string(self):
-        out = "[" + str(self.numero) + "]   "
+        out = "-   "
         aux_out = ""
         for selector in self.selectors:
             aux_out += ", " + selector
@@ -131,7 +131,8 @@ class Attribut:
         for att, valeur in self.attributs.items():
             # si le tag a cet attribut
             if tag.get(att) is not None:
-                if att == 'class':  # si c'est une classe qu'on vérifie, c'est considéré comme une liste
+                if att == 'class' or att =='rel':  # si c'est une classe qu'on vérifie, c'est considéré comme une liste
+                    # print("\t",tag.get(att), "in?", valeur)
                     if valeur not in tag.get(att):
                         return False
                 else:

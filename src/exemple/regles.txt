@@ -23,17 +23,17 @@ css header {
 	display: flex;
 }
 
-#AND (
-#	html table [class="client"]
-#	NOT (
-#		html header h2 "Ah! Ma Zone!"
-#	)
-#	OR (
-#		css h1 {
-#			font-size: 50px;
-#		}
-#		css h2 {
-#			font-size: 80px;
-#		}
-#	)
-#)
+AND (
+	html table [class="client"]
+	NOT (
+		html header h2 "Ah! Ma Zone!"
+	)
+	OR (
+		css h1 {
+			font-size: 50px;
+		}
+		css h2 {
+			font-size: 80px;
+		}
+	)
+)

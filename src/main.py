@@ -360,12 +360,18 @@ def verif_student(student_file, html_rules, css_rules, logical_rules, display_er
 def verif_all_students(students_files, html_rules, css_rules, logical_rules, display_errors):
     total_rules = len(html_rules) + len(css_rules) + len(logical_rules)
 
+    total_score_students = 0
+
     for nom_prenom, fichiers in students_files.items():
         print("⏳", nom_prenom, "⏳", end="\t")
         number_of_rules_not_respected = verif_student(fichiers, html_rules, css_rules, logical_rules, display_errors)
         score = total_rules - number_of_rules_not_respected
+
+        total_score_students += score
         
         print(score, "/", total_rules)
+
+    return total_score_students / len(students_files)
 
 #============ Main ============
 
@@ -377,13 +383,14 @@ def main():
 
     #*********** Ou directement ici ***********
 
-    rules_file = "src/exemple/regles.txt"
-    student_files_directory = "src/exemple/L1/depot-eleves"
+    rules_file = "src/exemple/regles-l1.txt"
+    student_files_directory = "src/exemple/L1/petit-depot-eleves"
+    # student_files_directory = "src/exemple/test-perso"
 
     #*********** Affichage  ***********
 
     display_rules = False
-    display_errors = False
+    display_errors = True
 
     #*********** Faire la vérification ***********
 
@@ -404,8 +411,8 @@ def main():
     #*********** Verification ***********
 
     if verif_rules:
-        verif_all_students(student_files, html_rules, css_rules, logical_rules, display_errors)
-
+        moyenne = verif_all_students(student_files, html_rules, css_rules, logical_rules, display_errors)
+        print("\n\nMoyenne =", moyenne, "\t(",len(student_files),"élève(s) )")
 
 if __name__ == "__main__":
     main()
