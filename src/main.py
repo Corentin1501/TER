@@ -383,9 +383,10 @@ def main():
 
     #*********** Ou directement ici ***********
 
-    rules_file = "src/exemple/regles-l1.txt"
-    student_files_directory = "src/exemple/L1/petit-depot-eleves"
-    # student_files_directory = "src/exemple/test-perso"
+    # rules_file = "src/exemple/regles-l1.txt"
+    rules_file = "src/exemple/reglesJMR.txt"
+    # student_files_directory = "src/exemple/L1/petit-depot-eleves"
+    student_files_directory = "src/exemple/test-perso"
 
     #*********** Affichage  ***********
 
