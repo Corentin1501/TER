@@ -1,19 +1,39 @@
 OR (
 	html head meta [charset="utf-8"]
+	html head meta [charset="UTF-8"]
+	html head meta [content="text/html;charset=UTF-8"]
 	html head meta [content="text/html;charset=UTF-8"]
 )
 
 html link [href="style.css"]
 
-css body {
-	font-family: Verdana, Arial, sans-serif;
-	font-size: 14px;
-}
+OR (
+	css body {
+		font-family: Verdana, Arial, sans-serif;
+		font-size: 14px;
+	}
+	css body {
+		font-family: verdana, Arial, sans-serif;
+		font-size: 14px;
+	}
+	css body {
+		font-family: 'Verdana', 'Arial', sans-serif;
+		font-size: 14px;
+	}
+)
 
-html header img [src="img/logo.png"]
+OR (
+	html header img [src="img/logo.png"]
+	html header img [src="./img/logo.png"]
+	html header img [src="logo.png"]
+)
 
-# pb ?
-html header h1 "Ah! Ma Zone!"
+OR (
+    html header h1 "Ah! Ma Zone!"
+    html header h1 "Ah! Ma zone!"
+    html header h1 "Ah!Ma Zone!"
+    html header h1 "Ah!Ma zone!"
+)
 
 css header {
 	background-color: green;
@@ -46,7 +66,36 @@ OR (
 		height: 120px;
 		width: 200px;
 	}
+	css header img {
+		position: fixed;
+		margin-top: 30px;
+		margin-left: 40px;
+		height: 120px;
+		width: 200px;
+	}
+	css img {
+		position: fixed;
+		margin-top: 30px;
+		margin-left: 40px;
+		height: 120px;
+		width: 200px;
+	}
+	css header img {
+		position: fixed;
+		padding-top: 30px;
+		padding-left: 40px;
+		height: 120px;
+		width: 200px;
+	}
+	css img {
+		position: fixed;
+		padding-top: 30px;
+		padding-left: 40px;
+		height: 120px;
+		width: 200px;
+	}
 )
+
 
 OR (
 	css footer {
@@ -59,7 +108,19 @@ OR (
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		background: grey;
+	}
+	css footer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		background-color: gray;
+	}
+	css footer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: gray;
 	}
 )
 
@@ -76,19 +137,20 @@ css main {
       min-height: calc(100vh - 300px);
 }
 
-css section {
-      border: 1px solid #000;
-      margin: 0;
-      padding: 20px;
-      width: 350px;
-}
-
-css table {
-    	border-collapse: collapse;
-    	border: 1px solid black;
-    	width: 300px;
-    	margin: 30px auto;
-}
+OR (
+    css section {
+        border: 1px solid #000;
+        margin: 0;
+        padding: 20px;
+        width: 350px;
+    }
+    css section {
+        border: 1px solid black;
+        margin: 0;
+        padding: 20px;
+        width: 350px;
+    }
+)
 
 css table {
     	border-collapse: collapse;
@@ -113,43 +175,144 @@ css td.right {
     	text-align: right;
 }
 
-css table.commande tbody tr:nth-child(2n+1) {
-    	background: orange;
-}
+OR (
+    css table.commande tbody tr:nth-child(2n+1) {
+            background: orange;
+    }
+    css table.commande tbody tr:nth-child(odd) {
+            background: orange;
+    }
+    css table.commande tbody tr:nth-child(2n+1) {
+            background-color: orange;
+    }
+    css table.commande tbody tr:nth-child(odd) {
+            background-color: orange;
+    }
+    css table.commande tr:nth-child(2n+1) {
+            background: orange;
+    }
+    css table.commande tr:nth-child(odd) {
+            background: orange;
+    }
+    css table.commande tr:nth-child(2n+1) {
+            background-color: orange;
+    }
+    css table.commande tr:nth-child(odd) {
+            background-color: orange;
+    }
+)
 
-css table.commande tbody tr:nth-child(2n) {
-    	background: green;
-}
+OR (
+    css table.commande tbody tr:nth-child(2n) {
+            background: green;
+    }
+    css table.commande tbody tr:nth-child(even) {
+            background: green;
+    }
+    css table.commande tbody tr:nth-child(2n) {
+            background-color: green;
+    }
+    css table.commande tbody tr:nth-child(even) {
+            background-color: green;
+    }
+)
 
-css table.commande tbody tr:hover {
-    	background: grey;
-    	color: white;
-}
+OR (
+    css table.commande tbody tr:hover {
+            background: grey;
+            color: white;
+    }
+    css table.commande tr:hover {
+            background: grey;
+            color: white;
+    }
+    css table.commande tbody tr:hover {
+            background-color: grey;
+            color: white;
+    }
+    css table.commande tr:hover {
+            background-color: grey;
+            color: white;
+    }
+)
 
 html form [method="post" action="add.php"]
 
-css form {
-      display: flex;
-      flex-direction: column;
-      width: 90%;
-      background: orange;
-      padding: 20px;
-}
+OR (
+	css form {
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+		background: orange;
+		padding: 20px;
+	}
+	css form {
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+		background-color: orange;
+		padding: 20px;
+	}
+)
 
-html select [name="product"]
-html select option [value="1"] "Clavier"
-html select option [value="2"] "Souris"
-html select option [value="3"] "Ecran"
+OR (
+	html select [name="Product"]
+	html select [name="product"]
+	html select [name="Produit"]
+	html select [name="produit"]
+)
 
-html input [type="number" name="quantity" min="0" max="10" value="1"]
-html input [type="text" name="price"]
+OR (
+	html select option [value="1"] "Clavier"
+	html select option [value="1"] "clavier"
+)
+OR (
+	html select option [value="2"] "Souris"
+	html select option [value="2"] "souris"
+)
+OR (
+	html select option [value="3"] "Ecran"
+	html select option [value="3"] "ecran"
+)
 
-css input[type=text] {
- 	background: wheat;
-}
 
-html button [type="submit"] "Ajouter"
-html button [type="reset"] "RAZ"
+OR (
+	html input [type="number" name="quantity" min="0" max="10" value="1"]
+	html input [type="number" name="quantite" min="0" max="10" value="1"]
+)
+OR (
+	html input [type="text" name="price"]
+	html input [type="text" name="prix"]
+)
+
+OR (
+	css input[type=text] {
+		background: wheat;
+	}
+	css input[type="text"] {
+		background: wheat;
+	}
+	css input[type=text] {
+		background-color: wheat;
+	}
+	css input[type="text"] {
+		background-color: wheat;
+	}
+)
+
+OR (
+    html button [type="submit"] "Ajouter"
+    html button [type="submit" value="Ajouter"]
+    html input [type="submit"] "Ajouter"
+    html input [type="submit" value="Ajouter"]
+)
+
+OR (
+    html button [type="reset"] "RAZ"
+    html button [type="reset" value="RAZ"]
+    html input [type="reset"] "RAZ"
+    html input [type="reset" value="RAZ"]
+)
 
 css button {
 	font-size: 24px;

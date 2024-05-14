@@ -9,8 +9,9 @@ h2 {
 }
 
 /* Vous pouvez modifier et ajouter des règles à partir de maintenant */
-h1 {
+header h1 {
 	font-size: 50px;
+	line-height: 200px
 }
 
 body, header {
@@ -53,9 +54,13 @@ footer {
 
 main {
 	display: flex;
+	flex-direction: row;
     justify-content: space-around;  /* Justification du contenu */
     align-items: flex-start;        /* Alignement des items */
+	margin-top: 10px;
 	flex: 1; /* Le main prend tout l'espace restant */
+
+	min-height: calc(100vh - 300px)
 }
 
 section {
@@ -69,39 +74,32 @@ section {
 table {
 	width: 300px;
     border: 1px solid black;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto;
+	border-collapse: collapse;
 }
 
-table.client td{
-	border: none;
+td, th {
+	border: 1px solid black;
 }
 
-table.commande th
-table.commande td {
-	border: none;
+td.center {
+	text-align:center;
 }
 
-table.commande td:nth-child(1) {
-	text-align: left;
+th.right {
+	 text-align: right;
 }
 
-table.commande td:nth-child(2) {
-	text-align: center;
+td.right {
+	 text-align: right;
 }
 
-table.commande td:nth-child(3) {
-	text-align: right;
+table.commande tbody tr:nth-child(odd) {
+	background: orange;
 }
 
-table.commande tr:nth-child(odd) {
-	background-color: orange;
-}
-
-table.commande tr:nth-child(even) {
-	background-color: green;
+table.commande tbody tr:nth-child(even) {
+	background: green;
 }
 
 table.commande tr:last-child {
@@ -109,24 +107,24 @@ table.commande tr:last-child {
 }
 
 table.commande tr:hover {
-	background-color: grey;
+	background: grey;
 	color: white;
 }
 
-#ajouter-produit {
-	background-color: orange;
-}
-
-#ajouter-produit form {
+form {
 	display: flex;
 	flex-direction: column;
+	width: 90%;
+	background: orange;
+	padding: 20px;
 }
 
-#prix {
-	background-color: wheat;
+input[type=text] {
+	background: wheat;
 }
 
 button {
 	font-size: 24px;
+	font-weight: bold;
 	text-transform: uppercase;
 }

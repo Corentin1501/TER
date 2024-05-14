@@ -5,7 +5,6 @@ from enum import Enum
 class Rule:
     pass
 
-
 class Logical_type(Enum):
     OR = 'OR'
     AND = 'AND'
@@ -24,10 +23,10 @@ class Logical_rule(Rule):
         self.rules_concerned = rules
 
     def to_string(self):
-        out = "-   " + str(self.logic_type.name) + " {\n"
+        out = "-   " + str(self.logic_type.name) + "\n----------\n"
         for rule in self.rules_concerned:
-            out += "\t" + rule.to_string()
-        return out + "\t    }\n"
+            out += "|" + rule.to_string()
+        return out + "----------\n"
     
     def add_rule(self, rule):
         self.rules_concerned.append(rule) 
@@ -114,7 +113,6 @@ class CSS_rule:
 
         return False
 
-
 #============ Précision sur la valeur d'une balise ============
 
 class Value:
@@ -188,7 +186,7 @@ class HTML_Rule(Rule):
 
         if len(self.secondary_rules_index) != 0:
             for tag_index, secondary_rules in self.secondary_rules_index.items():
-                out += "\t\twhere " + str(self.balises[tag_index]) + " is " + self.rules_to_string(secondary_rules) + "\n"
+                out += "\twhere " + str(self.balises[tag_index]) + " is " + self.rules_to_string(secondary_rules) + "\n"
         return out
 
     def rules_to_string(self, rules):

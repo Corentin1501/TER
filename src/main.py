@@ -135,25 +135,25 @@ def get_rules(rules):
 def print_all_rules(html_rules, css_rules, logical_rules):
     print("\n=============== Règles ===============\n")
     if len(html_rules) != 0:
-        print("---------- HTML ----------\n")
+        print("################ HTML ################\n")
         for rule in html_rules:
             print(rule.to_string())
     else:
-        print("---------- Aucune règle HTML ----------\n")
+        print("################ Aucune règle HTML ################\n")
 
     if len(css_rules) != 0:
-        print("---------- CSS ----------\n")
+        print("################ CSS ################\n")
         for rule in css_rules:
             print(rule.to_string())
     else:
-        print("---------- Aucune règle CSS ----------\n")
+        print("################ Aucune règle CSS ################\n")
 
     if len(logical_rules) != 0:
-        print("---------- Logique ----------\n")
+        print("################ Logique ################\n")
         for rule in logical_rules:
             print(rule.to_string())
     else:
-        print("---------- Aucune règle Logique ----------\n")
+        print("################ Aucune règle Logique ################\n")
 
     print("\n======================================\n")
 
@@ -262,11 +262,11 @@ def verif_all_html_rules(regles, display_errors):
     if display_errors:
         print()
         if len(rules_not_respected) != 0:
-            print("❌  --------- HTML non respectées --------- ❌ ")
+            print("❌  ========= HTML non respectées ========= ❌ ")
             for rule in rules_not_respected:
-                print(" - " + rule.to_string())
+                print("➡️" + rule.to_string())
         else:
-            print("✅ ---------   HTML OK   --------- ✅\n")
+            print("✅ =========   HTML OK   ========= ✅\n")
     return rules_not_respected
 
 def verif_all_css_rules(css_rules, display_errors):
@@ -277,11 +277,11 @@ def verif_all_css_rules(css_rules, display_errors):
     if display_errors:
         print()
         if len(rules_not_respected) != 0:
-            print("❌  --------- CSS non respectées --------- ❌ ")
+            print("❌  ========= CSS non respectées ========= ❌ ")
             for rule in rules_not_respected:
-                print(" - " + rule.to_string())
+                print("➡️" + rule.to_string())
         else:
-            print("✅ ---------   CSS OK    --------- ✅\n")
+            print("✅ =========   CSS OK    ========= ✅\n")
     return rules_not_respected
 
 def verif_all_logical_rules(logical_rules, display_errors):
@@ -292,11 +292,11 @@ def verif_all_logical_rules(logical_rules, display_errors):
     if display_errors:
         print()
         if len(rules_not_respected) != 0:
-            print("❌  --------- Logique non respectées --------- ❌ ")
+            print("❌  ========= Logique non respectées ========= ❌ ")
             for rule in rules_not_respected:
-                print(" - " + rule.to_string())
+                print("➡️" + rule.to_string())
         else:
-            print("✅ --------- LOGIQUES OK --------- ✅\n")
+            print("✅ ========= LOGIQUES OK ========= ✅\n")
     return rules_not_respected
 
 def verif_all_rules(html_rules, css_rules, logical_rules, display_errors):
@@ -384,14 +384,16 @@ def main():
     #*********** Ou directement ici ***********
 
     # rules_file = "src/exemple/regles-l1.txt"
-    rules_file = "src/exemple/reglesJMR.txt"
+    rules_file = "src/exemple/reglesJMR_v2.txt"
+    # student_files_directory = "src/exemple/L1/eleves-a-part"
+    student_files_directory = "src/exemple/L1/depot-eleves"
     # student_files_directory = "src/exemple/L1/petit-depot-eleves"
-    student_files_directory = "src/exemple/test-perso"
+    # student_files_directory = "src/exemple/test-perso"
 
     #*********** Affichage  ***********
 
     display_rules = False
-    display_errors = True
+    display_errors = False
 
     #*********** Faire la vérification ***********
 
@@ -412,8 +414,10 @@ def main():
     #*********** Verification ***********
 
     if verif_rules:
+        total_rules = len(html_rules) + len(css_rules) + len(logical_rules)
         moyenne = verif_all_students(student_files, html_rules, css_rules, logical_rules, display_errors)
-        print("\n\nMoyenne =", moyenne, "\t(",len(student_files),"élève(s) )")
+        print("\n\nMoyenne = {0:.2f} /".format(moyenne), total_rules," \t(",len(student_files),"élève(s) )") 
+        print("        = {0:.2f} / 20".format(moyenne * 20 / 34)) 
 
 if __name__ == "__main__":
     main()

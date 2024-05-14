@@ -57,7 +57,7 @@ table{
     margin-bottom: 30px;
 }
 tr:nth-child(2n+1){
-    background-color: orange;
+    background-color: orange;}
     tr:nth-child(2n+0){
 
 background-color: green;

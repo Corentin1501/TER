@@ -70,8 +70,8 @@ table {
 #commande tbody>tr:nth-child(odd){
 background-color: orange;
 }
-#commande tbody>tr:nth-child(even){
-	background-color:green;
+/* #commande tbody>tr:nth-child(even){
+	background-color:green;} */
 form {
 background-color: orange;
 }
