@@ -67,7 +67,7 @@ main  {
 	justify-content: space-around;
 	justify-items: flex-start;
 	margin-top: 10px;
-	height: calc(100%-300px);
+	/* height: calc(100%-300px); */
 }
 td{
 	border: 1px solid black;

@@ -107,7 +107,7 @@ table {
 }
 .commande table,td,th,tr
 {
-    border:1px black solid:
+    border:1px black solid;
 }
 .left
 {

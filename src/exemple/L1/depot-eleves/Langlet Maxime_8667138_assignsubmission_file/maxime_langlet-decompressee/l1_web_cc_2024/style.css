@@ -59,7 +59,7 @@ main {
 	justify-content: space-around;
 	align-items: flex-start;	
 	top:200px;
-	height: calc(100vh -300);
+	/* height: calc(100vh -300); */
 	margin-top: 10px;
 }
 

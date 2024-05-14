@@ -60,7 +60,7 @@ display: flex;
 justify-content: space-around;
 align-items: flex-start;
 margin-top: 10px;
-height: 100% - (200px+100px);
+/* height: 100% - (200px+100px); */
 }
 
 section {

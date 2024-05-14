@@ -29,7 +29,7 @@ header {
 	width: 100%;
 	background-color: green;
 	flex-direction: row;
-	flex: content=center;
+	/* flex: content=center; */
 }
 header h1{
 	font-size: 50px;

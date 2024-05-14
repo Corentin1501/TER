@@ -42,50 +42,50 @@
                     </tr>
                     <tr>
                         <td>Carte mère</td>
-                        <td>4</td>
-                        <td>200,00</td>
+                        <td class="center">4</td>
+                        <td class="right">200,00</td>
                     </tr>
                     <tr>
                         <td>Processeur</td>
-                        <td>4</td>
-                        <td>100,00</td>
+                        <td class="center">4</td>
+                        <td class="right">100,00</td>
                     </tr>
                     <tr>
                         <td>SSD 2 To</td>
-                        <td>4</td>
-                        <td>150,00</td>
+                        <td class="center">4</td>
+                        <td class="right">150,00</td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center;">Total</td>
-                        <td>1800,00</td>
+                        <th colspan="2" style="text-align: center;">Total</th>
+                        <th class="right">1800,00</th>
                     </tr>
                 </tbody>
             </table>
         </section>
-        <section>
+        <section id="ajouter-produit">
             <h2>Ajouter un Produit</h2>
             <form action="add.php" method="post">
                 <fieldset>
-                    <label for="produit">Produit</label>
-                    <select name="produit" id="produit">
+                    <label for="product">Produit</label>
+                    <select name="product" id="produit">
                         <option value="1">Clavier</option>
                         <option value="2">Souris</option>
                         <option value="3">Ecran</option>
                     </select>
                 </fieldset>
                 <fieldset>
-                    <label for="quantite">Quantité</label>
-                    <input type="number" min="0" max="10" value="1" name="quantite" id="quantite">
+                    <label for="quantity">Quantité</label>
+                    <input type="number" min="0" max="10" value="1" name="quantity" id="quantite">
                 </fieldset>
                 <fieldset>
                     <label for="prix">Prix</label>
-                    <input type="text" name="prix" id="prix">
+                    <input type="text" name="price" id="prix">
                 </fieldset>
                 <fieldset>
-                    <input type="submit" value="Ajouter">
+                    <button type="submit">Ajouter</button>
                 </fieldset>
                 <fieldset>
-                    <input type="reset" value="RAZ">
+                    <button type="reset">RAZ</button>
                 </fieldset>
             </form>
         </section>

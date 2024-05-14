@@ -5,7 +5,6 @@ from enum import Enum
 class Rule:
     pass
 
-
 class Logical_type(Enum):
     OR = 'OR'
     AND = 'AND'
@@ -24,10 +23,10 @@ class Logical_rule(Rule):
         self.rules_concerned = rules
 
     def to_string(self):
-        out = "-   " + str(self.logic_type.name) + " {\n"
+        out = "-   " + str(self.logic_type.name) + "\n----------\n"
         for rule in self.rules_concerned:
-            out += "\t" + rule.to_string()
-        return out + "\t    }\n"
+            out += "|" + rule.to_string()
+        return out + "----------\n"
     
     def add_rule(self, rule):
         self.rules_concerned.append(rule) 
@@ -73,7 +72,7 @@ class CSS_rule:
         self.css_file_rules = content
 
     def to_string(self):
-        out = "[" + str(self.numero) + "]   "
+        out = "-   "
         aux_out = ""
         for selector in self.selectors:
             aux_out += ", " + selector
@@ -90,13 +89,27 @@ class CSS_rule:
                 if all(prop in rule.properties and rule.properties[prop] == self.properties[prop] for prop in self.properties):
                     return True
 
-        # Si aucune correspondance n'a été trouvée, diviser la règle en règles individuelles et les retester
-        if len(self.selectors) > 1:
+        # Si aucune correspondance n'a été trouvée, diviser la règle en sélecteurs individuels
+        if len(self.selectors) > 2:
             for selector in self.selectors:
                 new_rule = CSS_rule([selector], self.properties, 0)
-                if not new_rule.verif_rule():
-                    return False
-            return True
+                if new_rule.verif_rule():
+                    return True
+
+        # Si la division en sélecteurs individuels n'a pas abouti, diviser en propriétés individuelles
+        if len(self.properties) > 2:
+            for prop in self.properties:
+                new_rule = CSS_rule(self.selectors, {prop: self.properties[prop]}, 0)
+                if new_rule.verif_rule():
+                    return True
+
+        # Si la division en propriétés individuelles n'a pas abouti, diviser en sélecteurs et propriétés individuels
+        if len(self.selectors) > 2 and len(self.properties) > 2:
+            for selector in self.selectors:
+                for prop in self.properties:
+                    new_rule = CSS_rule([selector], {prop: self.properties[prop]}, 0)
+                    if new_rule.verif_rule():
+                        return True
 
         return False
 
@@ -131,7 +144,8 @@ class Attribut:
         for att, valeur in self.attributs.items():
             # si le tag a cet attribut
             if tag.get(att) is not None:
-                if att == 'class':  # si c'est une classe qu'on vérifie, c'est considéré comme une liste
+                if att == 'class' or att =='rel':  # si c'est une classe qu'on vérifie, c'est considéré comme une liste
+                    # print("\t",tag.get(att), "in?", valeur)
                     if valeur not in tag.get(att):
                         return False
                 else:
@@ -151,9 +165,8 @@ class Attribut:
 
 class HTML_Rule(Rule):
     html_content = ""
-
     balises = []
-    secondary_rules_index = {}  # dictionnaire de regles : {0 : Attribut{class='titi'}, ...}
+    secondary_rules_index = {}  # Dictionnaire de tableaux de règles : {0 : [Attribut{class='titi'}, ...], ...}
     numero = 0  
 
     def __init__(self, balises, secondary_rules_index, numero):
@@ -164,7 +177,6 @@ class HTML_Rule(Rule):
     def set_content(self, content):
         self.html_content = content
 
-
     def to_string(self):
         out = "[" + str(self.numero) + "]   "
         out = "-   "
@@ -174,15 +186,22 @@ class HTML_Rule(Rule):
 
         if len(self.secondary_rules_index) != 0:
             for tag_index, secondary_rules in self.secondary_rules_index.items():
-                out += "\t\twhere " + str(self.balises[tag_index]) + " is " + secondary_rules.to_string() + "\n"
+                out += "\twhere " + str(self.balises[tag_index]) + " is " + self.rules_to_string(secondary_rules) + "\n"
         return out
 
+    def rules_to_string(self, rules):
+        out = ""
+        for rule in rules:
+            out += rule.to_string() + "  AND  "
+        return out[:-7]
 
     def add_secondary_rule(self, rule, balise_index):
         """Ajoute une règle secondaire (attribut/valeur) sur une balise"""
 
-        self.secondary_rules_index[balise_index] = rule
-
+        if balise_index not in self.secondary_rules_index:
+            self.secondary_rules_index[balise_index] = [rule]
+        else:
+            self.secondary_rules_index[balise_index].append(rule)
 
     def verif_rule(self):
         """Vérifie si la règle est respectée, et toutes les règles secondaires associées"""
@@ -192,31 +211,30 @@ class HTML_Rule(Rule):
 
             # est-ce la bonne balise ?
             if tag.name == self.balises[tag_index]:
-                # y a t il une règle particulière sur cette balise ?
+                # y a-t-il des règles particulières sur cette balise ?
                 if self.secondary_rules_index.get(tag_index) is not None:
-                    # On vérifie le respect de la règle
-                    if not self.secondary_rules_index.get(tag_index).verif_rule(tag):
-                        return False    # s'il est n'est pas respecté, on arrête
+                    # On vérifie le respect de chaque règle secondaire
+                    for rule in self.secondary_rules_index.get(tag_index):
+                        if not rule.verif_rule(tag):
+                            return False    # Si l'une des règles n'est pas respectée, on arrête
                 # est-ce la dernière balise à vérifier ?
                 if tag_index == 0:
                     return True
                 else:
                     return verif_recursive(tag.parent, tag_index - 1)
             else:
-                # print("Balises dans le mauvais ordre")
-                return False # mauvaise balise
+                return False # Mauvaise balise
 
         parser = BeautifulSoup(self.html_content, 'html.parser')
-        tags = parser.find_all(self.balises[-1])  # on cherche toutes les balises correspondant à la dernière balise
+        tags = parser.find_all(self.balises[-1])  # On cherche toutes les balises correspondant à la dernière balise
         
         # Si aucune balise n'existe, alors on peut déjà retourner False
-        if tags is None :
+        if tags is None:
             return False
         # Sinon, on va regarder si toutes les règles sont respectées
         else:
-            tag_index = len(self.balises) -1
+            tag_index = len(self.balises) - 1
             for tag in tags:
-                if verif_recursive(tag,tag_index):
+                if verif_recursive(tag, tag_index):
                     return True
-            # print("[HTML] Une règle n'est pas respecté")
             return False

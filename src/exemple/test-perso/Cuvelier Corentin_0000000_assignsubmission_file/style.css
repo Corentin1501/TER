@@ -1,0 +1,130 @@
+/* Ne pas modifier cette règle */
+* {
+	margin: 0;
+}
+
+/* Ne pas modifier cette règle */
+h2 {
+	margin: 10px;
+}
+
+/* Vous pouvez modifier et ajouter des règles à partir de maintenant */
+header h1 {
+	font-size: 50px;
+	line-height: 200px
+}
+
+body, header {
+	margin: 0;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 14px;
+}
+
+body {
+	display: flex;
+    flex-direction: column;
+    height: 100vh; /* La hauteur totale de la fenêtre */
+}
+
+header {
+	width: 100%;
+    height: 200px;
+    background-color: green;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;     /* Centre verticalement */
+}
+
+header img {
+	position: fixed;
+	top: 30px;
+	left: 40px;
+	width: 200px;
+	height: 120px;
+}
+
+footer {
+	display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;     /* Centre verticalement */
+    width: 100%;
+    height: 100px;
+    background-color: grey;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+    justify-content: space-around;  /* Justification du contenu */
+    align-items: flex-start;        /* Alignement des items */
+	margin-top: 10px;
+	flex: 1; /* Le main prend tout l'espace restant */
+
+	min-height: calc(100vh - 300px)
+}
+
+section {
+	flex: 1; /* Chaque section prendra la même largeur */
+	width: 350px;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+table {
+	width: 300px;
+    border: 1px solid black;
+    margin: 30px auto;
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid black;
+}
+
+td.center {
+	text-align:center;
+}
+
+th.right {
+	 text-align: right;
+}
+
+td.right {
+	 text-align: right;
+}
+
+table.commande tbody tr:nth-child(odd) {
+	background: orange;
+}
+
+table.commande tbody tr:nth-child(even) {
+	background: green;
+}
+
+table.commande tr:last-child {
+	background-color: white;
+}
+
+table.commande tr:hover {
+	background: grey;
+	color: white;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	background: orange;
+	padding: 20px;
+}
+
+input[type=text] {
+	background: wheat;
+}
+
+button {
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: uppercase;
+}

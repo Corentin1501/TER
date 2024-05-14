@@ -142,10 +142,11 @@ Par défaut, toutes les règles dans le fichier de règles sont considérés com
         
 ## Manipulation nécessaire
 
-### Installer CSSUtils 
+### Installer BeautifulSoup4 et CSSUtils 
 
 Dans un terminal :
 
+    pip install beautifulsoup4
     pip install cssutils
 
 ## Exemples de règles "complexes" à tester

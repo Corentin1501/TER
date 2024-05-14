@@ -44,7 +44,7 @@ img
 {
 	height: 150px;
 	width: 200px;
-	float: left ; //mettre l'image en bas a gauche de la fenetre
+	float: left ; /*mettre l'image en bas a gauche de la fenetre */
 	margin-bottom: 20px;
 
 }
@@ -68,7 +68,7 @@ main
 	margin-top: 10px;
 	text-align: center;
 }
-//question 5?
+/* //question 5? */
 
 section 
 {
@@ -93,7 +93,7 @@ table
 	border: 5px solid black;
 	flex: center;
 }
-//question 8?
+/* //question 8? */
 form {
 
 }
