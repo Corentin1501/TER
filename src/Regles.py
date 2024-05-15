@@ -1,5 +1,23 @@
 from bs4 import BeautifulSoup
 from enum import Enum
+from difflib import SequenceMatcher
+
+from Levenshtein import ratio
+
+
+def similar(a, b, threshold=0.8):
+    """
+    Calcule la similarité entre deux chaînes de caractères en utilisant la distance de Levenshtein.
+    
+    Args:
+        a (str): Première chaîne de caractères.
+        b (str): Deuxième chaîne de caractères.
+        threshold (float): Valeur de similarité minimale requise pour considérer les chaînes comme similaires.
+    
+    Returns:
+        bool: True si les chaînes sont similaires, False sinon.
+    """
+    return ratio(a, b) >= threshold
 
 
 class Rule:
@@ -86,8 +104,9 @@ class CSS_rule:
         # Vérifier la règle avec les règles du fichier CSS
         for rule in self.css_file_rules:
             if all(selector in rule.selectors for selector in self.selectors):
-                if all(prop in rule.properties and rule.properties[prop] == self.properties[prop] for prop in self.properties):
+                if all((prop in rule.properties and similar(rule.properties.get(prop), self.properties.get(prop, ""))) for prop in self.properties):
                     return True
+
 
         # Si aucune correspondance n'a été trouvée, diviser la règle en sélecteurs individuels
         if len(self.selectors) > 2:
@@ -124,7 +143,7 @@ class Value:
     def verif_rule(self, tag):
         """Vérifie si une balise a la bonne valeur"""
 
-        return tag.string == self.valeur
+        return similar(tag.string,self.valeur)
     
     def to_string(self):
         return "\"" + str(self.valeur) + "\""

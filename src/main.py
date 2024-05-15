@@ -385,15 +385,15 @@ def main():
 
     # rules_file = "src/exemple/regles-l1.txt"
     rules_file = "src/exemple/reglesJMR_v2.txt"
-    # student_files_directory = "src/exemple/L1/eleves-a-part"
-    student_files_directory = "src/exemple/L1/depot-eleves"
+    student_files_directory = "src/exemple/L1/eleves-a-part"
+    # student_files_directory = "src/exemple/L1/depot-eleves"
     # student_files_directory = "src/exemple/L1/petit-depot-eleves"
     # student_files_directory = "src/exemple/test-perso"
 
     #*********** Affichage  ***********
 
     display_rules = False
-    display_errors = False
+    display_errors = True
 
     #*********** Faire la vérification ***********
 
@@ -417,7 +417,7 @@ def main():
         total_rules = len(html_rules) + len(css_rules) + len(logical_rules)
         moyenne = verif_all_students(student_files, html_rules, css_rules, logical_rules, display_errors)
         print("\n\nMoyenne = {0:.2f} /".format(moyenne), total_rules," \t(",len(student_files),"élève(s) )") 
-        print("        = {0:.2f} / 20".format(moyenne * 20 / 34)) 
+        print("        = {0:.2f} / 20".format(moyenne * 20 / total_rules)) 
 
 if __name__ == "__main__":
     main()

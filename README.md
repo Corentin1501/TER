@@ -148,6 +148,7 @@ Dans un terminal :
 
     pip install beautifulsoup4
     pip install cssutils
+    pip install levenshtein
 
 ## Exemples de règles "complexes" à tester
 
