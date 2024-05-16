@@ -1,18 +1,10 @@
 from bs4 import BeautifulSoup
 from enum import Enum
 
-from difflib import SequenceMatcher
 from Levenshtein import ratio
-
 
 def similar(a, b, threshold=0.75):
     return ratio(a, b) >= threshold
-
-def similar_(a, b):
-    if a and b:
-        return SequenceMatcher(None, a, b).ratio() >= 0.75
-    else:
-        return False
 
 class Rule:
     pass
@@ -135,9 +127,12 @@ class Value:
         self.valeur = valeur
 
     def verif_rule(self, tag):
-        """Vérifie si une balise a la bonne valeur"""
+        tag_string_lower = tag.string
+        if tag.string:
+            tag_string_lower = tag.string.lower()
+        self_string_lower = self.valeur.lower()
 
-        return similar(tag.string,self.valeur)
+        return similar(tag_string_lower,self_string_lower)
     
     def to_string(self):
         return "\"" + str(self.valeur) + "\""
