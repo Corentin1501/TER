@@ -1,24 +1,18 @@
 from bs4 import BeautifulSoup
 from enum import Enum
-from difflib import SequenceMatcher
 
+from difflib import SequenceMatcher
 from Levenshtein import ratio
 
 
-def similar(a, b, threshold=0.8):
-    """
-    Calcule la similarité entre deux chaînes de caractères en utilisant la distance de Levenshtein.
-    
-    Args:
-        a (str): Première chaîne de caractères.
-        b (str): Deuxième chaîne de caractères.
-        threshold (float): Valeur de similarité minimale requise pour considérer les chaînes comme similaires.
-    
-    Returns:
-        bool: True si les chaînes sont similaires, False sinon.
-    """
+def similar(a, b, threshold=0.75):
     return ratio(a, b) >= threshold
 
+def similar_(a, b):
+    if a and b:
+        return SequenceMatcher(None, a, b).ratio() >= 0.75
+    else:
+        return False
 
 class Rule:
     pass
