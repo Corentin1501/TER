@@ -17,10 +17,7 @@ class Logical_type(Enum):
 class Logical_rule(Rule):
     logic_type = Logical_type.AND
     rules_concerned = []
-    numero = 0
-
     css_rules_string = ""
-
 
     def __init__(self, logic_type, rules):
         self.logic_type = logic_type
@@ -44,33 +41,29 @@ class Logical_rule(Rule):
             for rule in self.rules_concerned:
                 if rule.verif_rule():
                     return True
-            # print("[Logique] Aucune règle n'est respecté dans OR")
             return False
         
         elif self.logic_type == Logical_type.AND:
             for rule in self.rules_concerned:
                 if not rule.verif_rule():
-                    # print("[Logique] Une règle n'est pas respecté dans AND")
                     return False
             return True
         
         elif self.logic_type == Logical_type.NOT:
             for rule in self.rules_concerned:
                 if rule.verif_rule():
-                    # print("[Logique] Une règle n'est pas respecté dans NOT")
                     return False
             return True
 
         else:
             return False
 
-class CSS_rule:
+class CSS_rule(Rule):
     css_file_rules = []
 
-    def __init__(self, selectors, properties, numero):
+    def __init__(self, selectors, properties):
         self.selectors = selectors
         self.properties = properties
-        self.numero = numero
 
     def set_content(self, content):
         self.css_file_rules = content
@@ -97,14 +90,14 @@ class CSS_rule:
         # Si aucune correspondance n'a été trouvée, diviser la règle en sélecteurs individuels
         if len(self.selectors) > 2:
             for selector in self.selectors:
-                new_rule = CSS_rule([selector], self.properties, 0)
+                new_rule = CSS_rule([selector], self.properties)
                 if new_rule.verif_rule():
                     return True
 
         # Si la division en sélecteurs individuels n'a pas abouti, diviser en propriétés individuelles
         if len(self.properties) > 2:
             for prop in self.properties:
-                new_rule = CSS_rule(self.selectors, {prop: self.properties[prop]}, 0)
+                new_rule = CSS_rule(self.selectors, {prop: self.properties[prop]})
                 if new_rule.verif_rule():
                     return True
 
@@ -112,7 +105,7 @@ class CSS_rule:
         if len(self.selectors) > 2 and len(self.properties) > 2:
             for selector in self.selectors:
                 for prop in self.properties:
-                    new_rule = CSS_rule([selector], {prop: self.properties[prop]}, 0)
+                    new_rule = CSS_rule([selector], {prop: self.properties[prop]})
                     if new_rule.verif_rule():
                         return True
 
@@ -153,7 +146,6 @@ class Attribut:
             # si le tag a cet attribut
             if tag.get(att) is not None:
                 if att == 'class' or att =='rel':  # si c'est une classe qu'on vérifie, c'est considéré comme une liste
-                    # print("\t",tag.get(att), "in?", valeur)
                     if valeur not in tag.get(att):
                         return False
                 else:
@@ -171,22 +163,19 @@ class Attribut:
     
 #============ Règle Générale qui combine toutes les petites règles ============
 
-class HTML_Rule(Rule):
+class HTML_rule(Rule):
     html_content = ""
     balises = []
     secondary_rules_index = {}  # Dictionnaire de tableaux de règles : {0 : [Attribut{class='titi'}, ...], ...}
-    numero = 0  
 
-    def __init__(self, balises, secondary_rules_index, numero):
+    def __init__(self, balises, secondary_rules_index):
         self.balises = balises
         self.secondary_rules_index = secondary_rules_index
-        self.numero = numero
 
     def set_content(self, content):
         self.html_content = content
 
     def to_string(self):
-        out = "[" + str(self.numero) + "]   "
         out = "-   "
         for balise in self.balises:
             out += str(balise) + " > "
@@ -204,19 +193,14 @@ class HTML_Rule(Rule):
         return out[:-7]
 
     def add_secondary_rule(self, rule, balise_index):
-        """Ajoute une règle secondaire (attribut/valeur) sur une balise"""
-
         if balise_index not in self.secondary_rules_index:
             self.secondary_rules_index[balise_index] = [rule]
         else:
             self.secondary_rules_index[balise_index].append(rule)
 
     def verif_rule(self):
-        """Vérifie si la règle est respectée, et toutes les règles secondaires associées"""
 
         def verif_recursive(tag, tag_index):
-            """Vérifie récursivement si toutes les règles secondaires sont respectées à partir d'un tag"""
-
             # est-ce la bonne balise ?
             if tag.name == self.balises[tag_index]:
                 # y a-t-il des règles particulières sur cette balise ?

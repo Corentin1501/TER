@@ -42,7 +42,7 @@ def get_css_rules_from_file(css_content):
             for prop in rule.style:
                 properties[prop.name] = prop.value
 
-            new_rule = CSS_rule(selectors, properties, index)
+            new_rule = CSS_rule(selectors, properties)
             rules.append(new_rule)
 
     return rules
@@ -63,8 +63,6 @@ def get_rules(rules):
     while line_number < len(rules):
         line = rules[line_number].strip()
 
-        # print("\t###### current :", line)
-
         if line.startswith("html"):
             if logical_rule_stack:
                 current_html_rules = identify_html_rules([rules[line_number].replace("html ", "")])
@@ -74,7 +72,6 @@ def get_rules(rules):
                 html_rules_in_string.append(line.replace("html ", ""))
 
         elif line.startswith("OR") or line.startswith("AND") or line.startswith("NOT"):
-
             logic_type = Logical_type.OR if line.startswith("OR") else (Logical_type.AND if line.startswith("AND") else Logical_type.NOT)
             logical_rule = Logical_rule(logic_type, [])
             if logical_rule_stack:
@@ -87,7 +84,6 @@ def get_rules(rules):
         elif line.startswith("css"):
             if logical_rule_stack:
                 logical_rule_stack[-1].add_css_rule(line[line.find(" ") + 1:])  # Ajouter la règle CSS à la règle logique en cours de traitement
-                # print("ajout de css :", line[line.find(" ") + 1:])
                 in_css_in_logic_rule = True
             else:
                 if in_css_rule:
@@ -103,18 +99,15 @@ def get_rules(rules):
         elif line.startswith('}'):
             if in_css_in_logic_rule:
                 logical_rule_stack[-1].add_css_rule(line)  # Ajouter la règle CSS à la règle logique en cours de traitement
-                # print("ajout de css :", line)
                 in_css_in_logic_rule = False
             else:
                 if in_css_rule:
                     in_css_rule = False
                     css_rules_in_string += line + "\n"
 
-
         else:
             if logical_rule_stack:
                 logical_rule_stack[-1].add_css_rule(line)  # Ajouter la règle CSS à la règle logique en cours de traitement
-                # print("ajout de css :", line)
             else:
                 if in_css_rule:
                     css_rules_in_string += line + "\n"
@@ -167,7 +160,7 @@ def identify_html_rules(rules):
         current_tags = []   # on va noter chaque balise une à une
         rule_index = {}     # on va noter les règles liés aux balises
 
-        new_rule = HTML_Rule(current_tags, rule_index, len(rules_identified))
+        new_rule = HTML_rule(current_tags, rule_index)
 
         mots = rule.split(" ")
         i = 0
@@ -197,7 +190,6 @@ def identify_html_rules(rules):
                 value = ""
                 isEndOfValue = False
                 while not isEndOfValue and i < len(mots):
-                    # print("\tcurrent value", mots[i])
                     isEndOfValue = mots[i].endswith('"')
                     value += " " + mots[i].strip('"')
                     i += 1
@@ -232,7 +224,7 @@ def set_content_rules_for_all_rules(html_content, html_rules_identified, css_fil
 def set_content_for_logic_rules(html_content, css_file_rules, logical_rules):
     for logic_rule in logical_rules:
         for rule_concerned in logic_rule.rules_concerned:
-            if isinstance(rule_concerned, HTML_Rule):
+            if isinstance(rule_concerned, HTML_rule):
                 rule_concerned.set_content(html_content)
             elif isinstance(rule_concerned, CSS_rule):
                 rule_concerned.set_content(css_file_rules)
@@ -385,15 +377,15 @@ def main():
 
     # rules_file = "src/exemple/regles-l1.txt"
     rules_file = "src/exemple/reglesJMR_v2.txt"
-    student_files_directory = "src/exemple/L1/eleves-a-part"
-    # student_files_directory = "src/exemple/L1/depot-eleves"
+    # student_files_directory = "src/exemple/L1/eleves-a-part"
+    student_files_directory = "src/exemple/L1/depot-eleves"
     # student_files_directory = "src/exemple/L1/petit-depot-eleves"
     # student_files_directory = "src/exemple/test-perso"
 
     #*********** Affichage  ***********
 
     display_rules = False
-    display_errors = True
+    display_errors = False
 
     #*********** Faire la vérification ***********
 
