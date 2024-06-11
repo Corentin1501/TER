@@ -7,21 +7,29 @@ import cssutils
 #============ Lecture des fichiers ============
 
 def read_file(filename):
-    if os.path.isfile(filename):
+    if os.path.isfile(filename) and (filename.endswith(".html") or filename.endswith(".css")) and os.path.getsize(filename) < 1000000000:
         with open(filename, 'r') as f:
             content = f.read()
         return content
     else:
+        extension = filename.split(".")[-1]
+        print("\nErreur : Les fichiers doivent être un .html ou .css (extension : ." + extension + ")")
         return ""
 
+# Lis le fichier de règles et retourne chaque ligne dans un tableau en ignorant les commentaires
 def read_rules(filename):
-    rules = []
-    with open(filename, 'r') as f:
-        for rule_line in f:
-            if not rule_line.startswith('#'):
-                rules.append(rule_line.strip())
-    return rules
+    if os.path.isfile(filename) and filename.endswith(".txt") and os.path.getsize(filename) < 1000000000:
+        rules = []
+        with open(filename, 'r') as f:
+            for rule_line in f:
+                if not rule_line.startswith('#'):
+                    rules.append(rule_line.strip())
+        return rules
+    else:
+        print("\nErreur : Le fichier de règle doit être un .txt (extension :",filename[-4:],")")
+        return []
 
+# Parse un fichier CSS en string et retourne chaque règles CSS dans un tableau
 def get_css_rules_from_file(css_content):
     # Parser le fichier CSS
     sheet = cssutils.parseString(css_content, validate=False)  # Ignorer les erreurs de validation
@@ -36,7 +44,7 @@ def get_css_rules_from_file(css_content):
             # Utiliser une expression régulière plus précise pour diviser les sélecteurs
             selectors = re.findall(r'[^,{]+', selectors_string)
 
-            selectors = [s.strip() for s in selectors if s.strip()]  # Enlever les espaces vides et vides
+            selectors = [s.strip() for s in selectors if s.strip()]  # Enlever les espaces vides
 
             properties = {}
             for prop in rule.style:
@@ -49,6 +57,7 @@ def get_css_rules_from_file(css_content):
 
 #============ Decoupage des regles HTML / CSS ============
 
+# Lis chaque règles et identifie son type pour retourner une liste de règles HTML, CSS et Logiques
 def get_rules(rules):
     html_rules_in_string = []
 
@@ -56,35 +65,43 @@ def get_rules(rules):
     in_css_rule = False
 
     logical_rules = []
-    logical_rule_stack = []  # Utiliser une pile pour les règles logiques imbriquées
-    in_css_in_logic_rule = False
+    logical_rule_pile = []  # Utiliser une pile pour les règles logiques imbriquées
+    is_in_css_in_logic_rule = False
 
     line_number = 0
     while line_number < len(rules):
         line = rules[line_number].strip()
 
+        #=========== HTML ===========
+
         if line.startswith("html"):
-            if logical_rule_stack:
+            # Si on est dans une règle logique
+            if logical_rule_pile:
                 current_html_rules = identify_html_rules([rules[line_number].replace("html ", "")])
-                for rule in current_html_rules:
-                    logical_rule_stack[-1].add_rule(rule)  # Ajouter les règles HTML à la règle logique en cours de traitement
+                logical_rule_pile[-1].add_rule(current_html_rules[0])  # Ajouter les règles HTML à la règle logique en cours de traitement
             else:
                 html_rules_in_string.append(line.replace("html ", ""))
+
+        #=========== Logique ===========
 
         elif line.startswith("OR") or line.startswith("AND") or line.startswith("NOT"):
             logic_type = Logical_type.OR if line.startswith("OR") else (Logical_type.AND if line.startswith("AND") else Logical_type.NOT)
             logical_rule = Logical_rule(logic_type, [])
-            if logical_rule_stack:
-                logical_rule_stack[-1].add_rule(logical_rule)  # Ajouter la règle logique à la règle logique parente
+            # Si on est dans une règle logique
+            if logical_rule_pile:
+                logical_rule_pile[-1].add_rule(logical_rule)  # Ajouter la règle logique à la règle logique parente
             else:
                 logical_rules.append(logical_rule)
 
-            logical_rule_stack.append(logical_rule)  # Ajouter la règle logique à la pile
+            logical_rule_pile.append(logical_rule)  # Ajouter la règle logique à la pile
 
+        #=========== CSS ===========
+        
         elif line.startswith("css"):
-            if logical_rule_stack:
-                logical_rule_stack[-1].add_css_rule(line[line.find(" ") + 1:])  # Ajouter la règle CSS à la règle logique en cours de traitement
-                in_css_in_logic_rule = True
+            # Si on est dans une règle logique
+            if logical_rule_pile:
+                logical_rule_pile[-1].add_css_rule(line[line.find(" ") + 1:])  # Ajouter la règle CSS à la règle logique en cours de traitement
+                is_in_css_in_logic_rule = True
             else:
                 if in_css_rule:
                     css_rules_in_string += line + "\n"
@@ -92,22 +109,29 @@ def get_rules(rules):
                     in_css_rule = True
                     css_rules_in_string += line[line.find(" ") + 1:] + "\n"
 
+        #=========== Fin de la Logique ===========
+
         elif line.startswith(')'):
-            if logical_rule_stack:
-                logical_rule_stack.pop()  # Retirer la règle logique du sommet de la pile
+            if logical_rule_pile:
+                logical_rule_pile.pop()  # Retirer la règle logique du sommet de la pile
+
+        #=========== Fin du CSS ===========
 
         elif line.startswith('}'):
-            if in_css_in_logic_rule:
-                logical_rule_stack[-1].add_css_rule(line)  # Ajouter la règle CSS à la règle logique en cours de traitement
-                in_css_in_logic_rule = False
+            # Si on est dans une règle logique
+            if is_in_css_in_logic_rule:
+                logical_rule_pile[-1].add_css_rule(line)  # Ajouter la règle CSS à la règle logique en cours de traitement
+                is_in_css_in_logic_rule = False
             else:
                 if in_css_rule:
                     in_css_rule = False
                     css_rules_in_string += line + "\n"
 
+        #=========== Ligne quelconque ===========
+        
         else:
-            if logical_rule_stack:
-                logical_rule_stack[-1].add_css_rule(line)  # Ajouter la règle CSS à la règle logique en cours de traitement
+            if logical_rule_pile:
+                logical_rule_pile[-1].add_css_rule(line)  # Ajouter la règle CSS à la règle logique en cours de traitement
             else:
                 if in_css_rule:
                     css_rules_in_string += line + "\n"
@@ -116,9 +140,9 @@ def get_rules(rules):
 
         line_number += 1
 
+    # On identifie chaque règles pour retourner des instances de règles HTML, CSS ou Logiques
     html_rules = identify_html_rules(html_rules_in_string)
     css_rules = get_css_rules_from_file(css_rules_in_string.strip())
-
     set_css_rules_for_logic(logical_rules)
 
     return html_rules, css_rules, logical_rules
@@ -175,10 +199,21 @@ def identify_html_rules(rules):
                 while not isLastAttribut and i < len(mots):
                     isLastAttribut = mots[i].endswith(']')
 
-                    mot_clean = mots[i].strip('[').strip(']')
+                    mot_clean = mots[i].strip('[]')
                     attribut = mot_clean.split('=')
-                    attributs[attribut[0]] = attribut[1].strip('"')
-                    i += 1
+                    if attribut[0] in ['class','rel','style'] and not isLastAttribut:
+                        isLastClass = False
+                        classes = "" + attribut[1]
+                        i += 1        
+                        while not isLastClass and i < len(mots):
+                            isLastClass = mots[i].endswith('"')
+                            classes += " " + mots[i]
+                            attributs[attribut[0]] = classes.strip('"]')
+                            i += 1        
+
+                    else :
+                        attributs[attribut[0]] = attribut[1].strip('"')
+                        i += 1
     
                 new_little_rule = Attribut(attributs)
                 new_rule.add_secondary_rule(new_little_rule,len(current_tags)-1)
@@ -332,6 +367,10 @@ def get_student_files(directory_path):
 
         if os.path.isdir(chemin_dossier_eleve):
             chemin_html, chemin_css = find_html_css_file(chemin_dossier_eleve)
+            if chemin_html == "":
+                print("Erreur : aucun fichier HTML trouvé pour", nom_prenom)
+            if chemin_css == "":
+                print("Erreur : aucun fichier CSS  trouvé pour", nom_prenom)
             liens_eleves_fichiers[nom_prenom] = (chemin_html, chemin_css)
         else:
             print(chemin_dossier_eleve, "n'est pas un dossier")
@@ -339,58 +378,66 @@ def get_student_files(directory_path):
     return liens_eleves_fichiers
 
 def verif_student(student_file, html_rules, css_rules, logical_rules, display_errors):
+    # on récupère les fichiers 
     html_content = read_file(student_file[0])
     css_content = read_file(student_file[1])
-
-    if html_content != "" and css_content != "":
-        css_file_rules = get_css_rules_from_file(css_content)
-        set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
-        return verif_all_rules(html_rules, css_rules, logical_rules, display_errors)
-    else:
-        return len(html_rules) + len(css_rules) + len(logical_rules)
+    css_file_rules = get_css_rules_from_file(css_content)
+    # on attributs leurs contenus aux règles 
+    set_content_rules_for_all_rules(html_content, html_rules, css_file_rules, css_rules, logical_rules)
+    # on retourne le nombre de regles valides 
+    return verif_all_rules(html_rules, css_rules, logical_rules, display_errors)
 
 def verif_all_students(students_files, html_rules, css_rules, logical_rules, display_errors):
     total_rules = len(html_rules) + len(css_rules) + len(logical_rules)
 
-    total_score_students = 0
+    total_note_students = 0
 
     for nom_prenom, fichiers in students_files.items():
-        print("⏳", nom_prenom, "⏳", end="\t")
-        number_of_rules_not_respected = verif_student(fichiers, html_rules, css_rules, logical_rules, display_errors)
-        score = total_rules - number_of_rules_not_respected
+        # Si le HTML et le CSS ne manque pas 
+        if fichiers[0] != "" and fichiers[1] != "":
+            number_of_rules_not_respected = verif_student(fichiers, html_rules, css_rules, logical_rules, display_errors)
+            note = total_rules - number_of_rules_not_respected
 
-        total_score_students += score
-        
-        print(score, "/", total_rules)
+            total_note_students += note
 
-    return total_score_students / len(students_files)
+            # Si l'élève a 0, on le fait remarquer
+            if note == 0:
+                print(note, "/", total_rules, "  ⬅️ ❗ ", nom_prenom)
+            else:
+                print(note, "/", total_rules, "  ⬅️  ", nom_prenom)
+        else:
+            print("⚠️", nom_prenom, "⚠️\tfichiers HTML/CSS manquants")
+
+
+    return total_note_students / len(students_files)
 
 #============ Main ============
 
 def main():
 
-    #*********** Noms des fichiers en ligne de commandes ***********
+    #*********** Récupération des paramètres en ligne de commandes ***********
+        #*********** Affichage  ***********
 
-    # rules_file = input("Fichier de règles : ")
+    display_rules_string = input("Afficher les règles (O/N) : ")
+    display_rules = display_rules_string.lower() == "o"
+# 
+    display_errors_string = input("Afficher les erreurs des étudiants (O/N) : ")
+    display_errors = display_errors_string.lower() == "o"
+# 
+    # display_rules = False
+    # display_errors = False
 
-    #*********** Ou directement ici ***********
+    #*********** Fichiers à traiter ***********
 
-    # rules_file = "src/exemple/regles-l1.txt"
-    rules_file = "src/exemple/reglesJMR_v2.txt"
-    # student_files_directory = "src/exemple/L1/eleves-a-part"
-    student_files_directory = "src/exemple/L1/depot-eleves"
-    # student_files_directory = "src/exemple/L1/petit-depot-eleves"
-    # student_files_directory = "src/exemple/test-perso"
-
-    #*********** Affichage  ***********
-
-    display_rules = False
-    display_errors = False
+    rules_file = "src/fichiers_a_traiter/reglesJMR_v2.txt"
+    student_files_directory = "src/fichiers_a_traiter/fichiers_eleves"
+    # rules_file = "src/fichiers_a_traiter/regles-test-perf.txt"
+    # student_files_directory = "src/fichiers_a_traiter/test-perfs"
 
     #*********** Faire la vérification ***********
 
     verif_rules = True
-    
+
     #*********** Lire les fichiers ***********
     
     # Règles
