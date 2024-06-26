@@ -10,48 +10,53 @@ h2 {
 
 /* !!!! ne pas modifier cette règle !!!! */
 label {
-   	width: 120px;
-   	float: left;
-   	display: inline;
+	width: 120px;
+	float: left;
+	display: inline;
 }
 
 
 /* Vous pouvez modifier et ajouter des règles à partir de maintenant */
 
 body {
-	margin: 0; /* garder cette propriété */
-	font-family: 'Verdana', 'Arial', sans-serif;
+	margin: 0;
+	/* garder cette propriété */
+	font-family: Verdana, Arial;
 	font-size: 14px;
+
 }
 
 header {
-	width: 100%;
+	width: auto;
 	height: 200px;
 	background-color: green;
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 }
 
-header h1 {
+h1 {
 	font-size: 50px;
 }
 
-header img {
+img {
 	position: fixed;
 	top: 30px;
 	left: 40px;
-	width: 200px;
 	height: 120px;
+	width: 200px;
+
 }
 
 footer {
-	width: 100%;
-	height: 100px;
-	background-color: grey;
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+	background-color: grey;
+	margin-top: 100px;
+	/*width: 500px;*/
+	padding: 20px;
+
 }
 
 main {
@@ -60,55 +65,56 @@ main {
 	justify-content: space-around;
 	align-items: flex-start;
 	margin-top: 10px;
-	height: calc(100vh - 200px - 100px - 10px);
 }
 
 section {
+
+	/*margin-top:10px;*/
 	width: 350px;
-	margin: 0px;
 	padding: 20px;
-	border: solid black 1px;
+	border: 1px solid black;
+	margin: 0px;
 }
- 
+
 table {
 	width: 300px;
-	border: solid black 1px;
-	margin: auto;
+	border: black 1px solid;
 	margin-top: 30px;
 	margin-bottom: 30px;
+	margin: 30px auto;
+	text-align: center;
 	border-collapse: collapse;
 }
 
-table.client {
-	border: none;
+th,
+td,
+tr {
+	border: black 1px solid;
+
+}
+
+#cen,
+.centre {
 	text-align: center;
 }
 
-table.commande tbody tr :nth-child(2) {
-	text-align: center;
-}
-
-table.commande tbody tr :nth-child(3), table.commande tfoot tr :nth-child(2) {
+.droite {
 	text-align: right;
 }
 
-table.commande tfoot tr :first-child {
-	text-align: center;
+.gauche {
+	text-align: left;
 }
 
-table.commande tbody tr:nth-child(odd) {
+.commande tr:nth-child(2n) {
 	background-color: orange;
 }
 
-table.commande tbody tr:nth-child(even) {
+.commande tr:nth-child(2n+1) {
 	background-color: green;
 }
 
-table.commande td, table.commande th {
-	border: solid black 1px;
-}
-
-table.commande tbody tr:hover{
+.commande :hover {
 	background-color: grey;
 	color: white;
 }
@@ -119,19 +125,16 @@ form {
 	flex-direction: column;
 	width: 90%;
 	padding: 20px;
-	padding-top: 0px;
 }
 
-form label, form .pseudobutton {
-	margin-top: 20px;
-}
-
-input[type="text"] {
+#pr {
 	background-color: wheat;
 }
 
-input.pseudobutton {
+.btn {
 	font-size: 24px;
 	text-transform: uppercase;
 	font-weight: bold;
+	margin-top: 10px;
+
 }

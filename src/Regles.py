@@ -1,22 +1,33 @@
 from bs4 import BeautifulSoup
 from enum import Enum
 
+from Levenshtein import ratio, distance
 
-class Rule:
-    pass
+# Vérifie la similarité entre deux chaînes de caractères
+def similar(a, b, threshold=0.75):
+    return ratio(a, b) >= threshold
 
+# Vérifie la similarité entre deux propriétés de CSS
+def similar_property(a, b):
+    mots1 = set(a.split())
+    mots2 = set(b.split())
+
+    # Vérifier que chaque mot de mots1 a un correspondant similaire dans mots2 et vice versa
+    return all(any(similar(mot1, mot2) for mot2 in mots2) for mot1 in mots1) and \
+           all(any(similar(mot2, mot1) for mot1 in mots1) for mot2 in mots2)
+
+
+
+# Définition d'un type énuméré pour les types logiques (AND, OR, NOT)
 class Logical_type(Enum):
     OR = 'OR'
     AND = 'AND'
     NOT = 'NOT'
 
-class Logical_rule(Rule):
+class Logical_rule:
     logic_type = Logical_type.AND
     rules_concerned = []
-    numero = 0
-
     css_rules_string = ""
-
 
     def __init__(self, logic_type, rules):
         self.logic_type = logic_type
@@ -27,7 +38,7 @@ class Logical_rule(Rule):
         for rule in self.rules_concerned:
             out += "|" + rule.to_string()
         return out + "----------\n"
-    
+
     def add_rule(self, rule):
         self.rules_concerned.append(rule) 
 
@@ -40,20 +51,17 @@ class Logical_rule(Rule):
             for rule in self.rules_concerned:
                 if rule.verif_rule():
                     return True
-            # print("[Logique] Aucune règle n'est respecté dans OR")
             return False
         
         elif self.logic_type == Logical_type.AND:
             for rule in self.rules_concerned:
                 if not rule.verif_rule():
-                    # print("[Logique] Une règle n'est pas respecté dans AND")
                     return False
             return True
         
         elif self.logic_type == Logical_type.NOT:
             for rule in self.rules_concerned:
                 if rule.verif_rule():
-                    # print("[Logique] Une règle n'est pas respecté dans NOT")
                     return False
             return True
 
@@ -63,10 +71,9 @@ class Logical_rule(Rule):
 class CSS_rule:
     css_file_rules = []
 
-    def __init__(self, selectors, properties, numero):
+    def __init__(self, selectors, properties):
         self.selectors = selectors
         self.properties = properties
-        self.numero = numero
 
     def set_content(self, content):
         self.css_file_rules = content
@@ -83,34 +90,35 @@ class CSS_rule:
         return out
 
     def verif_rule(self):
+        selectors_set = set(self.selectors)
+        properties_items = self.properties.items()
+
         # Vérifier la règle avec les règles du fichier CSS
         for rule in self.css_file_rules:
-            if all(selector in rule.selectors for selector in self.selectors):
-                if all(prop in rule.properties and rule.properties[prop] == self.properties[prop] for prop in self.properties):
+            if selectors_set.issubset(rule.selectors):
+                if all(prop in rule.properties and similar_property(rule.properties[prop], value)
+                       for prop, value in properties_items):
                     return True
 
-        # Si aucune correspondance n'a été trouvée, diviser la règle en sélecteurs individuels
+        # Si aucune correspondance n'a été trouvée, diviser la règle en sélecteurs et propriétés individuels
         if len(self.selectors) > 2:
             for selector in self.selectors:
-                new_rule = CSS_rule([selector], self.properties, 0)
+                new_rule = CSS_rule([selector], self.properties)
                 if new_rule.verif_rule():
                     return True
-
         # Si la division en sélecteurs individuels n'a pas abouti, diviser en propriétés individuelles
         if len(self.properties) > 2:
             for prop in self.properties:
-                new_rule = CSS_rule(self.selectors, {prop: self.properties[prop]}, 0)
+                new_rule = CSS_rule(self.selectors, {prop: self.properties[prop]})
                 if new_rule.verif_rule():
                     return True
-
         # Si la division en propriétés individuelles n'a pas abouti, diviser en sélecteurs et propriétés individuels
         if len(self.selectors) > 2 and len(self.properties) > 2:
             for selector in self.selectors:
                 for prop in self.properties:
-                    new_rule = CSS_rule([selector], {prop: self.properties[prop]}, 0)
+                    new_rule = CSS_rule([selector], {prop: self.properties[prop]})
                     if new_rule.verif_rule():
                         return True
-
         return False
 
 #============ Précision sur la valeur d'une balise ============
@@ -122,9 +130,12 @@ class Value:
         self.valeur = valeur
 
     def verif_rule(self, tag):
-        """Vérifie si une balise a la bonne valeur"""
+        tag_string_lower = tag.string
+        if tag.string:
+            tag_string_lower = tag.string.lower()
+        self_string_lower = self.valeur.lower()
 
-        return tag.string == self.valeur
+        return similar(tag_string_lower,self_string_lower)
     
     def to_string(self):
         return "\"" + str(self.valeur) + "\""
@@ -138,16 +149,14 @@ class Attribut:
         self.attributs = attributs
 
     def verif_rule(self, tag):
-        """Vérifie si une balise a tous les attributs nécessaire"""
-
         # pour chaque attribut nécessaire
         for att, valeur in self.attributs.items():
             # si le tag a cet attribut
             if tag.get(att) is not None:
-                if att == 'class' or att =='rel':  # si c'est une classe qu'on vérifie, c'est considéré comme une liste
-                    # print("\t",tag.get(att), "in?", valeur)
-                    if valeur not in tag.get(att):
-                        return False
+                if att in ['class','rel','style']:  # certains cas sont considéré comme une liste
+                    valeurs = valeur.split(" ")
+                    return all(val in tag.get(att, []) for val in valeurs)
+
                 else:
                     if tag.get(att) != valeur:
                         return False
@@ -163,22 +172,19 @@ class Attribut:
     
 #============ Règle Générale qui combine toutes les petites règles ============
 
-class HTML_Rule(Rule):
+class HTML_rule:
     html_content = ""
     balises = []
     secondary_rules_index = {}  # Dictionnaire de tableaux de règles : {0 : [Attribut{class='titi'}, ...], ...}
-    numero = 0  
 
-    def __init__(self, balises, secondary_rules_index, numero):
+    def __init__(self, balises, secondary_rules_index):
         self.balises = balises
         self.secondary_rules_index = secondary_rules_index
-        self.numero = numero
 
     def set_content(self, content):
         self.html_content = content
 
     def to_string(self):
-        out = "[" + str(self.numero) + "]   "
         out = "-   "
         for balise in self.balises:
             out += str(balise) + " > "
@@ -196,19 +202,14 @@ class HTML_Rule(Rule):
         return out[:-7]
 
     def add_secondary_rule(self, rule, balise_index):
-        """Ajoute une règle secondaire (attribut/valeur) sur une balise"""
-
         if balise_index not in self.secondary_rules_index:
             self.secondary_rules_index[balise_index] = [rule]
         else:
             self.secondary_rules_index[balise_index].append(rule)
 
     def verif_rule(self):
-        """Vérifie si la règle est respectée, et toutes les règles secondaires associées"""
 
         def verif_recursive(tag, tag_index):
-            """Vérifie récursivement si toutes les règles secondaires sont respectées à partir d'un tag"""
-
             # est-ce la bonne balise ?
             if tag.name == self.balises[tag_index]:
                 # y a-t-il des règles particulières sur cette balise ?
@@ -229,12 +230,8 @@ class HTML_Rule(Rule):
         tags = parser.find_all(self.balises[-1])  # On cherche toutes les balises correspondant à la dernière balise
         
         # Si aucune balise n'existe, alors on peut déjà retourner False
-        if tags is None:
+        if not tags:
             return False
-        # Sinon, on va regarder si toutes les règles sont respectées
-        else:
-            tag_index = len(self.balises) - 1
-            for tag in tags:
-                if verif_recursive(tag, tag_index):
-                    return True
-            return False
+
+        tag_index = len(self.balises) - 1
+        return any(verif_recursive(tag, tag_index) for tag in tags)

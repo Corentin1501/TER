@@ -109,27 +109,16 @@ Il n'y a pas de limites au nombre de règles. Il faut juste que les règles soie
 
 
 ## Notes générales
-Toutes les chaînes de caractères, que ce soit pour les attributs, les valeurs ou les balises, sont ***sensibles à la casse et aux espaces***.
-
----
 Il est possible d'ajouter des ***commentaires*** dans le fichier de règles, en rajoutant `#` au début de la ligne.
 
 ---
 Il est aussi possible de ***combiner*** plusieurs types de règles : 
 
     html section [id=section_form] form h2 "Mon Formulaire"
-
-
-Cependant, il n'est pas possible de mettre plusieurs règles sur une seule balise : 
-
-    html h2 "Mon Formulaire" [class=bold]               = IMPOSSIBLE
+    html form select option [value="1"] "Clavier"
 
 ---
 Dans le CSS, deux règles peuvent être ***séparés*** ou ***combinés*** : Si dans le *fichier CSS* deux règles sont séparés (`h1 {...} h2 {...}`) et que dans le *fichier de règles* les deux sont combinés (`h1, h2 {...}`), l'utilitaire saura valider la règle. Et ce même si c'est l'inverse, que les règles soients séparés et dans le CSS combinées.
-
----
-Par défaut, toutes les règles dans le fichier de règles sont considérés comme un **AND** : si une des règles n'est pas vérifiée, alors il y a une erreur.
-
 
 ## Librairies utilisées
 
@@ -148,12 +137,13 @@ Dans un terminal :
 
     pip install beautifulsoup4
     pip install cssutils
+    pip install levenshtein
 
 ## Exemples de règles "complexes" à tester
 
-    html section [id=section_form] form h2 "Mon Formulaire"
+    html section [id="section_form"] form h2 "Mon Formulaire"
 
-    html form [method=post] fieldset select [name=produit] option "Clavier"
+    html form [method="post"] fieldset select [name="produit"] option [value="1"] "Clavier"
 
     AND (
         html table [class="client"]

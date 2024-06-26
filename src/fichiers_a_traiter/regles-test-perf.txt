@@ -1,0 +1,102 @@
+#############################################################################################
+
+html body div [class="logged-in env-production page-responsive full-width"]
+html body div div div div aside div [class="dashboard-sidebar"]
+html body div div [class="application-main"] div [class="color-bg-default"]
+html body div div div div [style="min-height: 100vh;"]
+html footer h2 [class="sr-only"] "Footer"
+html body div template div clipboard-copy svg path
+
+#############################################################################################
+
+css .pv-member-photo-modal__content-image-container {
+    overflow: auto;
+    display: flex;
+    flex-direction: column
+}
+
+css .pv-app-download-modal__footer-text {
+    padding-bottom: var(--spacing-one-and-a-half-x)
+}
+
+css .pv-recent-activity-top-card__premium-overlay {
+    height: 100%;
+    width: 100%;
+    padding-left: .8rem;
+    text-align: left;
+    position: absolute;
+    top: 0
+}
+
+css .pv-cover-story-creator-qr-code {
+    margin: auto
+}
+
+css .pv-course-recommendations__cta-link-wrapper .app-aware-link,.pv-course-recommendations__cta-link-wrapper .app-aware-link:active {
+    color: inherit;
+    text-decoration: inherit;
+    margin: var(--spacing-one-and-a-half-x) 0;
+    width: 100%
+}
+
+css .pv-cover-story-viewer__full-page .pv-cover-story-viewer__content-header .artdeco-completeness-meter-linear__progress-element {
+    height: 2px;
+    color: var(--color-text-on-dark)
+}
+
+#############################################################################################
+
+OR (
+    html body div [class="logged-in env-production page-responsive full-width"]
+    css .pv-app-download-modal__footer-text {
+        padding-bottom: var(--spacing-one-and-a-half-x)
+    }
+)
+
+OR (
+    AND (
+        html body div div div div [style="min-height: 100vh;"]
+        css .pv-cover-story-creator-qr-code {
+            margin: auto
+        }        
+    )
+    html footer h2 [class="sr-only"] "Footer"
+)
+
+AND (
+    html body div div div div aside div [class="dashboard-sidebar"]
+    css .pv-course-recommendations__cta-link-wrapper .app-aware-link,.pv-course-recommendations__cta-link-wrapper .app-aware-link:active {
+        color: inherit;
+        text-decoration: inherit;
+        margin: var(--spacing-one-and-a-half-x) 0;
+        width: 100%
+    }
+)
+
+AND (
+    OR (
+        html body div div div div [style="min-height: 100vh;"]
+        css .pv-app-download-modal__footer-text {
+            padding-bottom: var(--spacing-one-and-a-half-x)
+        }        
+    )
+    html body div template div clipboard-copy svg path
+)
+
+NOT (
+    html body div div [class="application-main"] div [class="color-bg-default"]
+    css .pv-cover-story-viewer__full-page .pv-cover-story-viewer__content-header .artdeco-completeness-meter-linear__progress-element {
+        height: 2px;
+        color: var(--color-text-on-dark)
+    }
+)
+
+NOT (
+    OR (
+        html body div [class="logged-in env-production page-responsive full-width"]
+        css .pv-cover-story-creator-qr-code {
+            margin: auto
+        }    
+    )
+    html body div div div div aside div [class="dashboard-sidebar"]
+)
